@@ -16,7 +16,8 @@ import androidx.fragment.app.replace
 import com.example.projectandroid.R
 import com.example.projectandroid.activity.signin.SignInActivity
 import com.example.projectandroid.activity.signup.SignUpActivity
-import kotlinx.android.synthetic.main.activity_welcome.*
+import com.example.projectandroid.activity.welcome.WelcomeActivity
+//import kotlinx.android.synthetic.main.welcome.*
 
 
 class WelcomeActivity : Fragment(){
@@ -25,13 +26,13 @@ class WelcomeActivity : Fragment(){
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.activity_welcome,container,false)
+        val view = inflater.inflate(R.layout.welcome,container,false)
         return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        btn_start.setOnClickListener {
+        this.id(signin).setOnClickListener {
                     //findNavController().navigate(R.id.action_boardingOneFragment_to_boardingTwoFragment)
                     parentFragmentManager.commit {
                         setReorderingAllowed(true)
@@ -40,7 +41,7 @@ class WelcomeActivity : Fragment(){
                     }
         }
 
-        btn_sign_in.setOnClickListener {
+        signup.setOnClickListener {
             parentFragmentManager.commit {
                 setReorderingAllowed(true)
                 replace<SignInActivity>(R.id.frag)

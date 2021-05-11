@@ -15,14 +15,16 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.projectandroid.MainActivity
 import com.example.projectandroid.R
+import com.example.projectandroid.activity.home.homeActivity
+import com.example.projectandroid.activity.signin.SignInViewModel
 import com.example.projectandroid.activity.signup.SignUpActivity
-import com.example.projectandroid.databinding.ActivitySignInBinding
-import com.example.projectandroid.restaurant.RestaurantActivity
+import com.example.projectandroid.databinding.SigninBinding
+//import com.example.projectandroid.restaurant.RestaurantActivity
 
 
 class SignInActivity : Fragment() {
 
-    private lateinit var binding: ActivitySignInBinding
+    private lateinit var binding: SigninBinding
     private lateinit var viewModel: SignInViewModel
 
 
@@ -39,7 +41,7 @@ class SignInActivity : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
-            btnSignUp.setOnClickListener {
+            signUpHere.setOnClickListener {
                 parentFragmentManager.commit {
                     setReorderingAllowed(true)
                     replace<SignInActivity>(R.id.frag)
@@ -52,7 +54,7 @@ class SignInActivity : Fragment() {
                 showToastMessage("Sign in Successful")
                 val bundle = bundleOf("email" to user.email)
                 val intent = Intent(activity,
-                    RestaurantActivity::class.java)
+                    homeActivity::class.java)
                 startActivity(intent)
             }
 
@@ -72,9 +74,9 @@ class SignInActivity : Fragment() {
 
     private fun setupViewModel(inflater: LayoutInflater,container: ViewGroup?){
         viewModel = ViewModelProvider(this).get(SignInViewModel::class.java)
-        binding = DataBindingUtil.inflate(inflater, R.layout.activity_sign_in, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.signin, container, false)
         binding.lifecycleOwner = this
-        binding.signInViewModel = viewModel
+        binding.SignInViewModel = viewModel
     }
     private fun showToastMessage(value: String) {
         Toast.makeText(activity, value, Toast.LENGTH_SHORT).show()

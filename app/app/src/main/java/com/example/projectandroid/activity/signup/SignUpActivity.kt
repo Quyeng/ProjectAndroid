@@ -1,4 +1,4 @@
-package com.example.team10.activity.signup
+package com.example.projectandroid.activity.signup
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,12 +11,12 @@ import androidx.fragment.app.commit
 import androidx.fragment.app.replace
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.example.team10.R
-import com.example.team10.activity.signin.SignInActivity
-import com.example.team10.databinding.ActivitySignUpBinding
+import com.example.projectandroid.R
+import com.example.projectandroid.activity.signin.SignInActivity
+import com.example.projectandroid.databinding.SignupBinding
 
 class SignUpActivity : Fragment(){
-    private lateinit var binding: ActivitySignUpBinding
+    private lateinit var binding: SignupBinding
     private lateinit var viewModel: SignUpViewModel
 
     override fun onCreateView(
