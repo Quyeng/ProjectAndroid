@@ -35,7 +35,7 @@ class dangnhap : AppCompatActivity() {
             val taikhoan = edtTK?.getText().toString()
             val matkhau = edtMK?.getText().toString()
             if (taikhoan.isEmpty() && matkhau.isEmpty()) {
-                Toast.makeText(this@dangnhap, "bạn chưa đăng nhập", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@dangnhap, "Thiếu thông tin đăng nhập", Toast.LENGTH_SHORT).show()
             } else {
                 Dangnhap()
             }
