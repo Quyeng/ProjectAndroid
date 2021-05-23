@@ -1,4 +1,4 @@
-# ĐỒ ÁN ANDROID - PHẦN DESIGN GIAO DIỆN APP - BY QUANG TRẦN
+# ĐỒ ÁN MÔN ANDROID | CHIA VIỆC
 
 ## Chia việc:
 - Welcome, Design layout menu, recycle view, shopping cart, phụ api - **Đức Quang**
