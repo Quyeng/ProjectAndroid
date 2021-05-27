@@ -37,8 +37,8 @@ class ShoesActivity : AppCompatActivity() {
         //            ActionToolBar();
         GetDataPhone()
         shoesAdapter = ShoesAdapter(this, R.layout.item_phone, arrayListShoesFilter!!)
-        listViewShoes.setAdapter(shoesAdapter)
-        listViewShoes.setOnItemClickListener(OnItemClickListener { parent, view, position, id ->
+        listViewShoes?.setAdapter(shoesAdapter)
+        listViewShoes?.setOnItemClickListener(OnItemClickListener { parent, view, position, id ->
             val intent = Intent(this@ShoesActivity, ProductDetailActivity::class.java)
             intent.putExtra("information", arrayShoesShirt!![position])
             startActivity(intent)

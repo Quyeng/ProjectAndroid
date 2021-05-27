@@ -55,23 +55,23 @@ class HistoryActivity : AppCompatActivity() {
         listViewCart = findViewById(R.id.listviewDonhangchitiet)
         detailCartAdapter =
             DetailCartAdapter(this, R.layout.dong_don_hang_chi_tiet, cartArrayListFiler!!)
-        listViewCart.setAdapter(detailCartAdapter)
-        btndangnhap.setOnClickListener(View.OnClickListener {
+        listViewCart?.setAdapter(detailCartAdapter)
+        btndangnhap?.setOnClickListener(View.OnClickListener {
             val intent = Intent(this@HistoryActivity, dangnhap::class.java)
             intent.putExtra("idProductType", 1)
             startActivityForResult(intent, REQUEST_CODE_USER)
         })
-        btnShowUser.setOnClickListener(View.OnClickListener {
+        btnShowUser?.setOnClickListener(View.OnClickListener {
             val intent = Intent(this@HistoryActivity, InformationUserActivity::class.java)
             intent.putExtra("user", user)
             startActivity(intent)
         })
-        btnExit.setOnClickListener(View.OnClickListener {
-            btnShowUser.setVisibility(View.GONE)
-            btnExit.setVisibility(View.GONE)
-            btndangnhap.setVisibility(View.VISIBLE)
-            textViewDonhang.setText("Bạn chưa đăng nhập")
-            listViewCart.setVisibility(View.GONE)
+        btnExit?.setOnClickListener(View.OnClickListener {
+            btnShowUser?.setVisibility(View.GONE)
+            btnExit?.setVisibility(View.GONE)
+            btndangnhap?.setVisibility(View.VISIBLE)
+            textViewDonhang?.setText("Bạn chưa đăng nhập")
+            listViewCart?.setVisibility(View.GONE)
         })
     }
 
@@ -188,7 +188,7 @@ class HistoryActivity : AppCompatActivity() {
                         "you have :" + cartArrayListFiler!!.size,
                         Toast.LENGTH_SHORT
                     ).show()
-                    detailCartAdapter.notifyDataSetChanged()
+                    detailCartAdapter?.notifyDataSetChanged()
                 }
             }
         ) { error -> CheckConnection.ShowToast_Short(applicationContext, error.toString()) }

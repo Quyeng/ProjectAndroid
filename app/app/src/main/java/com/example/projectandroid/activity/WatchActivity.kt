@@ -37,8 +37,8 @@ class WatchActivity : AppCompatActivity() {
         //            ActionToolBar();
         GetDataPhone()
         WatchAdapter = WatchAdapter(this, R.layout.item_phone, arrayListWatchFilter!!)
-        listViewWatch.setAdapter(WatchAdapter)
-        listViewWatch.setOnItemClickListener(OnItemClickListener { parent, view, position, id ->
+        listViewWatch?.setAdapter(WatchAdapter)
+        listViewWatch?.setOnItemClickListener(OnItemClickListener { parent, view, position, id ->
             val intent = Intent(this@WatchActivity, ProductDetailActivity::class.java)
             intent.putExtra("information", arrayListWatch!![position])
             startActivity(intent)

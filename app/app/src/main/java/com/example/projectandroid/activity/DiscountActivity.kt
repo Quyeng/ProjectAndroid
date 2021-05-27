@@ -30,9 +30,9 @@ class DiscountActivity : AppCompatActivity() {
         btnhuyxacnhan = findViewById(R.id.btnhuyxacnhangiamgia)
         listViewDiscount = findViewById(R.id.listviewgiamgia)
         discountAdapter = DiscountAdapter(this, R.layout.dong_discount, discountArrayList!!)
-        listViewDiscount.setAdapter(discountAdapter)
+        listViewDiscount?.setAdapter(discountAdapter)
         GetDataDiscount()
-        btnXacnhangiamgia.setOnClickListener(View.OnClickListener {
+        btnXacnhangiamgia?.setOnClickListener(View.OnClickListener {
             val intent = Intent()
             intent.putExtra("discount", discounts)
             setResult(RESULT_OK, intent)

@@ -32,16 +32,16 @@ class SmartPhoneActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_smart_phone)
-        listViewPhone = findViewById(R.id.listViewPhone)
+        setContentView(com.example.projectandroid.R.layout.activity_smart_phone)
+        listViewPhone = findViewById(com.example.projectandroid.R.id.listViewPhone)
         arrayListPhone = ArrayList<Product>()
         arrayListPhoneFilter = ArrayList<Product>()
         GetIdProductType()
         //            ActionToolBar();
         GetDataPhone()
-        phoneAdapter = PhoneAdapter(this, R.layout.item_phone, arrayListPhoneFilter!!)
-        listViewPhone.setAdapter(phoneAdapter)
-        listViewPhone.setOnItemClickListener(OnItemClickListener { parent, view, position, id ->
+        phoneAdapter = PhoneAdapter(this, com.example.projectandroid.R.layout.item_phone, arrayListPhoneFilter!!)
+        listViewPhone?.setAdapter(phoneAdapter)
+        listViewPhone?.setOnItemClickListener(OnItemClickListener { parent, view, position, id ->
             val intent = Intent(this@SmartPhoneActivity, ProductDetailActivity::class.java)
             intent.putExtra("information", arrayListPhone!![position])
             startActivity(intent)

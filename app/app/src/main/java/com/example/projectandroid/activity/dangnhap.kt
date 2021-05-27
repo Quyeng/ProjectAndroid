@@ -29,7 +29,7 @@ class dangnhap : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.signin)
+        setContentView(R.layout.activity_dangnhap)
         btndangki = findViewById(R.id.signUpHere)
         btnDangNhap = findViewById(R.id.btn_signin)
         edtTK = findViewById(R.id.inputuser)

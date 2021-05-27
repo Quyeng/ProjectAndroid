@@ -37,8 +37,8 @@ class TrousersActivity : AppCompatActivity() {
         //            ActionToolBar();
         GetDataPhone()
         trousersAdapter = TrousersAdapter(this, R.layout.item_phone, getArrayListTrousersFilter!!)
-        listViewTrousers.setAdapter(trousersAdapter)
-        listViewTrousers.setOnItemClickListener(OnItemClickListener { parent, view, position, id ->
+        listViewTrousers?.setAdapter(trousersAdapter)
+        listViewTrousers?.setOnItemClickListener(OnItemClickListener { parent, view, position, id ->
             val intent = Intent(this@TrousersActivity, ProductDetailActivity::class.java)
             intent.putExtra("information", arrayListTrousers!![position])
             startActivity(intent)

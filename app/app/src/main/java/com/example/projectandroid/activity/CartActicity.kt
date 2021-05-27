@@ -106,11 +106,11 @@ class CartActicity : AppCompatActivity() {
 
     private fun AnhXa() {
         imgLogo = findViewById(R.id.imageLogo)
-        imgLogo.setImageResource(R.drawable.iconshop)
+        imgLogo?.setImageResource(R.drawable.iconshop)
         iconvanchuyen = findViewById(R.id.imageIconxetai)
         imageIconxetaine = findViewById(R.id.imageIconxetaine)
-        iconvanchuyen.setImageResource(R.drawable.vanchuyen)
-        imageIconxetaine.setImageResource(R.drawable.vanchuyen)
+        iconvanchuyen?.setImageResource(R.drawable.vanchuyen)
+        imageIconxetaine?.setImageResource(R.drawable.vanchuyen)
         listViewCart = findViewById(R.id.listviewCart)
         Tongtiensanpham = findViewById(R.id.Tongtiensanpham)
         checkBoxTatCa = findViewById(R.id.checkboxTatCa)
@@ -118,7 +118,7 @@ class CartActicity : AppCompatActivity() {
         cartArrayListFiler = ArrayList<Cart>()
         GetDataCart()
         cartApdapter = CartApdapter(this, R.layout.dong_cart, cartArrayListFiler!!)
-        listViewCart.setAdapter(cartApdapter)
+        listViewCart?.setAdapter(cartApdapter)
         btnDiscount = findViewById(R.id.btnDiscount)
         btnMuaHang = findViewById(R.id.btnMuaHang)
     }
