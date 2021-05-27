@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.CartActicity">
+
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:id="@+id/drawerlayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/btnShowUser"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="#03A9F4"
+                app:title="Giỏ hàng">
+
+               <ImageView
+                   android:layout_marginLeft="220dp"
+                   android:layout_width="50dp"
+                   android:layout_height="match_parent"/>
+
+
+            </androidx.appcompat.widget.Toolbar>
+        <LinearLayout
+        android:layout_width="match_parent"
+        android:padding="15dp"
+        android:orientation="horizontal"
+        android:layout_height="70dp">
+
+        <ImageView
+            android:id="@+id/imageIconxetai"
+            android:layout_width="40dp"
+            android:layout_height="40dp"/>
+        <TextView
+            android:textStyle="bold"
+            android:paddingLeft="5dp"
+            android:textSize="14sp"
+            android:text="Nhấn vào mục Mã giảm giá trong mục Shoppe Voucher để được hưởng miễn phí vận chuyển nhé "
+            android:id="@+id/textviewgiamgia"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"/>
+
+        </LinearLayout>
+
+       <ListView
+           android:background="#ECDCDC"
+           android:id="@+id/listviewCart"
+           android:layout_width="match_parent"
+           android:layout_height="400dp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:padding="15dp"
+                android:orientation="horizontal"
+                android:layout_height="70dp">
+
+                <ImageView
+                    android:id="@+id/imageIconxetaine"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"/>
+                <TextView
+                    android:textStyle="bold"
+                    android:paddingLeft="5dp"
+                    android:textSize="14sp"
+                    android:text="Nhấn vào mục Mã giảm giá trong mục Shoppe Voucher để được hưởng miễn phí vận chuyển nhé "
+                    android:id="@+id/textviewgiamgiane"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="70dp">
+                <ImageView
+                    android:id="@+id/imageLogo"
+                    android:layout_width="70dp"
+                    android:layout_height="match_parent"/>
+                <TextView
+                    android:textSize="22dp"
+                    android:textColor="#BA1313"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:text="GENX SHOP"
+                    android:layout_width="140dp"
+                    android:layout_height="match_parent"/>
+
+                <Button
+                    android:id="@+id/btnDiscount"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Chọn hoặc nhập mã giảm giá" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <CheckBox
+                    android:id="@+id/checkboxTatCa"
+                    android:layout_width="100dp"
+                    android:checked="true"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:text="Tất Cả" />
+                <TextView
+                    android:textColor="@color/black"
+                    android:gravity="center"
+                    android:text="Tổng Tiền : "
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"/>
+                <TextView
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:text="0"
+                    android:id="@+id/Tongtiensanpham"
+                    android:layout_width="120dp"
+                    android:layout_height="match_parent"/>
+                <Button
+                    android:id="@+id/btnMuaHang"
+                    android:background="#A3EF93"
+                    android:text="Mua hàng"
+                    android:layout_marginLeft="10dp"
+                    android:layout_width="match_parent"
+
+                    android:layout_height="80dp"/>
+            </LinearLayout>
+    </LinearLayout>
+    </androidx.drawerlayout.widget.DrawerLayout>
+</LinearLayout>

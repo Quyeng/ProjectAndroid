@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/dongcartnene"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="170dp">
+
+
+
+        <ImageView
+            android:id="@+id/imageHinhSanPhamne"
+            android:layout_width="150dp"
+            android:layout_height="match_parent" />
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textViewNameSanPhamne"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:gravity="center"
+                android:text="Kem nền trộn thật đẹp"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textviewngaymuahang"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:gravity="center"
+                android:text="ngay mua hang 17/17/2020"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/textviewGiaSanPhamne"
+                android:gravity="center"
+                android:text="170.000 Vnd"
+                android:textColor="@color/black"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"/>
+
+
+
+
+                <TextView
+                    android:id="@+id/textviewSoluongdamuane"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#F4E8E8"
+                    android:gravity="center"
+                    android:text="số lương đã mua là :1"
+                    android:textStyle="bold" />
+
+
+
+
+
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

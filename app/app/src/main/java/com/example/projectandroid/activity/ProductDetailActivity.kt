@@ -19,7 +19,6 @@ import com.example.projectandroid.model.Comment
 import com.example.projectandroid.model.Product
 import com.example.projectandroid.model.User
 import com.example.projectandroid.ultil.CheckConnection
-import com.example.projectandroid.ultil.Server
 import com.squareup.picasso.Picasso
 import org.json.JSONException
 import java.text.DecimalFormat
@@ -311,8 +310,8 @@ class ProductDetailActivity : AppCompatActivity() {
         listViewComment = findViewById(R.id.listviewComment)
         commentArrayList = ArrayList<Comment>()
         commentArrayListFilter = ArrayList<Comment>()
-        commentAdapter = CommentAdapter(this, R.layout.comment, commentArrayListFilter)
-        listViewComment.setAdapter(commentAdapter)
+        commentAdapter = CommentAdapter(this, R.layout.comment, commentArrayListFilter!!)
+        with(listViewComment) { this?.setAdapter(commentAdapter) }
         userArrayList = ArrayList<User>()
         btnExitUser = findViewById(R.id.showUserExit)
     }

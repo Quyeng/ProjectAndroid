@@ -1,6 +1,7 @@
 package com.example.projectandroid.ultil
 
-class Server {
+//nháp
+//test code
     var localhost = "192.168.1.6:8080"
     var path = "http://" + localhost + "/server/getloaisp.php"
     var pathNew = "http://" + localhost + "/server/getsanphammoinhat.php"
@@ -18,7 +19,6 @@ class Server {
     var confirmCart = "http://" + localhost + "/server/confirmCart.php"
     var insertDonHangChiTiet = "http://" + localhost + "/server/insertDonHangChiTiet.php"
     var pathDonHangChiTiet = "http://" + localhost + "/server/getDonHangChiTiet.php"
-}
 
 //val item = data[position]
 //holder.tvResname.text=item.res_name

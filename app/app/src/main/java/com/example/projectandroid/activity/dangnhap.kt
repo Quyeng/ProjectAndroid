@@ -9,7 +9,12 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.android.volley.AuthFailureError
+import com.android.volley.Response
+import com.android.volley.toolbox.StringRequest
+import com.android.volley.toolbox.Volley
 import com.google.firebase.auth.FirebaseAuth
+import java.util.*
 
 //team10
 class dangnhap : AppCompatActivity() {
@@ -75,12 +80,41 @@ class dangnhap : AppCompatActivity() {
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
                     Toast.makeText(this@dangnhap, "Đăng kí thành công", Toast.LENGTH_SHORT).show()
+                    dangkiBangUser()
                 } else {
                     Toast.makeText(this@dangnhap, "Lõi Đăng kí", Toast.LENGTH_SHORT).show()
                 }
 
                 // ...
             }
+    }
+
+    private fun dangkiBangUser() {
+        val requestQueue = Volley.newRequestQueue(this)
+        val stringRequest: StringRequest = object : StringRequest(
+            Method.POST, "http://" + "@string/localhost" + "/server/insertUser.php",
+            Response.Listener { response ->
+                if (response.trim { it <= ' ' } == "success") {
+                    Toast.makeText(this@dangnhap, "Thêm User thành công", Toast.LENGTH_SHORT)
+                        .show()
+                } else {
+                    Toast.makeText(this@dangnhap, "lỗi thêm", Toast.LENGTH_SHORT).show()
+                }
+            },
+            Response.ErrorListener { error ->
+                Toast.makeText(this@dangnhap, "Da xay ra loi", Toast.LENGTH_SHORT).show()
+                Log.d("vpq", "Loi!\n$error")
+            }
+        ) {
+            @Throws(AuthFailureError::class)
+            override fun getParams(): Map<String, String>? {
+                val params: MutableMap<String, String> = HashMap()
+                params["email"] = edtEmail!!.text.toString()
+                params["username"] = edtUsername!!.text.toString()
+                return params
+            }
+        }
+        requestQueue.add(stringRequest)
     }
 
     private fun Dangnhap() {

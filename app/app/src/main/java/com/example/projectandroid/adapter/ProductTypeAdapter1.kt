@@ -36,32 +36,32 @@ class ProductTypeAdapter1(datashops: ArrayList<ProductType>, context: HomeActivi
             when (position) {
                 0 -> {
                     val intent = Intent(context, SmartPhoneActivity::class.java)
-                    intent.putExtra("idProductType", productType.getId())
+                    intent.putExtra("idProductType", 0)
                     context.startActivity(intent)
                 }
                 1 -> {
                     val intent = Intent(context, LaptopActivity::class.java)
-                    intent.putExtra("idProductType", productType.getId())
+                    intent.putExtra("idProductType", 1)
                     context.startActivity(intent)
                 }
                 2 -> {
                     val intent = Intent(context, ShirtActivity::class.java)
-                    intent.putExtra("idProductType", productType.getId())
+                    intent.putExtra("idProductType", 2)
                     context.startActivity(intent)
                 }
                 3 -> {
                     val intent = Intent(context, TrousersActivity::class.java)
-                    intent.putExtra("idProductType", productType.getId())
+                    intent.putExtra("idProductType", 3)
                     context.startActivity(intent)
                 }
                 4 -> {
                     val intent = Intent(context, ShoesActivity::class.java)
-                    intent.putExtra("idProductType", productType.getId())
+                    intent.putExtra("idProductType", 4)
                     context.startActivity(intent)
                 }
                 5 -> {
                     val intent = Intent(context, WatchActivity::class.java)
-                    intent.putExtra("idProductType", productType.getId())
+                    intent.putExtra("idProductType", 5)
                     context.startActivity(intent)
                 }
             }

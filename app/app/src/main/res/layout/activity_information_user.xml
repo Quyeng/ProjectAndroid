@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#D8C5C5"
+    tools:context=".activity.InformationUserActivity">
+
+    <LinearLayout
+        android:layout_marginTop="80dp"
+        android:layout_marginBottom="80dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:gravity="center"
+        android:background="@drawable/boder"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:text="Thông tin khách hàng"
+            android:textSize="25dp"
+            android:textColor="@android:color/black"
+            android:textStyle="bold"
+            android:layout_marginRight="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+            <EditText
+
+                android:id="@+id/editTextNameCustomer"
+                android:inputType="text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="30dp"
+                android:hint="Nhập vào tên của khách hàng"/>
+
+
+            <EditText
+                android:id="@+id/editdiachi"
+                android:inputType="text"
+                android:layout_width="match_parent"
+                android:layout_margin="30dp"
+                android:layout_height="wrap_content"
+                android:hint="Nhập vào dia chi của khách hàng"/>
+
+
+            <EditText
+                android:id="@+id/editTextEmailCustomer"
+                android:inputType="textEmailAddress"
+                android:layout_margin="30dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Nhập vào email của khách hàng"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_margin="30dp">
+            <Button
+                android:id="@+id/buttonConfrim"
+                android:padding="10dp"
+                android:textSize="15dp"
+                android:text="Xác nhận"
+                android:layout_marginRight="60dp"
+                android:textColor="@android:color/black"
+                android:background="#E39898"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <Button
+                android:id="@+id/buttonBack"
+                android:padding="10dp"
+                android:textSize="15dp"
+                android:text="Trở về"
+                android:textColor="@android:color/black"
+                android:background="#E39898"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/dongcartne"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="170dp">
+
+        <CheckBox
+            android:id="@+id/checkboxCart"
+            android:layout_width="50dp"
+            android:checked="false"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp" />
+
+        <ImageView
+            android:id="@+id/imageHinhSanPham"
+            android:layout_width="100dp"
+            android:layout_height="match_parent" />
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textViewNameSanPham"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:gravity="center"
+                android:text="Kem nền trộn thật đẹp"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textviewThuonghieu"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:gravity="center"
+                android:text="Thương hiệu : HP"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/textviewGiaSanPham"
+                android:gravity="center"
+                android:text="170.000 Vnd"
+                android:textColor="@color/black"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"/>
+            <LinearLayout
+                android:orientation="horizontal"
+
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <Button
+                    android:id="@+id/btntruCart"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:text="-"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textviewSoluongdamua"
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:background="#F4E8E8"
+                    android:gravity="center"
+                    android:text="1"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/btnCongCart"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="5dp"
+                    android:text="+"
+                    android:textStyle="bold" />
+                <TextView
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:id="@+id/textViewSanPhamConLai"
+                    android:gravity="center"
+
+                    android:text="còn lại 4 san pham"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

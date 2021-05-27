@@ -31,7 +31,6 @@ import com.example.projectandroid.adapter.ProductTypeAdapter1
 import com.example.projectandroid.model.Product
 import com.example.projectandroid.model.ProductType
 import com.example.projectandroid.ultil.CheckConnection
-import com.example.projectandroid.ultil.Server
 import com.google.android.material.navigation.NavigationView
 import com.squareup.picasso.Picasso
 import org.json.JSONArray
@@ -249,7 +248,7 @@ class HomeActivity : AppCompatActivity() {
                     }
                 }
             }
-        }, object : ErrorListener(), Response.ErrorListener {
+        }, object : Response.ErrorListener, Response.ErrorListener {
             override fun onErrorResponse(error: VolleyError) {
                 CheckConnection.ShowToast_Short(applicationContext, error.toString())
             }
@@ -293,8 +292,8 @@ class HomeActivity : AppCompatActivity() {
                     )
                 }
             }
-        }, object : ErrorListener() {
-            fun onErrorResponse(error: VolleyError) {
+        }, object : Response.ErrorListener {
+            override fun onErrorResponse(error: VolleyError) {
                 CheckConnection.ShowToast_Short(applicationContext, error.toString())
             }
         })
@@ -303,12 +302,12 @@ class HomeActivity : AppCompatActivity() {
 
     private fun ActionViewFliper() {
         val mangquangcao = ArrayList<String>()
-        mangquangcao.add("https://i.ytimg.com/vi/qCmP-cnU6io/maxresdefault.jpg")
-        mangquangcao.add("https://tse4.mm.bing.net/th?id=OIP.Mh4RLv2bzrwP5YSfYxNBCwHaDz&pid=Api&P=0&w=331&h=170")
-        mangquangcao.add("https://www.elleman.vn/wp-content/uploads/2015/03/13/ao-so-mi-nam-hang-hieu-saint-laurent.jpeg")
-        mangquangcao.add("https://4menshop.com/images/thumbs/2017/06/quan-tay-den-qt95-8861.jpg")
-        mangquangcao.add("https://tse1.mm.bing.net/th?id=OIP.RAxiHY9uEMriScjopiSnEgHaFj&pid=Api&P=0&w=300&h=300")
-        mangquangcao.add("https://tse3.mm.bing.net/th?id=OIP.NT31kbW0Xju04GbEFAQG2AHaFH&pid=Api&P=0&w=252&h=175")
+        mangquangcao.add("https://www.pos365.vn/storage/app/media/2019/10/quay-thu-ngan-shop-quan-ao/5.png")
+        mangquangcao.add("https://fashionminhthu.com.vn/wp-content/uploads/2019/01/shop-ban-quan-ao-nam-dep-tphcm-yame-shop.jpg")
+        mangquangcao.add("https://list.vn/wp-content/uploads/2018/11/th%E1%BB%9Di-trang-50.jpg")
+        mangquangcao.add("https://media3.scdn.vn/img3/2019/7_3/SLrLFu_simg_de2fe0_500x500_maxb.jpg")
+        mangquangcao.add("https://media.kenhtuyensinh.vn/images/cms/2018/08/top-5-shop-quan-ao-nam-re-dep-cho-sinh-vien-o-tphcm-3.jpg")
+        mangquangcao.add("https://sakurafashion.vn/upload/images_294/54432364_2356989251180238_5168159053792149504_n.jpg")
         for (i in mangquangcao.indices) {
             val imageView = ImageView(applicationContext)
             Picasso.get().load(mangquangcao[i]).into(imageView)
@@ -360,6 +359,7 @@ class HomeActivity : AppCompatActivity() {
         productTypeAdapter1 = ProductTypeAdapter1(arrayListProductType1!!, this)
         recyclerView.setHasFixedSize(true)
         val layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+
         recyclerView.setLayoutManager(layoutManager)
         val dividerItemDecoration =
             DividerItemDecoration(recyclerView.getContext(), DividerItemDecoration.HORIZONTAL)

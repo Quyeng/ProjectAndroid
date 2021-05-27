@@ -5,17 +5,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
-import android.widget.TextView
+import android.widget.CheckBox
 import com.example.projectandroid.R
-import com.example.projectandroid.activity.ProductDetailActivity
-import com.example.projectandroid.model.Comment
+import com.example.projectandroid.activity.DiscountActivity
+import com.example.projectandroid.model.Discount
 import java.util.*
 
-class CommentAdapter(context: ProductDetailActivity, layout: Int, arrayComment: ArrayList<Comment>) : BaseAdapter() {
+class DiscountAdapter(context: DiscountActivity, layout: Int, arrayComment: ArrayList<Discount>) :
+    BaseAdapter() {
     var x = 0
-    private val context: ProductDetailActivity
+    private val context: DiscountActivity
     private val layout: Int
-    private val arrayComment: ArrayList<Comment>
+    private val arrayComment: ArrayList<Discount>
     override fun getCount(): Int {
         return arrayComment.size
     }
@@ -29,8 +30,7 @@ class CommentAdapter(context: ProductDetailActivity, layout: Int, arrayComment: 
     }
 
     private inner class ViewHolder {
-        var textViewName: TextView? = null
-        var textViewnoidung: TextView? = null
+        var textViewName: CheckBox? = null
     }
 
     override fun getView(i: Int, view: View, parent: ViewGroup): View {
@@ -38,17 +38,21 @@ class CommentAdapter(context: ProductDetailActivity, layout: Int, arrayComment: 
         val holder: ViewHolder
         if (view == null) {
             holder = ViewHolder()
-            val inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+            val inflater =
+                context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
             view = inflater.inflate(layout, null)
-            holder.textViewName = view.findViewById(R.id.tenuserdacomment)
-            holder.textViewnoidung = view.findViewById(R.id.noidungdacomment)
+            holder.textViewName = view.findViewById(R.id.checkboxDiscount)
             view.tag = holder
         } else {
             holder = view.tag as ViewHolder
         }
-        val comment: Comment = arrayComment[i]
-        holder.textViewName.setText(comment.getUsername())
-        holder.textViewnoidung.setText(comment.getContent().toString() + "")
+        val discount: Discount = arrayComment[i]
+        holder.textViewName.setText(discount.getName())
+        holder.textViewName!!.setOnClickListener {
+            if (holder.textViewName!!.isChecked) {
+                context.discountSanpham(discount.getGiadiscount())
+            }
+        }
         return view
     }
 
