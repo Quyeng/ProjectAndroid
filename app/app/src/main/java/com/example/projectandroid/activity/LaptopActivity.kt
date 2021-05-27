@@ -86,15 +86,15 @@ class LaptopActivity : AppCompatActivity() {
                     e.printStackTrace()
                 }
                 for (i in arrayListPhone!!.indices) {
-                    if (arrayListPhone!![i].getIdProduct() === 2) {
+                    if (arrayListPhone!![i].idProduct === 2) {
                         arrayListPhoneFilter!!.add(
                             Product(
-                                arrayListPhone!![i].getId(),
-                                arrayListPhone!![i].getNameProduct(),
-                                arrayListPhone!![i].getPriceProduct(),
-                                arrayListPhone!![i].getImageProduct(),
-                                arrayListPhone!![i].getDescriptionProduct(),
-                                arrayListPhone!![i].getIdProduct()
+                                arrayListPhone!![i].id,
+                                arrayListPhone!![i].nameProduct,
+                                arrayListPhone!![i].priceProduct,
+                                arrayListPhone!![i].imageProduct,
+                                arrayListPhone!![i].descriptionProduct,
+                                arrayListPhone!![i].idProduct
                             )
                         )
                     }

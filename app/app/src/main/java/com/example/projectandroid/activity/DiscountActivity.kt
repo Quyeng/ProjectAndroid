@@ -29,7 +29,7 @@ class DiscountActivity : AppCompatActivity() {
         btnXacnhangiamgia = findViewById(R.id.btnxacnhangiamgia)
         btnhuyxacnhan = findViewById(R.id.btnhuyxacnhangiamgia)
         listViewDiscount = findViewById(R.id.listviewgiamgia)
-        discountAdapter = DiscountAdapter(this, R.layout.dong_discount, discountArrayList)
+        discountAdapter = DiscountAdapter(this, R.layout.dong_discount, discountArrayList!!)
         listViewDiscount.setAdapter(discountAdapter)
         GetDataDiscount()
         btnXacnhangiamgia.setOnClickListener(View.OnClickListener {

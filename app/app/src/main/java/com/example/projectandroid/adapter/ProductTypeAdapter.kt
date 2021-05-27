@@ -53,8 +53,8 @@ class ProductTypeAdapter(arrayListPT: ArrayList<ProductType>, context: Context) 
             viewHolder = view.tag as ViewHolder
         }
         val productType: ProductType = getItem(position) as ProductType
-        viewHolder!!.textViewProductType.setText(productType.getNamePT())
-        Picasso.get().load(productType.getImagePT()).into(viewHolder.imageViewProductType)
+        viewHolder!!.textViewProductType?.setText(productType.namePT)
+        Picasso.get().load(productType.imagePT).into(viewHolder.imageViewProductType)
         return view
     }
 

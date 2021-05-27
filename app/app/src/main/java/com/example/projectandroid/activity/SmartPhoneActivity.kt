@@ -105,19 +105,19 @@ class SmartPhoneActivity : AppCompatActivity() {
                     e.printStackTrace()
                 }
                 for (i in arrayListPhone!!.indices) {
-                    if (arrayListPhone!![i].getIdProduct() === 1) {
+                    if (arrayListPhone!![i].idProduct == 1) {
                         arrayListPhoneFilter!!.add(
                             Product(
-                                arrayListPhone!![i].getId(),
-                                arrayListPhone!![i].getNameProduct(),
-                                arrayListPhone!![i].getPriceProduct(),
-                                arrayListPhone!![i].getImageProduct(),
-                                arrayListPhone!![i].getDescriptionProduct(),
-                                arrayListPhone!![i].getIdProduct(),
-                                arrayListPhone!![i].getId_thuonghieu(),
-                                arrayListPhone!![i].getSosanphamdaban(),
-                                arrayListPhone!![i].getSosanphamcontonkho(),
-                                arrayListPhone!![i].getDiemdanhgia()
+                                arrayListPhone!![i].id,
+                                arrayListPhone!![i].nameProduct,
+                                arrayListPhone!![i].priceProduct,
+                                arrayListPhone!![i].imageProduct,
+                                arrayListPhone!![i].descriptionProduct,
+                                arrayListPhone!![i].idProduct,
+                                arrayListPhone!![i].id_thuonghieu,
+                                arrayListPhone!![i].sosanphamdaban,
+                                arrayListPhone!![i].sosanphamcontonkho,
+                                arrayListPhone!![i].diemdanhgia
                             )
                         )
                     }

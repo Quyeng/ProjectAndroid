@@ -47,10 +47,10 @@ class DiscountAdapter(context: DiscountActivity, layout: Int, arrayComment: Arra
             holder = view.tag as ViewHolder
         }
         val discount: Discount = arrayComment[i]
-        holder.textViewName.setText(discount.getName())
+        holder.textViewName?.setText(discount.name)
         holder.textViewName!!.setOnClickListener {
             if (holder.textViewName!!.isChecked) {
-                context.discountSanpham(discount.getGiadiscount())
+                context.discountSanpham(discount.giadiscount)
             }
         }
         return view

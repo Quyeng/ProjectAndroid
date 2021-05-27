@@ -61,15 +61,15 @@ class ShoesAdapter(context: ShoesActivity, layout: Int, subjectsList: List<Produ
             viewHolder = view.tag as ViewHolder
         }
         val product: Product = arraListProduct[i] as Product
-        viewHolder!!.textViewNamePhone.setText(product.getNameProduct())
+        viewHolder!!.textViewNamePhone?.setText(product.nameProduct)
         viewHolder.textViewNamePhone!!.isSelected = true
         val decimalFormat = DecimalFormat("###,###,###")
         viewHolder.textViewPricePhone!!.text = "Price : " + decimalFormat
-            .format(product.getPriceProduct()) + " VND"
+            .format(product.priceProduct) + " VND"
         viewHolder.textViewDescriptionPhone!!.maxLines = 2
         viewHolder.textViewDescriptionPhone!!.ellipsize = TextUtils.TruncateAt.END
-        viewHolder.textViewDescriptionPhone.setText(product.getDescriptionProduct())
-        Picasso.get().load(product.getImageProduct())
+        viewHolder.textViewDescriptionPhone!!.setText(product.descriptionProduct)
+        Picasso.get().load(product.imageProduct)
             .into(viewHolder.imageViewPhone)
         viewHolder.linearLayoutPhone!!.setOnClickListener {
             val intent = Intent(context, ProductDetailActivity::class.java)

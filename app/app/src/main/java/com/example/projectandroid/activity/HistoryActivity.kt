@@ -148,18 +148,18 @@ class HistoryActivity : AppCompatActivity() {
                         Toast.LENGTH_SHORT
                     ).show()
                     for (j in cartArrayList!!.indices) {
-                        if (idUserDangNhap == cartArrayList!![j].getIdUser()) {
+                        if (idUserDangNhap == cartArrayList!![j].idUser) {
                             val cart: DetailCart = cartArrayList!![j]
                             cartArrayListFiler!!.add(
                                 DetailCart(
-                                    cart.getId(),
-                                    cart.getIdUser(),
-                                    cart.getTensanpham(),
-                                    cart.getGiasanpham(),
-                                    cart.getSoluong(),
-                                    cart.getNgaymuahang(),
-                                    cart.getDiachigiaohang(),
-                                    cart.getHinhanhsanpham()
+                                    cart.id,
+                                    cart.idUser,
+                                    cart.tensanpham,
+                                    cart.giasanpham,
+                                    cart.soluong,
+                                    cart.ngaymuahang,
+                                    cart.diachigiaohang,
+                                    cart.hinhanhsanpham
                                 )
                             )
                         }
@@ -171,14 +171,14 @@ class HistoryActivity : AppCompatActivity() {
                     ).show()
                     var x = 0
                     for (i in 0 until cartArrayListFiler!!.size - 1) {
-                        x = cartArrayListFiler!![i].getSoluong()
+                        x = cartArrayListFiler!![i].soluong
                         for (j in cartArrayListFiler!!.size - 1 downTo i + 1) {
-                            if (cartArrayListFiler!![i].getTensanpham().equals(
-                                    cartArrayListFiler!![j].getTensanpham()
+                            if (cartArrayListFiler!![i].tensanpham.equals(
+                                    cartArrayListFiler!![j].tensanpham
                                 )
                             ) {
-                                x = x + cartArrayListFiler!![j].getSoluong()
-                                cartArrayListFiler!![i].setSoluong(x)
+                                x = x + cartArrayListFiler!![j].soluong
+                                cartArrayListFiler!![i].soluong
                                 cartArrayListFiler!!.removeAt(j)
                             }
                         }
@@ -201,10 +201,10 @@ class HistoryActivity : AppCompatActivity() {
             val email = data.getStringExtra("email")
             Log.e("vpq", "mang có bao nhieu phan tu" + userArrayList!!.size)
             for (i in userArrayList!!.indices) {
-                if (email == userArrayList!![i].getEmail()) {
+                if (email == userArrayList!![i].email) {
                     user = userArrayList!![i]
-                    idUserDangNhap = userArrayList!![i].getId()
-                    btnShowUser!!.text = "Hello: " + userArrayList!![i].getUsername()
+                    idUserDangNhap = userArrayList!![i].id
+                    btnShowUser!!.text = "Hello: " + userArrayList!![i].username
                     btnShowUser!!.visibility = View.VISIBLE
                     btnExit!!.visibility = View.VISIBLE
                     btnExit!!.text = "Thoát"

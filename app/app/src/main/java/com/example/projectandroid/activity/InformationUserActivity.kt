@@ -42,10 +42,18 @@ class InformationUserActivity : AppCompatActivity() {
     private fun showUser() {
         val intent = intent
         val user: User? = intent.getSerializableExtra("user") as User?
-        id = user.getId()
-        editTextNameCustomer.setText(user.getUsername())
-        editTextdiachiCustomer.setText(user.getAddress())
-        editTextEmailCustomer.setText(user.getEmail())
+        if (user != null) {
+            id = user.id
+        }
+        if (user != null) {
+            editTextNameCustomer?.setText(user.username)
+        }
+        if (user != null) {
+            editTextdiachiCustomer?.setText(user.address)
+        }
+        if (user != null) {
+            editTextEmailCustomer?.setText(user.email)
+        }
     }
 
     private fun capNhatUser() {

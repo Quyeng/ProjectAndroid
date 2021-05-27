@@ -61,7 +61,7 @@ class ConfirmCart : AppCompatActivity() {
                         "Them vào đơn hàng chi tiết thành công",
                         Toast.LENGTH_SHORT
                     ).show()
-                    deleteDonHang(cart.getId())
+                    deleteDonHang(cart.id)
                 } else {
                     Toast.makeText(this@ConfirmCart, "Lỗi thêm", Toast.LENGTH_SHORT).show()
                 }
@@ -74,13 +74,13 @@ class ConfirmCart : AppCompatActivity() {
             @Throws(AuthFailureError::class)
             override fun getParams(): Map<String, String>? {
                 val params: MutableMap<String, String> = HashMap()
-                params["id_user"] = cart.getIdUser().toString() + ""
-                params["tensanpham"] = cart.getTensanpham().toString() + ""
-                params["soluong"] = cart.getSoluong().toString() + ""
-                params["ngaymuahang"] = cart.getNgaymuahang()
+                params["id_user"] = cart.idUser.toString() + ""
+                params["tensanpham"] = cart.tensanpham + ""
+                params["soluong"] = cart.soluong.toString() + ""
+                params["ngaymuahang"] = cart.ngaymuahang
                 params["diachigiaohang"] = edtDiaChi!!.text.toString()
-                params["giasanpham"] = cart.getGiasanpham().toString() + ""
-                params["hinhanhsanpham"] = cart.getImageSanPham()
+                params["giasanpham"] = cart.giasanpham.toString() + ""
+                params["hinhanhsanpham"] = cart.imageSanPham
                 return params
             }
         }
@@ -132,17 +132,17 @@ class ConfirmCart : AppCompatActivity() {
                         Toast.LENGTH_SHORT
                     ).show()
                     for (j in cartArrayList!!.indices) {
-                        if (idUser == cartArrayList!![j].getIdUser()) {
+                        if (idUser == cartArrayList!![j].idUser) {
                             val cart: Cart = cartArrayList!![j]
                             cartArrayListFilter!!.add(
                                 Cart(
-                                    cart.getId(),
-                                    cart.getIdUser(),
-                                    cart.getTensanpham(),
-                                    cart.getSoluong(),
-                                    cart.getNgaymuahang(),
-                                    cart.getGiasanpham(),
-                                    cart.getImageSanPham()
+                                    cart.id,
+                                    cart.idUser,
+                                    cart.tensanpham,
+                                    cart.soluong,
+                                    cart.ngaymuahang,
+                                    cart.giasanpham,
+                                    cart.imageSanPham
                                 )
                             )
                         }

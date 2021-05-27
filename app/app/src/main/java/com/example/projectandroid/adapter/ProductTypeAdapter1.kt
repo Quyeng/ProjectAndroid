@@ -25,12 +25,8 @@ class ProductTypeAdapter1(datashops: ArrayList<ProductType>, context: HomeActivi
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-//        val item = data[position]
-//        holder.tvResname.text=item.res_name
-//        holder.tvResAddr.text=item.address
-//        Picasso.get().load(item.avatar).into(holder.imgRes)
-        holder.txtNameType.setText(datashops[position].getNamePT())
-        Picasso.get().load(datashops[position].getImagePT()).into(holder.imgHinhAnh)
+        holder.txtNameType.setText(datashops[position].namePT)
+        Picasso.get().load(datashops[position].imagePT).into(holder.imgHinhAnh)
         val productType: ProductType = datashops[position]
         holder.itemView.setOnClickListener {
             when (position) {

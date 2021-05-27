@@ -95,15 +95,15 @@ class ShirtActivity : AppCompatActivity() {
                     e.printStackTrace()
                 }
                 for (i in arrayListShirt!!.indices) {
-                    if (arrayListShirt!![i].getIdProduct() === idShirt) {
+                    if (arrayListShirt!![i].idProduct === idShirt) {
                         arrayListShirtFilter!!.add(
                             Product(
-                                arrayListShirt!![i].getId(),
-                                arrayListShirt!![i].getNameProduct(),
-                                arrayListShirt!![i].getPriceProduct(),
-                                arrayListShirt!![i].getImageProduct(),
-                                arrayListShirt!![i].getDescriptionProduct(),
-                                arrayListShirt!![i].getIdProduct()
+                                arrayListShirt!![i].id,
+                                arrayListShirt!![i].nameProduct,
+                                arrayListShirt!![i].priceProduct,
+                                arrayListShirt!![i].imageProduct,
+                                arrayListShirt!![i].descriptionProduct,
+                                arrayListShirt!![i].idProduct
                             )
                         )
                     }

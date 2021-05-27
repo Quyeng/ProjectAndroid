@@ -47,8 +47,8 @@ class CommentAdapter(context: ProductDetailActivity, layout: Int, arrayComment: 
             holder = view.tag as ViewHolder
         }
         val comment: Comment = arrayComment[i]
-        holder.textViewName.setText(comment.getUsername())
-        holder.textViewnoidung.setText(comment.getContent().toString() + "")
+        holder.textViewName?.setText(comment.username)
+        holder.textViewnoidung?.setText(comment.content + "")
         return view
     }
 

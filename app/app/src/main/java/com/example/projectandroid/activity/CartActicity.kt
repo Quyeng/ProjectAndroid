@@ -117,7 +117,7 @@ class CartActicity : AppCompatActivity() {
         cartArrayList = ArrayList<Cart>()
         cartArrayListFiler = ArrayList<Cart>()
         GetDataCart()
-        cartApdapter = CartApdapter(this, R.layout.dong_cart, cartArrayListFiler)
+        cartApdapter = CartApdapter(this, R.layout.dong_cart, cartArrayListFiler!!)
         listViewCart.setAdapter(cartApdapter)
         btnDiscount = findViewById(R.id.btnDiscount)
         btnMuaHang = findViewById(R.id.btnMuaHang)
@@ -127,7 +127,7 @@ class CartActicity : AppCompatActivity() {
         if (checkBoxTatCa!!.isChecked) {
             var x = 0
             for (i in cartArrayListFiler!!.indices) {
-                x += cartArrayListFiler!![i].getGiasanpham() * cartArrayListFiler!![i].getSoluong()
+                x += cartArrayListFiler!![i].giasanpham * cartArrayListFiler!![i].soluong
             }
             Tongtiensanpham!!.text = x.toString() + ""
             return true
@@ -161,7 +161,7 @@ class CartActicity : AppCompatActivity() {
             Tongtiensanpham!!.text = "" + tongtien
         }
         if (cart != null) {
-            tongtien = tongtien + cart.getGiasanpham() * cart.getSoluong()
+            tongtien = tongtien + cart.giasanpham * cart.soluong
             tongtienphaitra = tongtien
             Tongtiensanpham!!.text = "" + tongtien
         }
@@ -270,38 +270,38 @@ class CartActicity : AppCompatActivity() {
                         }
                     }
                     for (j in cartArrayList!!.indices) {
-                        if (idUsers == cartArrayList!![j].getIdUser()) {
+                        if (idUsers == cartArrayList!![j].idUser) {
                             val cart: Cart = cartArrayList!![j]
                             cartArrayListFiler!!.add(
                                 Cart(
-                                    cart.getId(),
-                                    cart.getIdUser(),
-                                    cart.getTensanpham(),
-                                    cart.getSoluong(),
-                                    cart.getNgaymuahang(),
-                                    cart.getGiasanpham(),
-                                    cart.getTenhuonghieu(),
-                                    cart.getSosanphamtonkho(),
-                                    cart.getImageSanPham()
+                                    cart.id,
+                                    cart.idUser,
+                                    cart.tensanpham,
+                                    cart.soluong,
+                                    cart.ngaymuahang,
+                                    cart.giasanpham,
+                                    cart.tenhuonghieu,
+                                    cart.sosanphamtonkho,
+                                    cart.imageSanPham
                                 )
                             )
                         }
                     }
                     var x = 0
                     for (i in 0 until cartArrayListFiler!!.size - 1) {
-                        x = cartArrayListFiler!![i].getSoluong()
+                        x = cartArrayListFiler!![i].soluong
                         for (j in cartArrayListFiler!!.size - 1 downTo i + 1) {
-                            if (cartArrayListFiler!![i].getTensanpham().equals(
-                                    cartArrayListFiler!![j].getTensanpham()
+                            if (cartArrayListFiler!![i].tensanpham.equals(
+                                    cartArrayListFiler!![j].tensanpham
                                 )
                             ) {
-                                x = x + cartArrayListFiler!![j].getSoluong()
-                                cartArrayListFiler!![i].setSoluong(x)
+                                x = x + cartArrayListFiler!![j].soluong
+                                cartArrayListFiler!![i].soluong
                                 cartArrayListFiler!!.removeAt(j)
                             }
                         }
                     }
-                    cartApdapter.notifyDataSetChanged()
+                    cartApdapter?.notifyDataSetChanged()
                 }
             }
         ) { error -> CheckConnection.ShowToast_Short(applicationContext, error.toString()) }

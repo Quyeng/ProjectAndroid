@@ -95,15 +95,15 @@ class WatchActivity : AppCompatActivity() {
                     e.printStackTrace()
                 }
                 for (i in arrayListWatch!!.indices) {
-                    if (arrayListWatch!![i].getIdProduct() === idShirt) {
+                    if (arrayListWatch!![i].idProduct == idShirt) {
                         arrayListWatchFilter!!.add(
                             Product(
-                                arrayListWatch!![i].getId(),
-                                arrayListWatch!![i].getNameProduct(),
-                                arrayListWatch!![i].getPriceProduct(),
-                                arrayListWatch!![i].getImageProduct(),
-                                arrayListWatch!![i].getDescriptionProduct(),
-                                arrayListWatch!![i].getIdProduct()
+                                arrayListWatch!![i].id,
+                                arrayListWatch!![i].nameProduct,
+                                arrayListWatch!![i].priceProduct,
+                                arrayListWatch!![i].imageProduct,
+                                arrayListWatch!![i].descriptionProduct,
+                                arrayListWatch!![i].idProduct
                             )
                         )
                     }

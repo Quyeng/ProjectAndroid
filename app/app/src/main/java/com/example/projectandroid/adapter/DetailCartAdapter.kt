@@ -60,13 +60,13 @@ class DetailCartAdapter(context: HistoryActivity, layout: Int, subjectsList: Lis
             viewHolder = view.tag as ViewHolder
         }
         val cart: DetailCart = arraListProduct[i] as DetailCart
-        viewHolder!!.textViewNameSanPham!!.text = "Sản phẩm : " + cart.getTensanpham()
-        viewHolder.textViewngaymuahang!!.text = "Ngày mua hàng : " + cart.getNgaymuahang()
+        viewHolder!!.textViewNameSanPham!!.text = "Sản phẩm : " + cart.tensanpham
+        viewHolder.textViewngaymuahang!!.text = "Ngày mua hàng : " + cart.ngaymuahang
         val decimalFormat = DecimalFormat("###,###,###")
         viewHolder.textViewPrice!!.text = "Price : " + decimalFormat
-            .format(cart.getGiasanpham()) + " VND"
-        viewHolder.txtsoluongdamua!!.text = "Số lượng đã mua : " + cart.getSoluong().toString() + ""
-        Picasso.get().load(cart.getHinhanhsanpham())
+            .format(cart.giasanpham) + " VND"
+        viewHolder.txtsoluongdamua!!.text = "Số lượng đã mua : " + cart.soluong.toString() + ""
+        Picasso.get().load(cart.hinhanhsanpham)
             .into(viewHolder.imageViewSanPham)
 
 

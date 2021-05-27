@@ -58,12 +58,12 @@ class DetailProductAdapter(
             holder = view.tag as ViewHolder
         }
         val product: Product = arrayProduct[i]
-        val x: Int = arrayProduct[i].getId()
-        holder.textViewNameProduct.setText(product.getNameProduct())
+        val x: Int = arrayProduct[i].id
+        holder.textViewNameProduct?.setText(product.nameProduct)
         val decimalFormat = DecimalFormat("###,###,###")
         holder.textViewPriceProduct!!.text = "Price : " + decimalFormat
-            .format(product.getPriceProduct()) + "VND"
-        Picasso.get().load(product.getImageProduct())
+            .format(product.priceProduct) + "VND"
+        Picasso.get().load(product.imageProduct)
             .into(holder.imageViewProduct)
         return view
     }

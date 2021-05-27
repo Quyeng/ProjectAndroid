@@ -62,17 +62,17 @@ class ProductAdapter(context: HomeActivity, layout: Int, subjectsList: ArrayList
             holder = view.tag as ViewHolder
         }
         val product: Product = arrayProduct[i]
-        holder.textViewNameProduct.setText(product.getNameProduct())
+        holder.textViewNameProduct?.setText(product.nameProduct)
         val decimalFormat = DecimalFormat("###,###,###")
-        holder.textViewPriceProduct.setText(
-            decimalFormat
-                .format(product.getPriceProduct()).toString() + "VND"
+        holder.textViewPriceProduct?.setText(
+                decimalFormat
+                        .format(product.priceProduct).toString() + "VND"
         )
-        Picasso.get().load(product.getImageProduct())
+        Picasso.get().load(product.imageProduct)
             .into(holder.imageViewProduct)
-        holder.textviewdanhgiandiem.setText(product.getDiemdanhgia().toString() + "")
-        holder.textviewSosanphamdaban.setText(product.getSosanphamdaban().toString() + "")
-        holder.textviewsosanphamconlai.setText(product.getSosanphamcontonkho().toString() + "")
+        holder.textviewdanhgiandiem?.setText(product.diemdanhgia.toString() + "")
+        holder.textviewSosanphamdaban?.setText(product.sosanphamdaban.toString() + "")
+        holder.textviewsosanphamconlai?.setText(product.sosanphamcontonkho.toString() + "")
         view.setOnClickListener {
             val intent = Intent(context, ProductDetailActivity::class.java)
             intent.putExtra("information", product)

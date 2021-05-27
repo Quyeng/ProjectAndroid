@@ -227,11 +227,11 @@ class ProductDetailActivity : AppCompatActivity() {
                     }
                 }
                 for (j in commentArrayList!!.indices) {
-                    if (tensanphamcobinhluan == commentArrayList!![j].getTensanpham()) {
-                        val idcme: Int = commentArrayList!![j].getId()
-                        val usernamee: String = commentArrayList!![j].getUsername()
-                        val tensanphame: String = commentArrayList!![j].getTensanpham()
-                        val contente: String = commentArrayList!![j].getContent()
+                    if (tensanphamcobinhluan == commentArrayList!![j].tensanpham) {
+                        val idcme: Int = commentArrayList!![j].id
+                        val usernamee: String = commentArrayList!![j].username
+                        val tensanphame: String = commentArrayList!![j].tensanpham
+                        val contente: String = commentArrayList!![j].content
                         commentArrayListFilter!!.add(Comment(idcme, usernamee, tensanphame, contente))
                         commentAdapter?.notifyDataSetChanged()
                     }
@@ -264,17 +264,37 @@ class ProductDetailActivity : AppCompatActivity() {
 
     private fun GetDataProductDetail() {
         val product: Product? = intent.getSerializableExtra("information") as Product?
-        id = product.getId()
-        name = product.getNameProduct()
+        if (product != null) {
+            id = product.id
+        }
+        if (product != null) {
+            name = product.nameProduct.toString()
+        }
         tensanphambinhluan = name
-        price = product.getPriceProduct()
-        image = product.getImageProduct()
-        description = product.getDescriptionProduct()
-        idProduct = product.getIdProduct()
-        sosanphamdaban = product.getSosanphamdaban()
-        sosanphamtonkho = product.getSosanphamcontonkho()
-        idthuonghieu = product.getId_thuonghieu()
-        diemdanhgia = product.getDiemdanhgia()
+        if (product != null) {
+            price = product.priceProduct!!
+        }
+        if (product != null) {
+            image = product.imageProduct.toString()
+        }
+        if (product != null) {
+            description = product.descriptionProduct.toString()
+        }
+        if (product != null) {
+            idProduct = product.idProduct
+        }
+        if (product != null) {
+            sosanphamdaban = product.sosanphamdaban
+        }
+        if (product != null) {
+            sosanphamtonkho = product.sosanphamcontonkho
+        }
+        if (product != null) {
+            idthuonghieu = product.id_thuonghieu
+        }
+        if (product != null) {
+            diemdanhgia = product.diemdanhgia.toString()
+        }
         textViewNameProductDetail!!.text = name
         val decimalFormat = DecimalFormat("###,###,###")
         textViewPriceProductDetail!!.text = "Giá : " + decimalFormat.format(price.toLong()) + " VND "
@@ -322,10 +342,10 @@ class ProductDetailActivity : AppCompatActivity() {
             val email = data.getStringExtra("email")
             Log.e("vpq", "mang có bao nhieu phan tu" + userArrayList!!.size)
             for (i in userArrayList!!.indices) {
-                if (email == userArrayList!![i].getEmail()) {
+                if (email == userArrayList!![i].email) {
                     user = userArrayList!![i]
-                    idUserDangNhap = userArrayList!![i].getId()
-                    btnShowUser!!.text = "Hello: " + userArrayList!![i].getUsername()
+                    idUserDangNhap = userArrayList!![i].id
+                    btnShowUser!!.text = "Hello: " + userArrayList!![i].username
                     btnShowUser!!.visibility = View.VISIBLE
                     btnExitUser!!.visibility = View.VISIBLE
                     btnExitUser!!.text = "Thoát"

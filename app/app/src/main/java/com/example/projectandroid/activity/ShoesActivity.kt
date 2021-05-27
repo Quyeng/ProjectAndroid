@@ -95,15 +95,15 @@ class ShoesActivity : AppCompatActivity() {
                     e.printStackTrace()
                 }
                 for (i in arrayShoesShirt!!.indices) {
-                    if (arrayShoesShirt!![i].getIdProduct() === idShirt) {
+                    if (arrayShoesShirt!![i].idProduct == idShirt) {
                         arrayListShoesFilter!!.add(
                             Product(
-                                arrayShoesShirt!![i].getId(),
-                                arrayShoesShirt!![i].getNameProduct(),
-                                arrayShoesShirt!![i].getPriceProduct(),
-                                arrayShoesShirt!![i].getImageProduct(),
-                                arrayShoesShirt!![i].getDescriptionProduct(),
-                                arrayShoesShirt!![i].getIdProduct()
+                                arrayShoesShirt!![i].id,
+                                arrayShoesShirt!![i].nameProduct,
+                                arrayShoesShirt!![i].priceProduct,
+                                arrayShoesShirt!![i].imageProduct,
+                                arrayShoesShirt!![i].descriptionProduct,
+                                arrayShoesShirt!![i].idProduct
                             )
                         )
                     }
