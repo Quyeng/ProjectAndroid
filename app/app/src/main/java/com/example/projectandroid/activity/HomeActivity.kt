@@ -1,4 +1,4 @@
-package com.example.projectandroid
+package com.example.projectandroid.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -10,10 +10,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import android.content.Intent
-import android.graphics.drawable.Drawable
 import android.os.Bundle
-import android.view.View
-import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.AdapterView
 import android.widget.ImageView
@@ -24,6 +21,7 @@ import com.android.volley.Response
 import com.android.volley.VolleyError
 import com.android.volley.toolbox.JsonArrayRequest
 import com.android.volley.toolbox.Volley
+import com.example.projectandroid.R
 import com.example.projectandroid.activity.*
 import com.example.projectandroid.adapter.ProductAdapter
 import com.example.projectandroid.adapter.ProductTypeAdapter
@@ -35,10 +33,9 @@ import com.google.android.material.navigation.NavigationView
 import com.squareup.picasso.Picasso
 import org.json.JSONArray
 import org.json.JSONException
-import org.json.JSONObject
 import java.util.ArrayList
 
-//team10
+
 class HomeActivity : AppCompatActivity() {
     var recyclerView: RecyclerView? = null
     var toolbar: Toolbar? = null

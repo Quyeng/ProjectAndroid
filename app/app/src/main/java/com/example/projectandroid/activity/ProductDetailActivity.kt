@@ -14,7 +14,6 @@ import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.projectandroid.R
 import com.example.projectandroid.adapter.CommentAdapter
-import com.example.projectandroid.dangnhap
 import com.example.projectandroid.model.Comment
 import com.example.projectandroid.model.Product
 import com.example.projectandroid.model.User

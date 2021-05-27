@@ -44,7 +44,7 @@ class ProductTypeAdapter(arrayListPT: ArrayList<ProductType>, context: Context) 
             val inflater =
                 context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
             view = inflater.inflate(R.layout.item_list_view_product_type, null)
-            viewHolder!!.textViewProductType =
+            viewHolder.textViewProductType =
                 view.findViewById<View>(R.id.textViewProductType) as TextView
             viewHolder.imageViewProductType =
                 view.findViewById<View>(R.id.imageViewProductType) as ImageView
@@ -53,7 +53,7 @@ class ProductTypeAdapter(arrayListPT: ArrayList<ProductType>, context: Context) 
             viewHolder = view.tag as ViewHolder
         }
         val productType: ProductType = getItem(position) as ProductType
-        viewHolder!!.textViewProductType?.setText(productType.namePT)
+        viewHolder.textViewProductType?.setText(productType.namePT)
         Picasso.get().load(productType.imagePT).into(viewHolder.imageViewProductType)
         return view
     }

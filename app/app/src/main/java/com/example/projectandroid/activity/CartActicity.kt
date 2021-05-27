@@ -170,7 +170,7 @@ class CartActicity : AppCompatActivity() {
     fun deleteMonHoc(idDonhang: Int, giasanpham: Int) {
         val requestQueue = Volley.newRequestQueue(this)
         val stringRequest: StringRequest = object : StringRequest(
-            Method.POST, "http://" + "@string/localhost" + "/server/deleteDonHang.php",
+            Method.POST, "http://" + "192.168.1.5:8080" + "/server/deleteDonHang.php",
             Response.Listener { response ->
                 if (response.trim { it <= ' ' } == "success") {
                     Toast.makeText(this@CartActicity, "Xoa thanh cong", Toast.LENGTH_SHORT).show()

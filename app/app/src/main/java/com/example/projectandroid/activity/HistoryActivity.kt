@@ -14,7 +14,6 @@ import com.android.volley.toolbox.Volley
 import com.example.projectandroid.R
 import com.example.projectandroid.adapter.CartApdapter
 import com.example.projectandroid.adapter.DetailCartAdapter
-import com.example.projectandroid.dangnhap
 import com.example.projectandroid.model.DetailCart
 import com.example.projectandroid.model.User
 import com.example.projectandroid.ultil.CheckConnection

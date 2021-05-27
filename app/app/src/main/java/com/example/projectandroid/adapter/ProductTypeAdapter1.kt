@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.projectandroid.HomeActivity
 import com.example.projectandroid.R
 import com.example.projectandroid.activity.*
 import com.example.projectandroid.model.ProductType
