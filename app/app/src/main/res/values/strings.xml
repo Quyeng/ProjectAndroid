@@ -19,4 +19,5 @@
     <string name="todo5">TODO</string>
     <string name="mask">TODO</string>
     <string name="todo4">TODO</string>
+    <string name="localhost">192.168.1.6</string>
 </resources>

@@ -20,11 +20,15 @@ class ProductTypeAdapter1(datashops: ArrayList<ProductType>, context: HomeActivi
     var context: HomeActivity
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
-        val itemView: View = layoutInflater.inflate(R.layout.dong_the_loai, parent, false)
+        val itemView: View = layoutInflater.inflate(R.layout.the_loai, parent, false)
         return ViewHolder(itemView)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+//        val item = data[position]
+//        holder.tvResname.text=item.res_name
+//        holder.tvResAddr.text=item.address
+//        Picasso.get().load(item.avatar).into(holder.imgRes)
         holder.txtNameType.setText(datashops[position].getNamePT())
         Picasso.get().load(datashops[position].getImagePT()).into(holder.imgHinhAnh)
         val productType: ProductType = datashops[position]

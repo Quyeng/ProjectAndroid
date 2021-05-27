@@ -201,7 +201,7 @@ class HomeActivity : AppCompatActivity() {
 
     private fun GetDataProductNew() {
         val requestQueue: RequestQueue = Volley.newRequestQueue(applicationContext)
-        val jsonArrayRequest = JsonArrayRequest(Server.pathNew, object :
+        val jsonArrayRequest = JsonArrayRequest("http://" + "@string/localhost" + "/server/getsanphammoinhat.php", object :
             Response.Listener<JSONArray?> {
             override fun onResponse(response: JSONArray?) {
                 if (response != null) {
@@ -259,7 +259,7 @@ class HomeActivity : AppCompatActivity() {
 
     private fun GetDataProductType() {
         val requestQueue: RequestQueue = Volley.newRequestQueue(applicationContext)
-        val jsonArrayRequest = JsonArrayRequest(Server.path, object :
+        val jsonArrayRequest = JsonArrayRequest("http://" + "@string/localhost" + "/server/getloaisp.php", object :
             Response.Listener<JSONArray?> {
             override fun onResponse(response: JSONArray?) {
                 if (response != null) {
@@ -270,9 +270,9 @@ class HomeActivity : AppCompatActivity() {
                             namePT = jsonObject.getString("tenloaisp")
                             imagePT = jsonObject.getString("hinhanhloaisanpham")
                             arrayListProductType!!.add(ProductType(id, namePT, imagePT))
-                            productTypeAdapter.notifyDataSetChanged()
+                            productTypeAdapter?.notifyDataSetChanged()
                             arrayListProductType1!!.add(ProductType(id, namePT, imagePT))
-                            productTypeAdapter1.notifyDataSetChanged()
+                            productTypeAdapter1?.notifyDataSetChanged()
                         } catch (e: JSONException) {
                             e.printStackTrace()
                         }

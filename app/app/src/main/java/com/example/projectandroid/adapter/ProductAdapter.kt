@@ -10,6 +10,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.example.projectandroid.HomeActivity
 import com.example.projectandroid.R
+import com.example.projectandroid.activity.ProductDetailActivity
 import com.example.projectandroid.model.Product
 import com.squareup.picasso.Picasso
 import java.text.DecimalFormat

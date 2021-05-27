@@ -19,3 +19,8 @@ class Server {
     var insertDonHangChiTiet = "http://" + localhost + "/server/insertDonHangChiTiet.php"
     var pathDonHangChiTiet = "http://" + localhost + "/server/getDonHangChiTiet.php"
 }
+
+//val item = data[position]
+//holder.tvResname.text=item.res_name
+//holder.tvResAddr.text=item.address
+//Picasso.get().load(item.avatar).into(holder.imgRes)
