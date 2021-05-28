@@ -49,7 +49,7 @@ class CartApdapter(context: CartActicity, layout: Int, subjectsList: List<Cart>)
 
     override fun getView(i: Int, view: View?, parent: ViewGroup): View?{
         val view = view
-        var viewHolder: ViewHolder? = null
+        var viewHolder: ViewHolder?
         viewHolder = view?.tag as ViewHolder
         val cart: Cart = arraListProduct[i]
         viewHolder.textViewNameSanPham?.setText(cart.tensanpham)
