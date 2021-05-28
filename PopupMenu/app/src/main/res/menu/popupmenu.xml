@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/pants"
+        android:title="Pants"
+        />
+    <item
+        android:id="@+id/shirts"
+        android:title="Shirts"
+        />
+    <item
+        android:id="@+id/shoes"
+        android:title="Shoes"
+        />
+    <item
+        android:id="@+id/accessories"
+        android:title="Accessories"
+        />
+</menu>
