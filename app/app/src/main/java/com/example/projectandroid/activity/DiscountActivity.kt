@@ -18,8 +18,8 @@ import java.util.*
 class DiscountActivity : AppCompatActivity() {
     var discountArrayList: ArrayList<Discount>? = null
     var discountAdapter: DiscountAdapter? = null
-    var listViewDiscount: ListView? = null
-    var btnXacnhangiamgia: Button? = null
+    lateinit var listViewDiscount: ListView
+    lateinit var btnXacnhangiamgia: Button
     var btnhuyxacnhan: Button? = null
     var discounts = 0
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,9 +30,9 @@ class DiscountActivity : AppCompatActivity() {
         btnhuyxacnhan = findViewById(R.id.btnhuyxacnhangiamgia)
         listViewDiscount = findViewById(R.id.listviewgiamgia)
         discountAdapter = DiscountAdapter(this, R.layout.dong_discount, discountArrayList!!)
-        listViewDiscount?.setAdapter(discountAdapter)
+        listViewDiscount.setAdapter(discountAdapter)
         GetDataDiscount()
-        btnXacnhangiamgia?.setOnClickListener(View.OnClickListener {
+        btnXacnhangiamgia.setOnClickListener(View.OnClickListener {
             val intent = Intent()
             intent.putExtra("discount", discounts)
             setResult(RESULT_OK, intent)

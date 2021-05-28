@@ -37,12 +37,12 @@ import java.util.ArrayList
 
 
 class HomeActivity : AppCompatActivity() {
-    var recyclerView: RecyclerView? = null
+    lateinit var recyclerView: RecyclerView
     var toolbar: Toolbar? = null
     var viewFlipper: ViewFlipper? = null
-    var listViewProduct: ListView? = null
+    lateinit var listViewProduct: ListView
     var navigationView: NavigationView? = null
-    var listViewmanhinhchinh: ListView? = null
+    lateinit var listViewmanhinhchinh: ListView
     var drawerLayout: DrawerLayout? = null
     var arrayListProductType: ArrayList<ProductType>? = null
     var productTypeAdapter: ProductTypeAdapter? = null
@@ -348,26 +348,26 @@ class HomeActivity : AppCompatActivity() {
             )
         )
         productTypeAdapter = ProductTypeAdapter(arrayListProductType!!, applicationContext)
-        listViewmanhinhchinh?.setAdapter(productTypeAdapter)
+        listViewmanhinhchinh.setAdapter(productTypeAdapter)
         arrayListProduct = ArrayList<Product>()
         productAdapter = ProductAdapter(this, R.layout.item_product_new, arrayListProduct!!)
-        listViewProduct?.setAdapter(productAdapter)
+        listViewProduct.setAdapter(productAdapter)
         arrayListProductType1 = ArrayList<ProductType>()
         productTypeAdapter1 = ProductTypeAdapter1(arrayListProductType1!!, this)
-        recyclerView?.setHasFixedSize(true)
+        recyclerView.setHasFixedSize(true)
         val layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
 
-        recyclerView?.setLayoutManager(layoutManager)
+        recyclerView.setLayoutManager(layoutManager)
         val dividerItemDecoration =
-            DividerItemDecoration(recyclerView?.getContext(), DividerItemDecoration.HORIZONTAL)
+            DividerItemDecoration(recyclerView.getContext(), DividerItemDecoration.HORIZONTAL)
         val dividerItemDecoration1 =
-            DividerItemDecoration(recyclerView?.getContext(), DividerItemDecoration.VERTICAL)
+            DividerItemDecoration(recyclerView.getContext(), DividerItemDecoration.VERTICAL)
         val drawable = ContextCompat.getDrawable(
             applicationContext, R.drawable.custom_mau
         )
         dividerItemDecoration.setDrawable(drawable!!)
-        recyclerView?.addItemDecoration(dividerItemDecoration)
-        recyclerView?.setItemAnimator(DefaultItemAnimator())
-        recyclerView?.setAdapter(productTypeAdapter1)
+        recyclerView.addItemDecoration(dividerItemDecoration)
+        recyclerView.setItemAnimator(DefaultItemAnimator())
+        recyclerView.setAdapter(productTypeAdapter1)
     }
 }

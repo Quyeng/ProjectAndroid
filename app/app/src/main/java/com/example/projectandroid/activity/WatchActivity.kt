@@ -21,7 +21,7 @@ import java.util.*
 
 class WatchActivity : AppCompatActivity() {
     var toolbarPhone: Toolbar? = null
-    var listViewWatch: ListView? = null
+    lateinit var listViewWatch: ListView
     var WatchAdapter: WatchAdapter? = null
     var arrayListWatch: ArrayList<Product>? = null
     var arrayListWatchFilter: ArrayList<Product>? = null
@@ -37,8 +37,8 @@ class WatchActivity : AppCompatActivity() {
         //            ActionToolBar();
         GetDataPhone()
         WatchAdapter = WatchAdapter(this, R.layout.item_phone, arrayListWatchFilter!!)
-        listViewWatch?.setAdapter(WatchAdapter)
-        listViewWatch?.setOnItemClickListener(OnItemClickListener { parent, view, position, id ->
+        listViewWatch.setAdapter(WatchAdapter)
+        listViewWatch.setOnItemClickListener(OnItemClickListener { parent, view, position, id ->
             val intent = Intent(this@WatchActivity, ProductDetailActivity::class.java)
             intent.putExtra("information", arrayListWatch!![position])
             startActivity(intent)

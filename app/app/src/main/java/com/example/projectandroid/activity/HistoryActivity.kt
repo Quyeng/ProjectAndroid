@@ -21,10 +21,10 @@ import org.json.JSONException
 import java.util.*
 
 class HistoryActivity : AppCompatActivity() {
-    var btndangnhap: Button? = null
-    var btnShowUser: Button? = null
-    var btnExit: Button? = null
-    var textViewDonhang: TextView? = null
+    lateinit var btndangnhap: Button
+    lateinit var btnShowUser: Button
+    lateinit var btnExit: Button
+    lateinit var textViewDonhang: TextView
     var REQUEST_CODE_USER = 123
     var userArrayList: ArrayList<User>? = null
     var user: User? = null
@@ -35,7 +35,7 @@ class HistoryActivity : AppCompatActivity() {
     var emailUser = ""
     var addressUser = ""
     var idUserDangNhap = 0
-    var listViewCart: ListView? = null
+    lateinit var listViewCart: ListView
     var detailCartAdapter: DetailCartAdapter? = null
     var cartArrayList: ArrayList<DetailCart>? = null
     var cartArrayListFiler: ArrayList<DetailCart>? = null
@@ -54,23 +54,23 @@ class HistoryActivity : AppCompatActivity() {
         listViewCart = findViewById(R.id.listviewDonhangchitiet)
         detailCartAdapter =
             DetailCartAdapter(this, R.layout.dong_don_hang_chi_tiet, cartArrayListFiler!!)
-        listViewCart?.setAdapter(detailCartAdapter)
-        btndangnhap?.setOnClickListener(View.OnClickListener {
+        listViewCart.setAdapter(detailCartAdapter)
+        btndangnhap.setOnClickListener(View.OnClickListener {
             val intent = Intent(this@HistoryActivity, dangnhap::class.java)
             intent.putExtra("idProductType", 1)
             startActivityForResult(intent, REQUEST_CODE_USER)
         })
-        btnShowUser?.setOnClickListener(View.OnClickListener {
+        btnShowUser.setOnClickListener(View.OnClickListener {
             val intent = Intent(this@HistoryActivity, InformationUserActivity::class.java)
             intent.putExtra("user", user)
             startActivity(intent)
         })
-        btnExit?.setOnClickListener(View.OnClickListener {
-            btnShowUser?.setVisibility(View.GONE)
-            btnExit?.setVisibility(View.GONE)
-            btndangnhap?.setVisibility(View.VISIBLE)
-            textViewDonhang?.setText("Bạn chưa đăng nhập")
-            listViewCart?.setVisibility(View.GONE)
+        btnExit.setOnClickListener(View.OnClickListener {
+            btnShowUser.setVisibility(View.GONE)
+            btnExit.setVisibility(View.GONE)
+            btndangnhap.setVisibility(View.VISIBLE)
+            textViewDonhang.setText("Bạn chưa đăng nhập")
+            listViewCart.setVisibility(View.GONE)
         })
     }
 

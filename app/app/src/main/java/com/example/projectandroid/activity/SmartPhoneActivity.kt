@@ -22,7 +22,7 @@ import java.util.*
 
 class SmartPhoneActivity : AppCompatActivity() {
     var toolbar: Toolbar? = null
-    var listViewPhone: ListView? = null
+    lateinit var listViewPhone: ListView
     var phoneAdapter: PhoneAdapter? = null
     var arrayListPhone: ArrayList<Product>? = null
     var arrayListPhoneFilter: ArrayList<Product>? = null
@@ -40,8 +40,8 @@ class SmartPhoneActivity : AppCompatActivity() {
         //            ActionToolBar();
         GetDataPhone()
         phoneAdapter = PhoneAdapter(this, com.example.projectandroid.R.layout.item_phone, arrayListPhoneFilter!!)
-        listViewPhone?.setAdapter(phoneAdapter)
-        listViewPhone?.setOnItemClickListener(OnItemClickListener { parent, view, position, id ->
+        listViewPhone.setAdapter(phoneAdapter)
+        listViewPhone.setOnItemClickListener(OnItemClickListener { parent, view, position, id ->
             val intent = Intent(this@SmartPhoneActivity, ProductDetailActivity::class.java)
             intent.putExtra("information", arrayListPhone!![position])
             startActivity(intent)

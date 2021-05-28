@@ -20,9 +20,9 @@ import org.json.JSONException
 import java.util.*
 
 class ConfirmCart : AppCompatActivity() {
-    var btnConfirm: Button? = null
-    var btnHuy: Button? = null
-    var textViewTongtien: TextView? = null
+    lateinit var btnConfirm: Button
+    lateinit var btnHuy: Button
+    lateinit var textViewTongtien: TextView
     var idUser = 0
     var tongtien = 0
     var cartArrayList: ArrayList<Cart>? = null
@@ -40,14 +40,14 @@ class ConfirmCart : AppCompatActivity() {
         val intent = intent
         idUser = intent.getIntExtra("idUser", 123)
         tongtien = intent.getIntExtra("tongtienphaitra", 123)
-        textViewTongtien?.setText(tongtien.toString() + "")
+        textViewTongtien.setText(tongtien.toString() + "")
         Toast.makeText(this, "id usser$idUser", Toast.LENGTH_SHORT).show()
         Toast.makeText(this, "tongtien : $tongtien", Toast.LENGTH_SHORT).show()
-        btnConfirm?.setOnClickListener(View.OnClickListener {
+        btnConfirm.setOnClickListener(View.OnClickListener {
             Toast.makeText(this@ConfirmCart, "Mua thanh cong", Toast.LENGTH_SHORT).show()
             GetDataCart()
         })
-        btnHuy?.setOnClickListener(View.OnClickListener { finish() })
+        btnHuy.setOnClickListener(View.OnClickListener { finish() })
     }
 
     fun themdonhangchitiet(cart: Cart) {

@@ -21,7 +21,7 @@ import java.util.*
 
 class ShirtActivity : AppCompatActivity() {
     var toolbarPhone: Toolbar? = null
-    var listViewShirt: ListView? = null
+    lateinit var listViewShirt: ListView
     var shirtAdapter: ShirtAdapter? = null
     var arrayListShirt: ArrayList<Product>? = null
     var arrayListShirtFilter: ArrayList<Product>? = null
@@ -37,8 +37,8 @@ class ShirtActivity : AppCompatActivity() {
         //            ActionToolBar();
         GetDataPhone()
         shirtAdapter = ShirtAdapter(this, R.layout.item_phone, arrayListShirtFilter!!)
-        listViewShirt?.setAdapter(shirtAdapter)
-        listViewShirt?.setOnItemClickListener(OnItemClickListener { parent, view, position, id ->
+        listViewShirt.setAdapter(shirtAdapter)
+        listViewShirt.setOnItemClickListener(OnItemClickListener { parent, view, position, id ->
             val intent = Intent(this@ShirtActivity, ProductDetailActivity::class.java)
             intent.putExtra("information", arrayListShirt!![position])
             startActivity(intent)

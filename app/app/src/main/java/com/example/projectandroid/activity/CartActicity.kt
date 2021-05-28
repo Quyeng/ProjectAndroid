@@ -21,14 +21,14 @@ class CartActicity : AppCompatActivity() {
     var checkBoxTatCa: CheckBox? = null
     var btnDiscount: Button? = null
     var btnMuaHang: Button? = null
-    var imgLogo: ImageView? = null
-    var iconvanchuyen: ImageView? = null
-    var imageIconxetaine: ImageView? = null
+    lateinit var imgLogo: ImageView
+    lateinit var iconvanchuyen: ImageView
+    lateinit var imageIconxetaine: ImageView
     var Tongtiensanpham: TextView? = null
     var mangidDiscount: ArrayList<Int>? = null
     var cartArrayList: ArrayList<Cart>? = null
     var cartArrayListFiler: ArrayList<Cart>? = null
-    var listViewCart: ListView? = null
+    lateinit var listViewCart: ListView
     var cartApdapter: CartApdapter? = null
     var REQUEST_CODE_DISCOUNT = 123
     var k = 0
@@ -52,7 +52,7 @@ class CartActicity : AppCompatActivity() {
         }
         btnDiscount!!.setOnClickListener {
             val tongtien = Tongtiensanpham!!.text.toString().trim { it <= ' ' }
-            Log.e("phong", "tong tiren la : $tongtien")
+            Log.e("vpq", "tong tien la : $tongtien")
             val tien = tongtien.toInt()
             if (tien != 0) {
                 val intent1 = Intent(this@CartActicity, DiscountActivity::class.java)
@@ -106,11 +106,11 @@ class CartActicity : AppCompatActivity() {
 
     private fun AnhXa() {
         imgLogo = findViewById(R.id.imageLogo)
-        imgLogo?.setImageResource(R.drawable.iconshop)
+        imgLogo.setImageResource(R.drawable.iconshop)
         iconvanchuyen = findViewById(R.id.imageIconxetai)
         imageIconxetaine = findViewById(R.id.imageIconxetaine)
-        iconvanchuyen?.setImageResource(R.drawable.vanchuyen)
-        imageIconxetaine?.setImageResource(R.drawable.vanchuyen)
+        iconvanchuyen.setImageResource(R.drawable.vanchuyen)
+        imageIconxetaine.setImageResource(R.drawable.vanchuyen)
         listViewCart = findViewById(R.id.listviewCart)
         Tongtiensanpham = findViewById(R.id.Tongtiensanpham)
         checkBoxTatCa = findViewById(R.id.checkboxTatCa)
@@ -118,7 +118,7 @@ class CartActicity : AppCompatActivity() {
         cartArrayListFiler = ArrayList<Cart>()
         GetDataCart()
         cartApdapter = CartApdapter(this, R.layout.dong_cart, cartArrayListFiler!!)
-        listViewCart?.setAdapter(cartApdapter)
+        listViewCart.setAdapter(cartApdapter)
         btnDiscount = findViewById(R.id.btnDiscount)
         btnMuaHang = findViewById(R.id.btnMuaHang)
     }
@@ -181,7 +181,7 @@ class CartActicity : AppCompatActivity() {
             },
             Response.ErrorListener { error ->
                 Toast.makeText(this@CartActicity, "Da xay ra loi", Toast.LENGTH_SHORT).show()
-                Log.d("aaa", "Loi!\n$error")
+                Log.d("vpq", "Loi!\n$error")
             }
         ) {
             @Throws(AuthFailureError::class)
@@ -208,13 +208,13 @@ class CartActicity : AppCompatActivity() {
             },
             Response.ErrorListener { error ->
                 Toast.makeText(this@CartActicity, "Da xay ra loi", Toast.LENGTH_SHORT).show()
-                Log.d("aaa", "Loi!\n$error")
+                Log.d("vpq", "Loi!\n$error")
             }
         ) {
             @Throws(AuthFailureError::class)
             override fun getParams(): Map<String, String>? {
-                Log.e("phong", "id don hang la$iddonhang")
-                Log.e("phong", "soluong don hang la$soluongitem")
+                Log.e("vpq", "id don hang la$iddonhang")
+                Log.e("vpq", "so luong don hang la$soluongitem")
                 val params: MutableMap<String, String> = HashMap()
                 params["iddonhang"] = iddonhang.toString()
                 params["soluong"] = soluongitem.toString()
