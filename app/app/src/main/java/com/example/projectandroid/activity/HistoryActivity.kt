@@ -58,7 +58,7 @@ class HistoryActivity : AppCompatActivity() {
             DetailCartAdapter(this, R.layout.dong_don_hang_chi_tiet, cartArrayListFiler!!)
         listViewCart.setAdapter(detailCartAdapter)
         btndangnhap.setOnClickListener(View.OnClickListener {
-            val intent = Intent(this@HistoryActivity, dangnhap::class.java)
+            val intent = Intent(this@HistoryActivity, LoginActivity::class.java)
             intent.putExtra("idProductType", 1)
             startActivityForResult(intent, REQUEST_CODE_USER)
         })

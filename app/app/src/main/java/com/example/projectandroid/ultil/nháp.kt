@@ -24,3 +24,4 @@ package com.example.projectandroid.ultil
 //holder.tvResname.text=item.res_name
 //holder.tvResAddr.text=item.address
 //Picasso.get().load(item.avatar).into(holder.imgRes)
+

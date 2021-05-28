@@ -107,7 +107,7 @@ class ProductDetailActivity : AppCompatActivity() {
             binhluanUser!!.isEnabled = true
         }
         btndangnhapchitiet!!.setOnClickListener {
-            val intent = Intent(this@ProductDetailActivity, dangnhap::class.java)
+            val intent = Intent(this@ProductDetailActivity, LoginActivity::class.java)
             intent.putExtra("idProductType", 1)
             startActivityForResult(intent, REQUEST_CODE_USER)
         }

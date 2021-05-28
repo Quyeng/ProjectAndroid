@@ -1,25 +1,21 @@
 package com.example.projectandroid.activity
-/*
-Team 10
- */
+
 import android.app.Dialog
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.Button
-import android.widget.EditText
-import android.widget.Toast
+import android.widget.*
+import androidx.appcompat.app.AppCompatActivity
 import com.android.volley.AuthFailureError
 import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.projectandroid.R
 import com.google.firebase.auth.FirebaseAuth
-import java.util.HashMap
+import java.util.*
 
-class dangnhap : AppCompatActivity() {
+class LoginActivity : AppCompatActivity() {
     var auth: FirebaseAuth? = null
     var btndangki: Button? = null
     var btnDangNhap: Button? = null
@@ -43,7 +39,7 @@ class dangnhap : AppCompatActivity() {
             val taikhoan = edtTK?.getText().toString()
             val matkhau = edtMK?.getText().toString()
             if (taikhoan.isEmpty() || matkhau.isEmpty()) {
-                Toast.makeText(this@dangnhap, "Thiếu thông tin đăng nhập", Toast.LENGTH_SHORT)
+                Toast.makeText(this@LoginActivity, "Thiếu thông tin đăng nhập", Toast.LENGTH_SHORT)
                     .show()
             } else {
                 Dangnhap()
@@ -80,10 +76,10 @@ class dangnhap : AppCompatActivity() {
             ) { task ->
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
-                    Toast.makeText(this@dangnhap, "Đăng kí thành công", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@LoginActivity, "Đăng kí thành công", Toast.LENGTH_SHORT).show()
                     dangkiBangUser()
                 } else {
-                    Toast.makeText(this@dangnhap, "Lõi Đăng kí", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@LoginActivity, "Lõi Đăng kí", Toast.LENGTH_SHORT).show()
                 }
 
                 // ...
@@ -96,14 +92,14 @@ class dangnhap : AppCompatActivity() {
             Method.POST, "http://192.168.1.6:8080/server/insertUser.php",
             Response.Listener { response ->
                 if (response.trim { it <= ' ' } == "success") {
-                    Toast.makeText(this@dangnhap, "Thêm User thành công", Toast.LENGTH_SHORT)
+                    Toast.makeText(this@LoginActivity, "Thêm User thành công", Toast.LENGTH_SHORT)
                         .show()
                 } else {
-                    Toast.makeText(this@dangnhap, "lỗi thêm", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@LoginActivity, "lỗi thêm", Toast.LENGTH_SHORT).show()
                 }
             },
             Response.ErrorListener { error ->
-                Toast.makeText(this@dangnhap, "Da xay ra loi", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@LoginActivity, "Da xay ra loi", Toast.LENGTH_SHORT).show()
                 Log.d("vpq", "Loi!\n$error")
             }
         ) {
@@ -127,19 +123,14 @@ class dangnhap : AppCompatActivity() {
             ) { task ->
                 if (task.isSuccessful) {
                     Log.d("vpq", "signInWithEmail:success")
-                    Toast.makeText(this@dangnhap, "Đăng Nhập Thành Công", Toast.LENGTH_SHORT).show()
-                    val intent = Intent(
-                        this@dangnhap,
-                        HomeActivity::class.java
-                    )
-                    startActivity(intent)
+                    Toast.makeText(this@LoginActivity, "Đăng Nhập Thành Công", Toast.LENGTH_SHORT).show()
+                    val intent = Intent()
                     intent.putExtra("email", email)
                     setResult(RESULT_OK, intent)
-
                     finish()
 
                 } else {
-                    Toast.makeText(this@dangnhap, "Lỗi ĐĂNG NHẬP", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@LoginActivity, "Lỗi ĐĂNG NHẬP", Toast.LENGTH_SHORT).show()
                 }
 
             }
