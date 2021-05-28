@@ -1,5 +1,7 @@
 package com.example.projectandroid.adapter
-
+/*
+Team 10
+ */
 import android.content.Context
 import android.content.Intent
 import android.text.TextUtils
@@ -43,7 +45,7 @@ class LaptopAdapter(context: LaptopActivity, layout: Int, subjectsList: List<Pro
         var linearLayoutPhone: LinearLayout? = null
     }
 
-    override fun getView(i: Int, view: View, parent: ViewGroup): View {
+    override fun getView(i: Int, view: View?, parent: ViewGroup): View? {
         var view = view
         var viewHolder: ViewHolder? = null
         if (view == null) {

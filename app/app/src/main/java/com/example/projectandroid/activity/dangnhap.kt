@@ -1,5 +1,7 @@
 package com.example.projectandroid.activity
-
+/*
+Team 10
+ */
 import android.app.Dialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity

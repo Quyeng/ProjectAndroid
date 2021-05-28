@@ -1,5 +1,7 @@
 package com.example.projectandroid.activity
-
+/*
+Team 10
+ */
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -86,7 +88,7 @@ class ProductDetailActivity : AppCompatActivity() {
         imageViewMuiTen!!.setImageResource(R.drawable.muiten)
         imagegiohang!!.setImageResource(R.drawable.giohang)
         GetDataComment(tensanphambinhluan)
-        Log.e("phong", " binhluan la:$tensanphambinhluan")
+        Log.e("vpq", " binhluan la:$tensanphambinhluan")
         btnCong!!.setOnClickListener {
             val soluong = txtsoluong!!.text.toString()
             var soluongdadoi = soluong.toInt()
@@ -147,7 +149,7 @@ class ProductDetailActivity : AppCompatActivity() {
 
     private fun commentUser() {
         val requestQueue = Volley.newRequestQueue(this)
-        val stringRequest: StringRequest = object : StringRequest(Method.POST, "http://" + "@string/localhost" + "/server/insertComment.php",
+        val stringRequest: StringRequest = object : StringRequest(Method.POST, "http://192.168.1.6:8080/server/insertComment.php",
                 Response.Listener { response ->
                     if (response.trim { it <= ' ' } == "success") {
                         Toast.makeText(this@ProductDetailActivity, "Comment thành công", Toast.LENGTH_SHORT).show()
@@ -178,7 +180,7 @@ class ProductDetailActivity : AppCompatActivity() {
 
     private fun themGioHang() {
         val requestQueue = Volley.newRequestQueue(this)
-        val stringRequest: StringRequest = object : StringRequest(Method.POST, "http://" + "@string/localhost" + "/server/insertSanPham.php",
+        val stringRequest: StringRequest = object : StringRequest(Method.POST, "http://192.168.1.6:8080/server/insertSanPham.php",
                 Response.Listener { response ->
                     if (response.trim { it <= ' ' } == "success") {
                         Toast.makeText(this@ProductDetailActivity, "Them vào giỏ hang thành công", Toast.LENGTH_SHORT).show()
@@ -209,7 +211,7 @@ class ProductDetailActivity : AppCompatActivity() {
 
     fun GetDataComment(tensanphamcobinhluan: String) {
         val requestQueue = Volley.newRequestQueue(applicationContext)
-        val jsonArrayRequest = JsonArrayRequest("http://" + "@string/localhost" + "/server/getcomment.php", { response ->
+        val jsonArrayRequest = JsonArrayRequest("http://192.168.1.6:8080/server/getcomment.php", { response ->
             commentArrayList!!.clear()
             commentArrayListFilter!!.clear()
             if (response != null) {
@@ -242,7 +244,7 @@ class ProductDetailActivity : AppCompatActivity() {
 
     fun GetDataUsers() {
         val requestQueue = Volley.newRequestQueue(applicationContext)
-        val jsonArrayRequest = JsonArrayRequest("http://" + "@string/localhost" + "/server/getUser.php", { response ->
+        val jsonArrayRequest = JsonArrayRequest("http://192.168.1.6:8080/server/getUser.php", { response ->
             if (response != null) {
                 for (i in 0 until response.length()) {
                     try {

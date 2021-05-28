@@ -1,5 +1,7 @@
 package com.example.projectandroid.adapter
-
+/*
+Team 10
+ */
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View

@@ -1,5 +1,7 @@
 package com.example.projectandroid.adapter
-
+/*
+Team 10
+ */
 import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
@@ -16,8 +18,7 @@ import com.squareup.picasso.Picasso
 import java.text.DecimalFormat
 import java.util.*
 
-class ProductAdapter(context: HomeActivity, layout: Int, subjectsList: ArrayList<Product>) :
-    BaseAdapter() {
+class ProductAdapter(context: HomeActivity, layout: Int, subjectsList: ArrayList<Product>) : BaseAdapter() {
     var x = 0
     private val context: HomeActivity
     private val layout: Int
@@ -36,14 +37,14 @@ class ProductAdapter(context: HomeActivity, layout: Int, subjectsList: ArrayList
 
     private inner class ViewHolder {
         var imageViewProduct: ImageView? = null
-        var textViewNameProduct: TextView? = null
-        var textViewPriceProduct: TextView? = null
-        var textviewdanhgiandiem: TextView? = null
-        var textviewSosanphamdaban: TextView? = null
-        var textviewsosanphamconlai: TextView? = null
+        lateinit var textViewNameProduct: TextView
+        lateinit var textViewPriceProduct: TextView
+        lateinit var textviewdanhgiandiem: TextView
+        lateinit var textviewSosanphamdaban: TextView
+        lateinit var textviewsosanphamconlai: TextView
     }
 
-    override fun getView(i: Int, view: View, parent: ViewGroup): View {
+    override fun getView(i: Int, view: View?, parent: ViewGroup): View? {
         var view = view
         val holder: ViewHolder
         if (view == null) {
@@ -62,18 +63,16 @@ class ProductAdapter(context: HomeActivity, layout: Int, subjectsList: ArrayList
             holder = view.tag as ViewHolder
         }
         val product: Product = arrayProduct[i]
-        holder.textViewNameProduct?.setText(product.nameProduct)
+        holder.textViewNameProduct.setText(product.nameProduct)
         val decimalFormat = DecimalFormat("###,###,###")
-        holder.textViewPriceProduct?.setText(
-                decimalFormat
-                        .format(product.priceProduct).toString() + "VND"
+        holder.textViewPriceProduct.setText(
+                decimalFormat.format(product.priceProduct).toString() + "VND"
         )
-        Picasso.get().load(product.imageProduct)
-            .into(holder.imageViewProduct)
-        holder.textviewdanhgiandiem?.setText(product.diemdanhgia.toString() + "")
-        holder.textviewSosanphamdaban?.setText(product.sosanphamdaban.toString() + "")
-        holder.textviewsosanphamconlai?.setText(product.sosanphamcontonkho.toString() + "")
-        view.setOnClickListener {
+        Picasso.get().load(product.imageProduct).into(holder.imageViewProduct)
+        holder.textviewdanhgiandiem.setText(product.diemdanhgia.toString() + "")
+        holder.textviewSosanphamdaban.setText(product.sosanphamdaban.toString() + "")
+        holder.textviewsosanphamconlai.setText(product.sosanphamcontonkho.toString() + "")
+        view?.setOnClickListener {
             val intent = Intent(context, ProductDetailActivity::class.java)
             intent.putExtra("information", product)
             context.startActivity(intent)

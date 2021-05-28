@@ -1,5 +1,7 @@
 package com.example.projectandroid.adapter
-
+/*
+Team 10
+ */
 import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.content.Context
@@ -45,10 +47,10 @@ class CartApdapter(context: CartActicity, layout: Int, subjectsList: List<Cart>)
         var dongcartne: LinearLayout? = null
     }
 
-    override fun getView(i: Int, view: View, parent: ViewGroup): View {
+    override fun getView(i: Int, view: View?, parent: ViewGroup): View?{
         val view = view
         var viewHolder: ViewHolder? = null
-        viewHolder = view.tag as ViewHolder
+        viewHolder = view?.tag as ViewHolder
         val cart: Cart = arraListProduct[i]
         viewHolder.textViewNameSanPham?.setText(cart.tensanpham)
         viewHolder.textViewThuongHieu?.setText(cart.tenhuonghieu)

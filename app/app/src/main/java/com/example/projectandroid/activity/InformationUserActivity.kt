@@ -1,5 +1,7 @@
 package com.example.projectandroid.activity
-
+/*
+Team 10
+ */
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -59,7 +61,7 @@ class InformationUserActivity : AppCompatActivity() {
     private fun capNhatUser() {
         val requestQueue = Volley.newRequestQueue(this)
         val stringRequest: StringRequest = object : StringRequest(
-            Method.POST, "http://" + "@string/localhost" + "/server/updateUser.php",
+            Method.POST, "http://192.168.1.6:8080/server/updateUser.php",
             Response.Listener { response ->
                 if (response.trim { it <= ' ' } == "success") {
                     Toast.makeText(

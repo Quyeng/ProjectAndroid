@@ -1,5 +1,7 @@
 package com.example.projectandroid.adapter
-
+/*
+Team 10
+ */
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -33,7 +35,7 @@ class DiscountAdapter(context: DiscountActivity, layout: Int, arrayComment: Arra
         var textViewName: CheckBox? = null
     }
 
-    override fun getView(i: Int, view: View, parent: ViewGroup): View {
+    override fun getView(i: Int, view: View?, parent: ViewGroup): View? {
         var view = view
         val holder: ViewHolder
         if (view == null) {

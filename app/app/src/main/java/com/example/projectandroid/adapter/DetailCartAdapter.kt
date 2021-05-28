@@ -1,5 +1,7 @@
 package com.example.projectandroid.adapter
-
+/*
+Team 10
+ */
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -41,7 +43,7 @@ class DetailCartAdapter(context: HistoryActivity, layout: Int, subjectsList: Lis
         var dongcartne: LinearLayout? = null
     }
 
-    override fun getView(i: Int, view: View, parent: ViewGroup): View {
+    override fun getView(i: Int, view: View?, parent: ViewGroup): View? {
         var view = view
         var viewHolder: ViewHolder? = null
         if (view == null) {

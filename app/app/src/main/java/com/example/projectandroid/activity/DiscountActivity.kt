@@ -14,7 +14,9 @@ import com.example.projectandroid.model.Discount
 import com.example.projectandroid.ultil.CheckConnection
 import org.json.JSONException
 import java.util.*
-
+/*
+Team 10
+ */
 class DiscountActivity : AppCompatActivity() {
     var discountArrayList: ArrayList<Discount>? = null
     var discountAdapter: DiscountAdapter? = null
@@ -43,7 +45,7 @@ class DiscountActivity : AppCompatActivity() {
     fun GetDataDiscount() {
         val requestQueue = Volley.newRequestQueue(applicationContext)
         val jsonArrayRequest = JsonArrayRequest(
-            "http://" + "@string/localhost" + "/server/getDiscount.php",
+            "http://192.168.1.6:8080/server/getDiscount.php",
             { response ->
                 if (response != null) {
                     for (i in 0 until response.length()) {

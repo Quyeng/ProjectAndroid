@@ -16,7 +16,9 @@ import com.example.projectandroid.model.Cart
 import com.example.projectandroid.ultil.CheckConnection
 import org.json.JSONException
 import java.util.*
-
+/*
+Team 10
+ */
 class CartActicity : AppCompatActivity() {
     var checkBoxTatCa: CheckBox? = null
     var btnDiscount: Button? = null
@@ -170,7 +172,7 @@ class CartActicity : AppCompatActivity() {
     fun deleteMonHoc(idDonhang: Int, giasanpham: Int) {
         val requestQueue = Volley.newRequestQueue(this)
         val stringRequest: StringRequest = object : StringRequest(
-            Method.POST, "http://" + "192.168.1.5:8080" + "/server/deleteDonHang.php",
+            Method.POST, "http://192.168.1.6:8080/server/deleteDonHang.php",
             Response.Listener { response ->
                 if (response.trim { it <= ' ' } == "success") {
                     Toast.makeText(this@CartActicity, "Xoa thanh cong", Toast.LENGTH_SHORT).show()
@@ -197,7 +199,7 @@ class CartActicity : AppCompatActivity() {
     fun CapNhatDonHang(iddonhang: Int, soluongitem: Int) {
         val requestQueue = Volley.newRequestQueue(this)
         val stringRequest: StringRequest = object : StringRequest(
-            Method.POST, "http://" + "@string/localhost" + "/server/updateDonHang.php",
+            Method.POST, "http://192.168.1.6:8080/server/updateDonHang.php",
             Response.Listener { response ->
                 if (response.trim { it <= ' ' } == "success") {
                     Toast.makeText(this@CartActicity, "Cap nhat thanh cong", Toast.LENGTH_SHORT)
@@ -226,7 +228,7 @@ class CartActicity : AppCompatActivity() {
 
     fun GetDataCart() {
         val requestQueue = Volley.newRequestQueue(applicationContext)
-        val jsonArrayRequest = JsonArrayRequest("http://" + "@string/localhost" + "/server/getDonHang.php",
+        val jsonArrayRequest = JsonArrayRequest("http://192.168.1.6:8080/server/getDonHang.php",
             { response ->
                 cartArrayList!!.clear()
                 cartArrayListFiler!!.clear()

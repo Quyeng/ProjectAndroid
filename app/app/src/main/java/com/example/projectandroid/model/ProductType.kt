@@ -1,5 +1,7 @@
 package com.example.projectandroid.model
-
-class ProductType(var id: Int, var namePT: String, var imagePT: String) {
+/*
+Team 10
+ */
+class ProductType(var id: Int?, var namePT: String?, var imagePT: String?) {
 
 }

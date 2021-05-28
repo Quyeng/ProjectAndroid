@@ -1,5 +1,7 @@
 package com.example.projectandroid.activity
-
+/*
+Team 10
+ */
 import android.R
 import android.content.Intent
 import android.os.Bundle
@@ -57,7 +59,7 @@ class SmartPhoneActivity : AppCompatActivity() {
 
     private fun GetDataPhone() {
         val requestQueue = Volley.newRequestQueue(this)
-        val pathPhone: String = "http://" + "@string/localhost" + "/server/getsanpham.php"
+        val pathPhone: String = "http://192.168.1.6:8080/server/getsanpham.php"
         val stringRequest = StringRequest(
             Request.Method.GET, pathPhone,
             { response ->

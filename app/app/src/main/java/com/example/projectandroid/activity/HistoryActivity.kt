@@ -1,5 +1,7 @@
 package com.example.projectandroid.activity
-
+/*
+Team 10
+ */
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -77,7 +79,7 @@ class HistoryActivity : AppCompatActivity() {
     fun GetDataUsers() {
         val requestQueue = Volley.newRequestQueue(applicationContext)
         val jsonArrayRequest = JsonArrayRequest(
-            "http://" + "@string/localhost" + "/server/getUser.php",
+            "http://192.168.1.6:8080/server/getUser.php",
             { response ->
                 userArrayList!!.clear()
                 if (response != null) {
@@ -101,7 +103,7 @@ class HistoryActivity : AppCompatActivity() {
 
     fun GetDataCart() {
         val requestQueue = Volley.newRequestQueue(applicationContext)
-        val jsonArrayRequest = JsonArrayRequest("http://" + "@string/localhost" + "/server/getDonHangChiTiet.php",
+        val jsonArrayRequest = JsonArrayRequest("http://192.168.1.6:8080/server/getDonHangChiTiet.php",
             { response ->
                 cartArrayList!!.clear()
                 cartArrayListFiler!!.clear()

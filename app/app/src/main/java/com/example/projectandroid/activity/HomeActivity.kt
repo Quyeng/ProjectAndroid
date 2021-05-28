@@ -1,5 +1,7 @@
 package com.example.projectandroid.activity
-
+/*
+Team 10
+ */
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
@@ -197,7 +199,7 @@ class HomeActivity : AppCompatActivity() {
 
     private fun GetDataProductNew() {
         val requestQueue: RequestQueue = Volley.newRequestQueue(applicationContext)
-        val jsonArrayRequest = JsonArrayRequest("http://" + "@string/localhost" + "/server/getsanphammoinhat.php", object :
+        val jsonArrayRequest = JsonArrayRequest("http://192.168.1.6:8080/server/getsanphammoinhat.php", object :
             Response.Listener<JSONArray?> {
             override fun onResponse(response: JSONArray?) {
                 if (response != null) {
@@ -255,7 +257,7 @@ class HomeActivity : AppCompatActivity() {
 
     private fun GetDataProductType() {
         val requestQueue: RequestQueue = Volley.newRequestQueue(applicationContext)
-        val jsonArrayRequest = JsonArrayRequest("http://" + "@string/localhost" + "/server/getloaisp.php", object :
+        val jsonArrayRequest = JsonArrayRequest("http://192.168.1.6:8080/server/getloaisp.php", object :
             Response.Listener<JSONArray?> {
             override fun onResponse(response: JSONArray?) {
                 if (response != null) {

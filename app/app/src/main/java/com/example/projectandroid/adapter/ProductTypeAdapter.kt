@@ -1,5 +1,7 @@
 package com.example.projectandroid.adapter
-
+/*
+Team 10
+ */
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -15,8 +17,7 @@ import com.example.projectandroid.model.ProductType
 import com.squareup.picasso.Picasso
 import java.util.*
 
-class ProductTypeAdapter(arrayListPT: ArrayList<ProductType>, context: Context) :
-    BaseAdapter() {
+class ProductTypeAdapter(arrayListPT: ArrayList<ProductType>, context: Context) : BaseAdapter() {
     var arrayListPT: ArrayList<ProductType>
     var context: Context
     override fun getCount(): Int {
@@ -32,11 +33,11 @@ class ProductTypeAdapter(arrayListPT: ArrayList<ProductType>, context: Context) 
     }
 
     inner class ViewHolder {
-        var textViewProductType: TextView? = null
+        lateinit var textViewProductType: TextView
         var imageViewProductType: ImageView? = null
     }
 
-    override fun getView(position: Int, view: View, parent: ViewGroup): View {
+    override fun getView(position: Int, view: View?, parent: ViewGroup): View? {
         var view = view
         var viewHolder: ViewHolder? = null
         if (view == null) {
@@ -53,7 +54,7 @@ class ProductTypeAdapter(arrayListPT: ArrayList<ProductType>, context: Context) 
             viewHolder = view.tag as ViewHolder
         }
         val productType: ProductType = getItem(position) as ProductType
-        viewHolder.textViewProductType?.setText(productType.namePT)
+        viewHolder.textViewProductType.setText(productType.namePT)
         Picasso.get().load(productType.imagePT).into(viewHolder.imageViewProductType)
         return view
     }

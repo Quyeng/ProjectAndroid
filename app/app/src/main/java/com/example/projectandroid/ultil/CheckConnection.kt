@@ -1,5 +1,7 @@
 package com.example.projectandroid.ultil
-
+/*
+Team 10
+ */
 import android.content.Context
 import android.net.ConnectivityManager
 import android.widget.Toast
