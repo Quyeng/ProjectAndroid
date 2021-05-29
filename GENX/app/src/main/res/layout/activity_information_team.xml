@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.CartActicity">
+
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:id="@+id/drawerlayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/btnShowUser"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="#03A9F4"
+                app:title="About Us">
+
+
+            </androidx.appcompat.widget.Toolbar>
+            <TextView
+                android:textColor="#18828F"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textSize="35sp"
+                android:text="TEAM 10"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"/>
+
+            <TextView
+                android:gravity="center_vertical|center_horizontal"
+                android:textSize="30dp"
+                android:textColor="#6FB122"
+                android:id="@+id/vpq"
+                android:layout_width="match_parent"
+                android:layout_height="111dp"
+                android:text="Võ Phụng Quang" />
+
+            <TextView
+                android:gravity="center_vertical|center_horizontal"
+                android:textSize="30dp"
+                android:textColor="#6FB122"
+                android:id="@+id/tdq"
+                android:layout_width="match_parent"
+                android:layout_height="111dp"
+                android:text="Trần Đức Quang" />
+
+            <TextView
+                android:gravity="center_vertical|center_horizontal"
+                android:textSize="30dp"
+                android:textColor="#6FB122"
+                android:id="@+id/nhq"
+                android:layout_width="match_parent"
+                android:layout_height="111dp"
+                android:text="Nguyễn Huỳnh Quyên" />
+
+            <TextView
+                android:gravity="center_vertical|center_horizontal"
+                android:textSize="30dp"
+                android:textColor="#6FB122"
+                android:id="@+id/nvs"
+                android:layout_width="match_parent"
+                android:layout_height="111dp"
+                android:text="Nguyễn Văn Sơn" />
+
+            <TextView
+                android:gravity="center_vertical|center_horizontal"
+                android:textSize="30dp"
+                android:textColor="#6FB122"
+                android:id="@+id/cmp"
+                android:layout_width="match_parent"
+                android:layout_height="111dp"
+                android:text="Cao Minh Phát" />
+
+
+        </LinearLayout>
+    </androidx.drawerlayout.widget.DrawerLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
+

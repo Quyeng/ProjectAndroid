@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="horizontal"
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:background="@drawable/background_5"
+    android:layout_height="match_parent">
+<CheckBox
+    android:id="@+id/checkboxDiscount"
+    android:textColor="@color/black"
+    android:textStyle="bold"
+    android:layout_marginRight="10dp"
+    android:layout_marginLeft="10dp"
+    android:textSize="18dp"
+    android:gravity="center"
+    android:text="miên phí ship cho dơn hàng từ 1 triệu"
+    android:layout_width="match_parent"
+    android:layout_height="80dp"/>
+
+</LinearLayout>

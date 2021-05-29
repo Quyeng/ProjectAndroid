@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/background_4"
+    tools:context=".activity.HistoryActivity">
+
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:id="@+id/drawerlayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/btnShowUser"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="#03A9F4"
+                app:title="Lịch sử mua hàng">
+                <Button
+                    android:background="@drawable/circle_button"
+                    android:id="@+id/btnlogin"
+                    android:layout_marginLeft="30dp"
+                    android:gravity="center"
+                    android:text="Đăng nhập"
+                    android:textStyle="bold"
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"/>
+                <Button
+                    android:visibility="gone"
+
+                    android:id="@+id/btnShowUserneem"
+                    android:text=""
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"/>
+                <Button
+                    android:text=""
+                    android:textSize="10sp"
+                    android:id="@+id/showUserExitne"
+                    android:visibility="gone"
+                    android:layout_width="80dp"
+                    android:layout_height="50dp"/>
+
+            </androidx.appcompat.widget.Toolbar>
+
+            <TextView
+
+                android:id="@+id/texviewThongtindonhang"
+                android:layout_width="match_parent"
+                android:layout_height="123dp"
+                android:gravity="center"
+                android:text="Vui lòng đăng nhập để xem lịch sử mua hàng"
+                android:textColor="@color/black"
+                android:textSize="32sp"
+                android:textStyle="bold" />
+            <ListView
+                android:id="@+id/listviewDonhangchitiet"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            </ListView>
+        </LinearLayout>
+    </androidx.drawerlayout.widget.DrawerLayout>
+</LinearLayout>
