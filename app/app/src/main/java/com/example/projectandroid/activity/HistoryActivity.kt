@@ -171,19 +171,19 @@ class HistoryActivity : AppCompatActivity() {
                         Toast.LENGTH_SHORT
                     ).show()
                     var x = 0
-                    for (i in 0 until cartArrayListFiler!!.size - 1) {
-                        x = cartArrayListFiler!![i].soluong
-                        for (j in cartArrayListFiler!!.size - 1 downTo i + 1) {
-                            if (cartArrayListFiler!![i].tensanpham.equals(
-                                    cartArrayListFiler!![j].tensanpham
-                                )
-                            ) {
-                                x = x + cartArrayListFiler!![j].soluong
-                                cartArrayListFiler!![i].soluong
-                                cartArrayListFiler!!.removeAt(j)
-                            }
-                        }
-                    }
+//                    for (i in 0 until cartArrayListFiler!!.size - 1) {
+//                        x = cartArrayListFiler!![i].soluong
+//                        for (j in cartArrayListFiler!!.size - 1 downTo i + 1) {
+//                            if (cartArrayListFiler!![i].tensanpham.equals(
+//                                    cartArrayListFiler!![j].tensanpham
+//                                )
+//                            ) {
+//                                x = x + cartArrayListFiler!![j].soluong
+//                                cartArrayListFiler!![i].soluong
+//                                cartArrayListFiler!!.removeAt(j)
+//                            }
+//                        }
+//                    }
                     Toast.makeText(
                         this@HistoryActivity,
                         "you have :" + cartArrayListFiler!!.size,

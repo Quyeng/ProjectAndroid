@@ -47,54 +47,53 @@ class CartApdapter(context: CartActicity, layout: Int, subjectsList: List<Cart>)
         var dongcartne: LinearLayout? = null
     }
 
-    override fun getView(i: Int, view: View?, parent: ViewGroup): View?{
+    override fun getView(i: Int, view: View?, parent: ViewGroup?): View?{
         val view = view
-        var viewHolder: ViewHolder?
-        viewHolder = view?.tag as ViewHolder
+        val viewHolder: ViewHolder?
+        viewHolder = view?.tag as ViewHolder?
         val cart: Cart = arraListProduct[i]
-        viewHolder.textViewNameSanPham?.setText(cart.tensanpham)
-        viewHolder.textViewThuongHieu?.setText(cart.tenhuonghieu)
+        viewHolder?.textViewNameSanPham?.setText(cart.tensanpham)
+        viewHolder?.textViewThuongHieu?.setText(cart.tenhuonghieu)
         val decimalFormat = DecimalFormat("###,###,###")
-        viewHolder.textViewPrice!!.text = "Price : " + decimalFormat
+        viewHolder?.textViewPrice?.text = "Price : " + decimalFormat
             .format(cart.giasanpham) + " VND"
-        viewHolder.textViewSanPhamConLai!!.text =
+        viewHolder?.textViewSanPhamConLai?.text =
             "Còn lại " + cart.sosanphamtonkho.toString() + " sản phẩm"
-        viewHolder.txtsoluongdamua?.setText(cart.soluong.toString() + "")
-        Picasso.get().load(cart.imageSanPham)
-            .into(viewHolder.imageViewSanPham)
+        viewHolder?.txtsoluongdamua?.setText(cart.soluong.toString() + "")
+//        Picasso.get().load(cart.imageSanPham).into(viewHolder!!.imageViewSanPham)
 
 
         if (context.checkCheckBoxTatCaIsTrue()) {
-            viewHolder.checkBox!!.isChecked = true
+            viewHolder?.checkBox!!.isChecked = true
         }
         if (context.checkCheckBoxTatCaIsFalse()) {
-            viewHolder.checkBox!!.isChecked = false
+            viewHolder?.checkBox!!.isChecked = false
         }
         val finalViewHolder2 = viewHolder
-        finalViewHolder2.btnCong!!.setOnClickListener {
-            val soluong = finalViewHolder2.txtsoluongdamua!!.text.toString()
+        finalViewHolder2?.btnCong!!.setOnClickListener {
+            val soluong = finalViewHolder2?.txtsoluongdamua!!.text.toString()
             var soluongdadoi = soluong.toInt()
             val giuso = soluongdadoi
             soluongdadoi = soluongdadoi + 1
             val sotruyen = soluongdadoi - giuso
-            finalViewHolder2.txtsoluongdamua!!.text = "" + soluongdadoi
+            finalViewHolder2?.txtsoluongdamua!!.text = "" + soluongdadoi
             context.TongTien(null, cart.giasanpham * sotruyen, 0)
             Log.e("vpq", "id don hang la : " + cart.id)
             Log.e("vpq", "so luong don hang la : $soluongdadoi")
             context.CapNhatDonHang(cart.id, soluongdadoi)
         }
-        finalViewHolder2.btnTru!!.setOnClickListener {
-            val soluong = finalViewHolder2.txtsoluongdamua!!.text.toString()
+        finalViewHolder2?.btnTru!!.setOnClickListener {
+            val soluong = finalViewHolder2?.txtsoluongdamua!!.text.toString()
             var soluongdadoi = soluong.toInt()
             val giuso = soluongdadoi
             if (soluongdadoi > 0) {
                 soluongdadoi = soluongdadoi - 1
                 if (soluongdadoi > 0) {
                     val sotruyen = giuso - soluongdadoi
-                    finalViewHolder2.txtsoluongdamua!!.text = "" + soluongdadoi
+                    finalViewHolder2?.txtsoluongdamua!!.text = "" + soluongdadoi
                     context.TongTien(null, 0, cart.giasanpham * sotruyen)
-                    Log.e("phong", "id don hang la : " + cart.id)
-                    Log.e("phong", "so luong don hang la : $soluongdadoi")
+                    Log.e("vpq", "id don hang la : " + cart.id)
+                    Log.e("vpq", "so luong don hang la : $soluongdadoi")
                     context.CapNhatDonHang(cart.id, soluongdadoi)
                 } else {
                     val dialogXoa = AlertDialog.Builder(context)
@@ -103,33 +102,33 @@ class CartApdapter(context: CartActicity, layout: Int, subjectsList: List<Cart>)
                             .toString() + " này ra khỏi đơn hàng khong?"
                     )
                     dialogXoa.setPositiveButton(
-                        "Co"
+                        "YES"
                     ) { dialog, which ->
                         context.deleteMonHoc(cart.id, cart.giasanpham)
                         context.TongTien(null, 0, cart.giasanpham)
                     }
                     dialogXoa.setNegativeButton(
-                        "khong"
+                        "NO"
                     ) { dialog, which -> }
                     dialogXoa.show()
                 }
             }
         }
         val finalViewHolder = viewHolder
-        viewHolder.dongcartne!!.setOnClickListener {
-            if (finalViewHolder.checkBox!!.isChecked) {
-                finalViewHolder.checkBox!!.isChecked = false
+        viewHolder?.dongcartne!!.setOnClickListener {
+            if (finalViewHolder?.checkBox!!.isChecked) {
+                finalViewHolder?.checkBox!!.isChecked = false
                 context.isFalseTatCa
                 context.TongTien(null, 0, cart.giasanpham * cart.soluong)
             } else {
                 context.isTrueTatCa(1)
-                finalViewHolder.checkBox!!.isChecked = true
+                finalViewHolder?.checkBox!!.isChecked = true
                 context.TongTien(null, cart.giasanpham * cart.soluong, 0)
             }
         }
         val finalViewHolder1 = viewHolder
-        viewHolder.checkBox!!.setOnClickListener {
-            if (finalViewHolder1.checkBox!!.isChecked) {
+        viewHolder?.checkBox!!.setOnClickListener {
+            if (finalViewHolder1?.checkBox!!.isChecked) {
                 context.isTrueTatCa(1)
                 context.TongTien(null, cart.giasanpham * cart.soluong, 0)
             } else {

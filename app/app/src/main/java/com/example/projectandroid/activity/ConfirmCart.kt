@@ -1,5 +1,6 @@
 package com.example.projectandroid.activity
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -48,6 +49,9 @@ class ConfirmCart : AppCompatActivity() {
         btnConfirm.setOnClickListener(View.OnClickListener {
             Toast.makeText(this@ConfirmCart, "Mua thanh cong", Toast.LENGTH_SHORT).show()
             GetDataCart()
+            val intent = Intent(this@ConfirmCart, HomeActivity::class.java)
+            startActivity(intent)
+            finish()
         })
         btnHuy.setOnClickListener(View.OnClickListener { finish() })
     }

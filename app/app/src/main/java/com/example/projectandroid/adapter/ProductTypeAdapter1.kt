@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.projectandroid.R
 import com.example.projectandroid.activity.*
@@ -43,22 +44,22 @@ class ProductTypeAdapter1(datashops: ArrayList<ProductType>, context: HomeActivi
                 }
                 2 -> {
                     val intent = Intent(context, ShirtActivity::class.java)
-                    intent.putExtra("idProductType", 2)
+                    intent.putExtra("idProductType", 3)
                     context.startActivity(intent)
                 }
                 3 -> {
                     val intent = Intent(context, TrousersActivity::class.java)
-                    intent.putExtra("idProductType", 3)
+                    intent.putExtra("idProductType", 4)
                     context.startActivity(intent)
                 }
                 4 -> {
                     val intent = Intent(context, ShoesActivity::class.java)
-                    intent.putExtra("idProductType", 4)
+                    intent.putExtra("idProductType", 5)
                     context.startActivity(intent)
                 }
                 5 -> {
                     val intent = Intent(context, WatchActivity::class.java)
-                    intent.putExtra("idProductType", 5)
+                    intent.putExtra("idProductType", 6)
                     context.startActivity(intent)
                 }
             }

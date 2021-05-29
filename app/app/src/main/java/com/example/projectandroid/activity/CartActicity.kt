@@ -108,11 +108,11 @@ class CartActicity : AppCompatActivity() {
 
     private fun AnhXa() {
         imgLogo = findViewById(R.id.imageLogo)
-        imgLogo.setImageResource(R.drawable.iconshop)
+//        imgLogo.setImageResource(R.drawable.iconshop)
         iconvanchuyen = findViewById(R.id.imageIconxetai)
         imageIconxetaine = findViewById(R.id.imageIconxetaine)
-        iconvanchuyen.setImageResource(R.drawable.vanchuyen)
-        imageIconxetaine.setImageResource(R.drawable.vanchuyen)
+//        iconvanchuyen.setImageResource(R.drawable.vanchuyen)
+//        imageIconxetaine.setImageResource(R.drawable.vanchuyen)
         listViewCart = findViewById(R.id.listviewCart)
         Tongtiensanpham = findViewById(R.id.Tongtiensanpham)
         checkBoxTatCa = findViewById(R.id.checkboxTatCa)

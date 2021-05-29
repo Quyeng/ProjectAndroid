@@ -126,7 +126,7 @@ class ProductDetailActivity : AppCompatActivity() {
         }
         imagegiohang!!.setOnClickListener {
             if (btnShowUser!!.text.toString().length != 0 && btnShowUser!!.text.toString() != null) {
-                val intent = Intent(this@ProductDetailActivity, CartActicity::class.java)
+                val intent = Intent(this@ProductDetailActivity, ConfirmCart::class.java)
                 intent.putExtra("idUser", idUserDangNhap)
                 startActivity(intent)
             } else {
