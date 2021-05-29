@@ -12,6 +12,9 @@ data class SimpleJSONModel(
     @SerializedName("id_user")
     var id: String?,
 
+    @SerializedName("link")
+    var linkimg: String?,
+
     @SerializedName("Error")
     var error: String?
 

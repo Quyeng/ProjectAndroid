@@ -9,13 +9,13 @@
 
     <ImageView
         android:id="@+id/img_banner"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="241dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/landscape" />
+        app:srcCompat="@drawable/banner" />
 
     <TextView
         android:id="@+id/tv_username"
@@ -59,13 +59,14 @@
 
     <ImageView
         android:id="@+id/img_shirt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="40dp"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:clickable="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/img_banner"
-        app:srcCompat="@drawable/ao" />
+        app:srcCompat="@drawable/shirt" />
 
     <TextView
         android:id="@+id/tv_shirt"
@@ -82,13 +83,14 @@
 
     <ImageView
         android:id="@+id/img_pant"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="40dp"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:clickable="true"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/img_banner"
-        app:srcCompat="@drawable/quan" />
+        app:srcCompat="@drawable/pant" />
 
     <TextView
         android:id="@+id/tv_pant"
@@ -105,13 +107,14 @@
 
     <ImageView
         android:id="@+id/img_shoes"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="30dp"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:clickable="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_shirt"
-        app:srcCompat="@drawable/giay" />
+        app:srcCompat="@drawable/shirt" />
 
     <TextView
         android:id="@+id/tv_shoes"
@@ -128,13 +131,14 @@
 
     <ImageView
         android:id="@+id/img_watch"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="40dp"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:clickable="true"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_pant"
-        app:srcCompat="@drawable/phukien" />
+        app:srcCompat="@drawable/pant" />
 
     <TextView
         android:id="@+id/tv_watch"
