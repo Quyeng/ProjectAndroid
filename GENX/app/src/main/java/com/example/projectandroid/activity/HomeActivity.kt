@@ -199,7 +199,7 @@ class HomeActivity : AppCompatActivity() {
 
     private fun GetDataProductNew() {
         val requestQueue: RequestQueue = Volley.newRequestQueue(applicationContext)
-        val jsonArrayRequest = JsonArrayRequest("http://192.168.1.6:8080/server/getsanphammoinhat.php", object :
+        val jsonArrayRequest = JsonArrayRequest("http://192.168.1.6:8080/genX/getsanphammoinhat.php", object :
             Response.Listener<JSONArray?> {
             override fun onResponse(response: JSONArray?) {
                 if (response != null) {
@@ -257,7 +257,7 @@ class HomeActivity : AppCompatActivity() {
 
     private fun GetDataProductType() {
         val requestQueue: RequestQueue = Volley.newRequestQueue(applicationContext)
-        val jsonArrayRequest = JsonArrayRequest("http://192.168.1.6:8080/server/getloaisp.php", object :
+        val jsonArrayRequest = JsonArrayRequest("http://192.168.1.6:8080/genX/getloaisp.php", object :
             Response.Listener<JSONArray?> {
             override fun onResponse(response: JSONArray?) {
                 if (response != null) {

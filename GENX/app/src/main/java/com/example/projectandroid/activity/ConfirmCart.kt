@@ -59,7 +59,7 @@ class ConfirmCart : AppCompatActivity() {
     fun themdonhangchitiet(cart: Cart) {
         val requestQueue = Volley.newRequestQueue(this)
         val stringRequest: StringRequest = object : StringRequest(
-            Method.POST, "http://192.168.1.6:8080/server/insertDonHangChiTiet.php",
+            Method.POST, "http://192.168.1.6:8080/genX/insertDonHangChiTiet.php",
             Response.Listener { response ->
                 if (response.trim { it <= ' ' } == "success") {
                     Toast.makeText(
@@ -95,7 +95,7 @@ class ConfirmCart : AppCompatActivity() {
 
     fun GetDataCart() {
         val requestQueue = Volley.newRequestQueue(applicationContext)
-        val jsonArrayRequest = JsonArrayRequest("http://192.168.1.6:8080/server/getDonHang.php",
+        val jsonArrayRequest = JsonArrayRequest("http://192.168.1.6:8080/genX/getDonHang.php",
             { response ->
                 cartArrayList!!.clear()
                 cartArrayListFilter!!.clear()
@@ -172,7 +172,7 @@ class ConfirmCart : AppCompatActivity() {
     private fun deleteDonHang(idDonhangne: Int) {
         val requestQueue = Volley.newRequestQueue(this)
         val stringRequest: StringRequest = object : StringRequest(
-            Method.POST, "http://192.168.1.6:8080/server/deleteDonHang.php",
+            Method.POST, "http://192.168.1.6:8080/genX/deleteDonHang.php",
             Response.Listener { response ->
                 if (response.trim { it <= ' ' } == "success") {
                     Toast.makeText(this@ConfirmCart, "Xoa thanh cong", Toast.LENGTH_SHORT).show()

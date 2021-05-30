@@ -60,7 +60,7 @@ class CartApdapter(context: CartActicity, layout: Int, subjectsList: List<Cart>)
         viewHolder?.textViewSanPhamConLai?.text =
             "Còn lại " + cart.sosanphamtonkho.toString() + " sản phẩm"
         viewHolder?.txtsoluongdamua?.setText(cart.soluong.toString() + "")
-//        Picasso.get().load(cart.imageSanPham).into(viewHolder!!.imageViewSanPham)
+        Picasso.get().load(cart.imageSanPham).into(viewHolder!!.imageViewSanPham)
 
 
         if (context.checkCheckBoxTatCaIsTrue()) {
@@ -104,7 +104,7 @@ class CartApdapter(context: CartActicity, layout: Int, subjectsList: List<Cart>)
                     dialogXoa.setPositiveButton(
                         "YES"
                     ) { dialog, which ->
-                        context.deleteMonHoc(cart.id, cart.giasanpham)
+                        context.deleteMonHang(cart.id, cart.giasanpham)
                         context.TongTien(null, 0, cart.giasanpham)
                     }
                     dialogXoa.setNegativeButton(

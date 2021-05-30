@@ -89,7 +89,7 @@ class LoginActivity : AppCompatActivity() {
     private fun dangkiBangUser() {
         val requestQueue = Volley.newRequestQueue(this)
         val stringRequest: StringRequest = object : StringRequest(
-            Method.POST, "http://192.168.1.6:8080/server/insertUser.php",
+            Method.POST, "http://192.168.1.6:8080/genX/insertUser.php",
             Response.Listener { response ->
                 if (response.trim { it <= ' ' } == "success") {
                     Toast.makeText(this@LoginActivity, "Thêm User thành công", Toast.LENGTH_SHORT)

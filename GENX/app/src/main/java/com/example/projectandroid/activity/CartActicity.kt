@@ -63,7 +63,7 @@ class CartActicity : AppCompatActivity() {
                 Toast.makeText(this@CartActicity, "giỏ hàng của bạn rỗng ", Toast.LENGTH_SHORT)
                     .show()
             } else {
-                Toast.makeText(this@CartActicity, "bạn chưa check món hàng kìa", Toast.LENGTH_SHORT)
+                Toast.makeText(this@CartActicity, "bạn chưa check món hàng", Toast.LENGTH_SHORT)
                     .show()
             }
         }
@@ -74,7 +74,7 @@ class CartActicity : AppCompatActivity() {
                 Toast.makeText(this@CartActicity, "giỏ hàng của bạn rỗng ", Toast.LENGTH_SHORT)
                     .show()
             } else if (tongtien == 0) {
-                Toast.makeText(this@CartActicity, "Bạn chưa check hang kia", Toast.LENGTH_SHORT)
+                Toast.makeText(this@CartActicity, "Bạn chưa check hang", Toast.LENGTH_SHORT)
                     .show()
             } else {
                 muaHang()
@@ -108,11 +108,8 @@ class CartActicity : AppCompatActivity() {
 
     private fun AnhXa() {
         imgLogo = findViewById(R.id.imageLogo)
-//        imgLogo.setImageResource(R.drawable.iconshop)
         iconvanchuyen = findViewById(R.id.imageIconxetai)
         imageIconxetaine = findViewById(R.id.imageIconxetaine)
-//        iconvanchuyen.setImageResource(R.drawable.vanchuyen)
-//        imageIconxetaine.setImageResource(R.drawable.vanchuyen)
         listViewCart = findViewById(R.id.listviewCart)
         Tongtiensanpham = findViewById(R.id.Tongtiensanpham)
         checkBoxTatCa = findViewById(R.id.checkboxTatCa)
@@ -169,10 +166,10 @@ class CartActicity : AppCompatActivity() {
         }
     }
 
-    fun deleteMonHoc(idDonhang: Int, giasanpham: Int) {
+    fun deleteMonHang(idDonhang: Int, giasanpham: Int) {
         val requestQueue = Volley.newRequestQueue(this)
         val stringRequest: StringRequest = object : StringRequest(
-            Method.POST, "http://192.168.1.6:8080/server/deleteDonHang.php",
+            Method.POST, "http://192.168.1.6:8080/genX/deleteDonHang.php",
             Response.Listener { response ->
                 if (response.trim { it <= ' ' } == "success") {
                     Toast.makeText(this@CartActicity, "Xoa thanh cong", Toast.LENGTH_SHORT).show()
@@ -199,7 +196,7 @@ class CartActicity : AppCompatActivity() {
     fun CapNhatDonHang(iddonhang: Int, soluongitem: Int) {
         val requestQueue = Volley.newRequestQueue(this)
         val stringRequest: StringRequest = object : StringRequest(
-            Method.POST, "http://192.168.1.6:8080/server/updateDonHang.php",
+            Method.POST, "http://192.168.1.6:8080/genX/updateDonHang.php",
             Response.Listener { response ->
                 if (response.trim { it <= ' ' } == "success") {
                     Toast.makeText(this@CartActicity, "Cap nhat thanh cong", Toast.LENGTH_SHORT)
@@ -228,7 +225,7 @@ class CartActicity : AppCompatActivity() {
 
     fun GetDataCart() {
         val requestQueue = Volley.newRequestQueue(applicationContext)
-        val jsonArrayRequest = JsonArrayRequest("http://192.168.1.6:8080/server/getDonHang.php",
+        val jsonArrayRequest = JsonArrayRequest("http://192.168.1.6:8080/genX/getDonHang.php",
             { response ->
                 cartArrayList!!.clear()
                 cartArrayListFiler!!.clear()

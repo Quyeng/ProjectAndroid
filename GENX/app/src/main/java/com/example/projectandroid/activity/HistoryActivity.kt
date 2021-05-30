@@ -79,7 +79,7 @@ class HistoryActivity : AppCompatActivity() {
     fun GetDataUsers() {
         val requestQueue = Volley.newRequestQueue(applicationContext)
         val jsonArrayRequest = JsonArrayRequest(
-            "http://192.168.1.6:8080/server/getUser.php",
+            "http://192.168.1.6:8080/genX/getUser.php",
             { response ->
                 userArrayList!!.clear()
                 if (response != null) {
@@ -103,7 +103,7 @@ class HistoryActivity : AppCompatActivity() {
 
     fun GetDataCart() {
         val requestQueue = Volley.newRequestQueue(applicationContext)
-        val jsonArrayRequest = JsonArrayRequest("http://192.168.1.6:8080/server/getDonHangChiTiet.php",
+        val jsonArrayRequest = JsonArrayRequest("http://192.168.1.6:8080/genX/getDonHangChiTiet.php",
             { response ->
                 cartArrayList!!.clear()
                 cartArrayListFiler!!.clear()

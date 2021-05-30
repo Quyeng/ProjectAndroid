@@ -49,7 +49,7 @@ class WatchActivity : AppCompatActivity() {
 
     private fun GetDataPhone() {
         val requestQueue = Volley.newRequestQueue(this)
-        val pathPhone: String = "http://192.168.1.6:8080/server/getsanpham.php"
+        val pathPhone: String = "http://192.168.1.6:8080/genX/getsanpham.php"
         val stringRequest = StringRequest(
             Request.Method.GET, pathPhone,
             { response ->

@@ -45,7 +45,7 @@ class DiscountActivity : AppCompatActivity() {
     fun GetDataDiscount() {
         val requestQueue = Volley.newRequestQueue(applicationContext)
         val jsonArrayRequest = JsonArrayRequest(
-            "http://192.168.1.6:8080/server/getDiscount.php",
+            "http://192.168.1.6:8080/genX/getDiscount.php",
             { response ->
                 if (response != null) {
                     for (i in 0 until response.length()) {
