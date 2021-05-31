@@ -126,7 +126,7 @@ class ProductDetailActivity : AppCompatActivity() {
         }
         imagegiohang!!.setOnClickListener {
             if (btnShowUser!!.text.toString().length != 0 && btnShowUser!!.text.toString() != null) {
-                val intent = Intent(this@ProductDetailActivity, ConfirmCart::class.java)
+                val intent = Intent(this@ProductDetailActivity, CartActicity::class.java)
                 intent.putExtra("idUser", idUserDangNhap)
                 startActivity(intent)
             } else {
@@ -190,7 +190,7 @@ class ProductDetailActivity : AppCompatActivity() {
                 },
                 Response.ErrorListener { error ->
                     Toast.makeText(this@ProductDetailActivity, "Da xay ra loi", Toast.LENGTH_SHORT).show()
-                    Log.d("aaa", "Loi!\n$error")
+                    Log.d("vpq", "Loi!\n$error")
                 }
         ) {
             @Throws(AuthFailureError::class)

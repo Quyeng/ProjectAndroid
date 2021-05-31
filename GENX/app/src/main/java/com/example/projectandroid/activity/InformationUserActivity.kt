@@ -66,19 +66,19 @@ class InformationUserActivity : AppCompatActivity() {
                 if (response.trim { it <= ' ' } == "success") {
                     Toast.makeText(
                         this@InformationUserActivity,
-                        "Cap nhat thanh cong",
+                        "Cập nhật thành công",
                         Toast.LENGTH_SHORT
                     ).show()
                     finish()
                 } else {
-                    Toast.makeText(this@InformationUserActivity, "Loi cap nhat", Toast.LENGTH_SHORT)
+                    Toast.makeText(this@InformationUserActivity, "Lỗi cập nhật", Toast.LENGTH_SHORT)
                         .show()
                 }
             },
             Response.ErrorListener { error ->
                 Toast.makeText(
                     this@InformationUserActivity,
-                    "Da xay ra loi,vui long thu lai",
+                    "Đã xảy ra lỗi, vui lòng thử lại",
                     Toast.LENGTH_SHORT
                 ).show()
                 Log.d("aaa", "Loi!\n$error")

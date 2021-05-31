@@ -30,8 +30,8 @@ class LaptopActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_laptop)
         listViewPhone = findViewById(R.id.listViewLaptop)
-        arrayListPhone = ArrayList<Product>()
-        arrayListPhoneFilter = ArrayList<Product>()
+        arrayListPhone = ArrayList()
+        arrayListPhoneFilter = ArrayList()
         GetIdProductType()
         //            ActionToolBar();
         GetDataPhone()
@@ -41,7 +41,7 @@ class LaptopActivity : AppCompatActivity() {
 
     private fun GetDataPhone() {
         val requestQueue = Volley.newRequestQueue(this)
-        val pathPhone: String = "http://192.168.1.6:8080/genX/getsanpham.php"
+        val pathPhone = "http://192.168.1.6:8080/genX/getsanpham.php"
         val stringRequest = StringRequest(
             Request.Method.GET, pathPhone,
             { response ->

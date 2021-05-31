@@ -341,7 +341,7 @@ class HomeActivity : AppCompatActivity() {
         navigationView = findViewById(R.id.navigationview)
         listViewmanhinhchinh = findViewById(R.id.listviewManhinhchinh)
         drawerLayout = findViewById(R.id.drawerlayout)
-        arrayListProductType = ArrayList<ProductType>()
+        arrayListProductType = ArrayList()
         arrayListProductType!!.add(
             0,
             ProductType(
@@ -352,10 +352,10 @@ class HomeActivity : AppCompatActivity() {
         )
         productTypeAdapter = ProductTypeAdapter(arrayListProductType!!, applicationContext)
         listViewmanhinhchinh.setAdapter(productTypeAdapter)
-        arrayListProduct = ArrayList<Product>()
+        arrayListProduct = ArrayList()
         productAdapter = ProductAdapter(this, R.layout.item_product_new, arrayListProduct!!)
         listViewProduct.setAdapter(productAdapter)
-        arrayListProductType1 = ArrayList<ProductType>()
+        arrayListProductType1 = ArrayList()
         productTypeAdapter1 = ProductTypeAdapter1(arrayListProductType1!!, this)
         recyclerView.setHasFixedSize(true)
         val layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
@@ -363,8 +363,7 @@ class HomeActivity : AppCompatActivity() {
         recyclerView.setLayoutManager(layoutManager)
         val dividerItemDecoration =
             DividerItemDecoration(recyclerView.getContext(), DividerItemDecoration.HORIZONTAL)
-        val dividerItemDecoration1 =
-            DividerItemDecoration(recyclerView.getContext(), DividerItemDecoration.VERTICAL)
+        DividerItemDecoration(recyclerView.getContext(), DividerItemDecoration.VERTICAL)
         val drawable = ContextCompat.getDrawable(
             applicationContext, R.drawable.custom_mau
         )

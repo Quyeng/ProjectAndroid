@@ -1,5 +1,7 @@
 package com.example.projectandroid.activity
-
+/*
+Team 10
+ */
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -16,20 +18,18 @@ import com.example.projectandroid.model.Cart
 import com.example.projectandroid.ultil.CheckConnection
 import org.json.JSONException
 import java.util.*
-/*
-Team 10
- */
+
 class CartActicity : AppCompatActivity() {
     var checkBoxTatCa: CheckBox? = null
     var btnDiscount: Button? = null
     var btnMuaHang: Button? = null
-    lateinit var imgLogo: ImageView
-    lateinit var iconvanchuyen: ImageView
-    lateinit var imageIconxetaine: ImageView
+    var imgLogo: ImageView? = null
+    var iconvanchuyen: ImageView? = null
+    var imageIconxetaine: ImageView? = null
     var Tongtiensanpham: TextView? = null
     var mangidDiscount: ArrayList<Int>? = null
     var cartArrayList: ArrayList<Cart>? = null
-    var cartArrayListFiler: ArrayList<Cart>? = null
+    lateinit var cartArrayListFiler: ArrayList<Cart>
     lateinit var listViewCart: ListView
     var cartApdapter: CartApdapter? = null
     var REQUEST_CODE_DISCOUNT = 123
@@ -60,22 +60,18 @@ class CartActicity : AppCompatActivity() {
                 val intent1 = Intent(this@CartActicity, DiscountActivity::class.java)
                 startActivityForResult(intent1, REQUEST_CODE_DISCOUNT)
             } else if (cartArrayListFiler!!.size == 0) {
-                Toast.makeText(this@CartActicity, "giỏ hàng của bạn rỗng ", Toast.LENGTH_SHORT)
-                    .show()
+                Toast.makeText(this@CartActicity, "giỏ hàng của bạn rỗng ", Toast.LENGTH_SHORT).show()
             } else {
-                Toast.makeText(this@CartActicity, "bạn chưa check món hàng", Toast.LENGTH_SHORT)
-                    .show()
+                Toast.makeText(this@CartActicity, "bạn chưa kiểm tra món hàng", Toast.LENGTH_SHORT).show()
             }
         }
         btnMuaHang!!.setOnClickListener {
             val a = Tongtiensanpham!!.text.toString()
             val tongtien = a.toInt()
             if (cartArrayListFiler!!.size == 0) {
-                Toast.makeText(this@CartActicity, "giỏ hàng của bạn rỗng ", Toast.LENGTH_SHORT)
-                    .show()
+                Toast.makeText(this@CartActicity, "giỏ hàng của bạn rỗng ", Toast.LENGTH_SHORT).show()
             } else if (tongtien == 0) {
-                Toast.makeText(this@CartActicity, "Bạn chưa check hang", Toast.LENGTH_SHORT)
-                    .show()
+                Toast.makeText(this@CartActicity, "Bạn chưa có mặt hàng nào", Toast.LENGTH_SHORT).show()
             } else {
                 muaHang()
             }
@@ -116,7 +112,7 @@ class CartActicity : AppCompatActivity() {
         cartArrayList = ArrayList<Cart>()
         cartArrayListFiler = ArrayList<Cart>()
         GetDataCart()
-        cartApdapter = CartApdapter(this, R.layout.dong_cart, cartArrayListFiler!!)
+        cartApdapter = CartApdapter(this, R.layout.dong_cart, cartArrayListFiler)
         listViewCart.setAdapter(cartApdapter)
         btnDiscount = findViewById(R.id.btnDiscount)
         btnMuaHang = findViewById(R.id.btnMuaHang)
@@ -168,20 +164,19 @@ class CartActicity : AppCompatActivity() {
 
     fun deleteMonHang(idDonhang: Int, giasanpham: Int) {
         val requestQueue = Volley.newRequestQueue(this)
-        val stringRequest: StringRequest = object : StringRequest(
-            Method.POST, "http://192.168.1.6:8080/genX/deleteDonHang.php",
-            Response.Listener { response ->
-                if (response.trim { it <= ' ' } == "success") {
-                    Toast.makeText(this@CartActicity, "Xoa thanh cong", Toast.LENGTH_SHORT).show()
-                    GetDataCart()
-                } else {
-                    Toast.makeText(this@CartActicity, "Loi Xoa", Toast.LENGTH_SHORT).show()
+        val stringRequest: StringRequest = object : StringRequest(Method.POST, "http://192.168.1.6:8080/genX/deleteDonHang.php",
+                Response.Listener { response ->
+                    if (response.trim { it <= ' ' } == "success") {
+                        Toast.makeText(this@CartActicity, "Xoa thanh cong", Toast.LENGTH_SHORT).show()
+                        GetDataCart()
+                    } else {
+                        Toast.makeText(this@CartActicity, "Loi Xoa", Toast.LENGTH_SHORT).show()
+                    }
+                },
+                Response.ErrorListener { error ->
+                    Toast.makeText(this@CartActicity, "Da xay ra loi", Toast.LENGTH_SHORT).show()
+                    Log.d("vpq", "Loi!\n$error")
                 }
-            },
-            Response.ErrorListener { error ->
-                Toast.makeText(this@CartActicity, "Da xay ra loi", Toast.LENGTH_SHORT).show()
-                Log.d("vpq", "Loi!\n$error")
-            }
         ) {
             @Throws(AuthFailureError::class)
             override fun getParams(): Map<String, String>? {
@@ -195,25 +190,23 @@ class CartActicity : AppCompatActivity() {
 
     fun CapNhatDonHang(iddonhang: Int, soluongitem: Int) {
         val requestQueue = Volley.newRequestQueue(this)
-        val stringRequest: StringRequest = object : StringRequest(
-            Method.POST, "http://192.168.1.6:8080/genX/updateDonHang.php",
-            Response.Listener { response ->
-                if (response.trim { it <= ' ' } == "success") {
-                    Toast.makeText(this@CartActicity, "Cap nhat thanh cong", Toast.LENGTH_SHORT)
-                        .show()
-                } else {
-                    Toast.makeText(this@CartActicity, "Loi cap nhat", Toast.LENGTH_SHORT).show()
+        val stringRequest: StringRequest = object : StringRequest(Method.POST, "http://192.168.1.6:8080/genX/updateDonHang.php",
+                Response.Listener { response ->
+                    if (response.trim { it <= ' ' } == "success") {
+                        Toast.makeText(this@CartActicity, "Cap nhat thanh cong", Toast.LENGTH_SHORT).show()
+                    } else {
+                        Toast.makeText(this@CartActicity, "Loi cap nhat", Toast.LENGTH_SHORT).show()
+                    }
+                },
+                Response.ErrorListener { error ->
+                    Toast.makeText(this@CartActicity, "Da xay ra loi", Toast.LENGTH_SHORT).show()
+                    Log.d("vpq", "Loi!\n$error")
                 }
-            },
-            Response.ErrorListener { error ->
-                Toast.makeText(this@CartActicity, "Da xay ra loi", Toast.LENGTH_SHORT).show()
-                Log.d("vpq", "Loi!\n$error")
-            }
         ) {
             @Throws(AuthFailureError::class)
             override fun getParams(): Map<String, String>? {
                 Log.e("vpq", "id don hang la$iddonhang")
-                Log.e("vpq", "so luong don hang la$soluongitem")
+                Log.e("vpq", "soluong don hang la$soluongitem")
                 val params: MutableMap<String, String> = HashMap()
                 params["iddonhang"] = iddonhang.toString()
                 params["soluong"] = soluongitem.toString()
@@ -225,85 +218,57 @@ class CartActicity : AppCompatActivity() {
 
     fun GetDataCart() {
         val requestQueue = Volley.newRequestQueue(applicationContext)
-        val jsonArrayRequest = JsonArrayRequest("http://192.168.1.6:8080/genX/getDonHang.php",
-            { response ->
-                cartArrayList!!.clear()
-                cartArrayListFiler!!.clear()
-                if (response != null) {
-                    for (i in 0 until response.length()) {
-                        try {
-                            var id = 0
-                            var idUser = 0
-                            var tensanpham = ""
-                            var soluong = 0
-                            var ngaymuahang = ""
-                            var giasanpham = 0
-                            var tenthuonghieu = ""
-                            var sosanphamtonkho = 0
-                            var hinhanhsanpham = ""
-                            val jsonObject = response.getJSONObject(i)
-                            id = jsonObject.getInt("id")
-                            idUser = jsonObject.getInt("idUser")
-                            tensanpham = jsonObject.getString("tensanpham")
-                            soluong = jsonObject.getInt("soluong")
-                            ngaymuahang = jsonObject.getString("ngaymuahang")
-                            giasanpham = jsonObject.getInt("giasanpham")
-                            tenthuonghieu = jsonObject.getString("tenthuonghieu")
-                            sosanphamtonkho = jsonObject.getInt("sosanphamtonkho")
-                            hinhanhsanpham = jsonObject.getString("hinhanhsanpham")
-                            cartArrayList!!.add(
-                                Cart(
-                                    id,
-                                    idUser,
-                                    tensanpham,
-                                    soluong,
-                                    ngaymuahang,
-                                    giasanpham,
-                                    tenthuonghieu,
-                                    sosanphamtonkho,
-                                    hinhanhsanpham
-                                )
-                            )
-                        } catch (e: JSONException) {
-                            e.printStackTrace()
-                        }
+        val jsonArrayRequest = JsonArrayRequest("http://192.168.1.6:8080/genX/getDonHang.php", { response ->
+            cartArrayList!!.clear()
+            cartArrayListFiler!!.clear()
+            if (response != null) {
+                for (i in 0 until response.length()) {
+                    try {
+                        var id = 0
+                        var idUser = 0
+                        var tensanpham = ""
+                        var soluong = 0
+                        var ngaymuahang = ""
+                        var giasanpham = 0
+                        var tenthuonghieu = ""
+                        var sosanphamtonkho = 0
+                        var hinhanhsanpham = ""
+                        val jsonObject = response.getJSONObject(i)
+                        id = jsonObject.getInt("id")
+                        idUser = jsonObject.getInt("idUser")
+                        tensanpham = jsonObject.getString("tensanpham")
+                        soluong = jsonObject.getInt("soluong")
+                        ngaymuahang = jsonObject.getString("ngaymuahang")
+                        giasanpham = jsonObject.getInt("giasanpham")
+                        tenthuonghieu = jsonObject.getString("tenthuonghieu")
+                        sosanphamtonkho = jsonObject.getInt("sosanphamtonkho")
+                        hinhanhsanpham = jsonObject.getString("hinhanhsanpham")
+                        cartArrayList!!.add(Cart(id, idUser, tensanpham, soluong, ngaymuahang, giasanpham, tenthuonghieu, sosanphamtonkho, hinhanhsanpham))
+                    } catch (e: JSONException) {
+                        e.printStackTrace()
                     }
-                    for (j in cartArrayList!!.indices) {
-                        if (idUsers == cartArrayList!![j].idUser) {
-                            val cart: Cart = cartArrayList!![j]
-                            cartArrayListFiler!!.add(
-                                Cart(
-                                    cart.id,
-                                    cart.idUser,
-                                    cart.tensanpham,
-                                    cart.soluong,
-                                    cart.ngaymuahang,
-                                    cart.giasanpham,
-                                    cart.tenhuonghieu,
-                                    cart.sosanphamtonkho,
-                                    cart.imageSanPham
-                                )
-                            )
-                        }
-                    }
-                    var x = 0
-                    for (i in 0 until cartArrayListFiler!!.size - 1) {
-                        x = cartArrayListFiler!![i].soluong
-                        for (j in cartArrayListFiler!!.size - 1 downTo i + 1) {
-                            if (cartArrayListFiler!![i].tensanpham.equals(
-                                    cartArrayListFiler!![j].tensanpham
-                                )
-                            ) {
-                                x = x + cartArrayListFiler!![j].soluong
-                                cartArrayListFiler!![i].soluong
-                                cartArrayListFiler!!.removeAt(j)
-                            }
-                        }
-                    }
-                    cartApdapter?.notifyDataSetChanged()
                 }
+                for (j in cartArrayList!!.indices) {
+                    if (idUsers == cartArrayList!![j].idUser) {
+                        val cart: Cart = cartArrayList!![j]
+                        cartArrayListFiler!!.add(Cart(cart.id, cart.idUser, cart.tensanpham, cart.soluong, cart.ngaymuahang, cart.giasanpham, cart.tenhuonghieu,
+                                cart.sosanphamtonkho, cart.imageSanPham))
+                    }
+                }
+                var x = 0
+                for (i in 0 until cartArrayListFiler!!.size - 1) {
+                    x = cartArrayListFiler!![i].soluong
+                    for (j in cartArrayListFiler!!.size - 1 downTo i + 1) {
+                        if (cartArrayListFiler!![i].tensanpham.equals(cartArrayListFiler!![j].tensanpham)) {
+                            x = x + cartArrayListFiler!![j].soluong
+                            cartArrayListFiler!![i].soluong
+                            cartArrayListFiler!!.removeAt(j)
+                        }
+                    }
+                }
+                cartApdapter?.notifyDataSetChanged()
             }
-        ) { error -> CheckConnection.ShowToast_Short(applicationContext, error.toString()) }
+        }) { error -> CheckConnection.ShowToast_Short(applicationContext, error.toString()) }
         requestQueue.add(jsonArrayRequest)
     }
 

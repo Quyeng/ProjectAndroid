@@ -34,7 +34,7 @@ class ConfirmCart : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_confirm_cart)
-//        textViewTongtien = findViewById(R.id.textviewTongtien)
+       textViewTongtien = findViewById(R.id.textviewTongtien)
         btnConfirm = findViewById(R.id.btnConfirm)
         btnHuy = findViewById(R.id.btnHuy)
         edtDiaChi = findViewById(R.id.textDiachi)
@@ -43,7 +43,7 @@ class ConfirmCart : AppCompatActivity() {
         val intent = intent
         idUser = intent.getIntExtra("idUser", 123)
         tongtien = intent.getIntExtra("tongtienphaitra", 123)
-//        textViewTongtien.setText(tongtien.toString() + "")
+        textViewTongtien.setText(tongtien.toString() + "")
 //        Toast.makeText(this, "id usser$idUser", Toast.LENGTH_SHORT).show()
 //        Toast.makeText(this, "tongtien : $tongtien", Toast.LENGTH_SHORT).show()
         btnConfirm.setOnClickListener(View.OnClickListener {

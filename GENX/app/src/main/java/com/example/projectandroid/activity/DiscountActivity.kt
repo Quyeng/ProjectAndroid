@@ -27,7 +27,7 @@ class DiscountActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_discount)
-        discountArrayList = ArrayList<Discount>()
+        discountArrayList = ArrayList()
         btnXacnhangiamgia = findViewById(R.id.btnxacnhangiamgia)
         btnhuyxacnhan = findViewById(R.id.btnhuyxacnhangiamgia)
         listViewDiscount = findViewById(R.id.listviewgiamgia)
