@@ -34,7 +34,7 @@ class LoginActivity : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
 
 
-        btndangki?.setOnClickListener(View.OnClickListener { giaoDien() })
+        btndangki?.setOnClickListener(View.OnClickListener { signup() })
         btnDangNhap?.setOnClickListener(View.OnClickListener {
             val taikhoan = edtTK?.getText().toString()
             val matkhau = edtMK?.getText().toString()
@@ -47,29 +47,34 @@ class LoginActivity : AppCompatActivity() {
         })
     }
 
-    private fun giaoDien() {
-        val dialog = Dialog(this)
-        dialog.setContentView(R.layout.signup)
-        edtEmail = dialog.findViewById(R.id.inputemail)
-        edtPassword = dialog.findViewById(R.id.password)
-        edtUsername = dialog.findViewById(R.id.inputusersup)
-        val btnDangkiXacNhan = dialog.findViewById<Button>(R.id.signupnha)
+    private fun signup() {
+//        val dialog = Dialog(this)
+//        dialog.setContentView(R.layout.signup)
+//        edtEmail = dialog.findViewById(R.id.inputemail)
+//        edtPassword = dialog.findViewById(R.id.password)
+//        edtUsername = dialog.findViewById(R.id.inputusersup)
+//        val btnDangkiXacNhan = dialog.findViewById<Button>(R.id.signupnha)
+        setContentView(R.layout.signup)
+        edtEmail = findViewById(R.id.inputemail)
+        edtPassword = findViewById(R.id.password)
+        edtUsername = findViewById(R.id.inputusersup)
+        val btnDangkiXacNhan = findViewById<Button>(R.id.signupnha)
         btnDangkiXacNhan.setOnClickListener {
             DangKi()
-            dialog.dismiss()
+//            dialog.dismiss()
         }
-        dialog.setTitle("Đăng kí Hệ Thống")
-        dialog.setCanceledOnTouchOutside(false)
-        dialog.show()
+//        dialog.setTitle("Đăng kí Hệ Thống")
+//        dialog.setCanceledOnTouchOutside(false)
+//        dialog.show()
     }
 
     private fun DangKi() {
-        val dialog = Dialog(this)
+//        val dialog = Dialog(this)
         val email = edtEmail!!.text.toString()
         val password = edtPassword!!.text.toString()
-        dialog.setTitle("Vui lòng đợi giây lát");
-        dialog.setCanceledOnTouchOutside(true);
-        dialog.show();
+//        dialog.setTitle("Vui lòng đợi giây lát");
+//        dialog.setCanceledOnTouchOutside(true);
+//        dialog.show();
         auth!!.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener(
                 this

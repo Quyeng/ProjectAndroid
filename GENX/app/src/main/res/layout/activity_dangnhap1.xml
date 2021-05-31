@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.dangnhap">
+    tools:context=".activity.LoginActivity">
 
     <ImageView
         android:id="@+id/imageView4"
@@ -52,11 +52,15 @@
     <EditText
         android:id="@+id/inputpass"
         android:layout_width="230dp"
-        android:layout_height="63dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
         android:layout_marginBottom="260dp"
         android:hint="@string/password"
         android:inputType="textPassword"
+        android:backgroundTint="#CCCCCC"
         android:textColorHint="#CCCCCC"
+        app:boxBackgroundColor="#CCCCCC"
+        app:boxStrokeColor="#CCCCCC"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.52"
