@@ -27,14 +27,14 @@ class ShoesActivity : AppCompatActivity() {
     var shoesAdapter: ShoesAdapter? = null
     var arrayShoesShirt: ArrayList<Product>? = null
     var arrayListShoesFilter: ArrayList<Product>? = null
-    var idShirt = 0
+    var idShoes = 0
     var page = 1
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_shoes)
         listViewShoes = findViewById(R.id.listViewShoes)
-        arrayShoesShirt = ArrayList<Product>()
-        arrayListShoesFilter = ArrayList<Product>()
+        arrayShoesShirt = ArrayList()
+        arrayListShoesFilter = ArrayList()
         GetIdProductType()
         //            ActionToolBar();
         GetDataPhone()
@@ -49,9 +49,9 @@ class ShoesActivity : AppCompatActivity() {
 
     private fun GetDataPhone() {
         val requestQueue = Volley.newRequestQueue(this)
-        val pathPhone: String = "http://192.168.1.6:8080/genX/getsanpham.php"
+        val pathShoes: String = "http://192.168.1.6:8080/genX/getsanpham.php"
         val stringRequest = StringRequest(
-            Request.Method.GET, pathPhone,
+            Request.Method.GET, pathShoes,
             { response ->
                 var idPhone = 0
                 var namePhone = ""
@@ -97,7 +97,7 @@ class ShoesActivity : AppCompatActivity() {
                     e.printStackTrace()
                 }
                 for (i in arrayShoesShirt!!.indices) {
-                    if (arrayShoesShirt!![i].idProduct == idShirt) {
+                    if (arrayShoesShirt!![i].idProduct == idShoes) {
                         arrayListShoesFilter!!.add(
                             Product(
                                 arrayShoesShirt!![i].id,
@@ -121,8 +121,8 @@ class ShoesActivity : AppCompatActivity() {
     }
 
     private fun GetIdProductType() {
-        idShirt = intent.getIntExtra("idProductType", -1)
-        Log.d("giatrsp", idShirt.toString() + "")
+        idShoes = intent.getIntExtra("idProductType", -1)
+        Log.d("giatrsp", idShoes.toString() + "")
     }
 
     private fun anhxa() {}

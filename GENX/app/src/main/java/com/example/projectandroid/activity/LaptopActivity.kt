@@ -24,7 +24,7 @@ class LaptopActivity : AppCompatActivity() {
     var phoneAdapter: LaptopAdapter? = null
     var arrayListPhone: ArrayList<Product>? = null
     var arrayListPhoneFilter: ArrayList<Product>? = null
-    var idPhone = 0
+    var idLaptop = 0
     var page = 1
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,9 +41,9 @@ class LaptopActivity : AppCompatActivity() {
 
     private fun GetDataPhone() {
         val requestQueue = Volley.newRequestQueue(this)
-        val pathPhone = "http://192.168.1.6:8080/genX/getsanpham.php"
+        val pathLaptop = "http://192.168.1.6:8080/genX/getsanpham.php"
         val stringRequest = StringRequest(
-            Request.Method.GET, pathPhone,
+            Request.Method.GET, pathLaptop,
             { response ->
                 var idPhone = 0
                 var namePhone = ""
@@ -88,7 +88,7 @@ class LaptopActivity : AppCompatActivity() {
                     e.printStackTrace()
                 }
                 for (i in arrayListPhone!!.indices) {
-                    if (arrayListPhone!![i].idProduct === 2) {
+                    if (arrayListPhone!![i].idProduct == 2) {
                         arrayListPhoneFilter!!.add(
                             Product(
                                 arrayListPhone!![i].id,
@@ -107,8 +107,8 @@ class LaptopActivity : AppCompatActivity() {
     }
 
     private fun GetIdProductType() {
-        idPhone = intent.getIntExtra("idProductType", -1)
-        Log.d("giatrsp", idPhone.toString() + "")
+        idLaptop = intent.getIntExtra("idProductType", -1)
+        Log.d("giatrsp", idLaptop.toString() + "")
     }
 
     private fun anhxa() {}

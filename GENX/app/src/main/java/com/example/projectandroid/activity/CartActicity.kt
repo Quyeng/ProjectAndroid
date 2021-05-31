@@ -54,24 +54,24 @@ class CartActicity : AppCompatActivity() {
         }
         btnDiscount!!.setOnClickListener {
             val tongtien = Tongtiensanpham!!.text.toString().trim { it <= ' ' }
-            Log.e("vpq", "tong tien la : $tongtien")
+            Log.e("vpq", "Tổng tiền là : $tongtien")
             val tien = tongtien.toInt()
             if (tien != 0) {
                 val intent1 = Intent(this@CartActicity, DiscountActivity::class.java)
                 startActivityForResult(intent1, REQUEST_CODE_DISCOUNT)
             } else if (cartArrayListFiler!!.size == 0) {
-                Toast.makeText(this@CartActicity, "giỏ hàng của bạn rỗng ", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@CartActicity, "Giỏ hàng của bạn rỗng ", Toast.LENGTH_SHORT).show()
             } else {
-                Toast.makeText(this@CartActicity, "bạn chưa kiểm tra món hàng", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@CartActicity, "Bạn hãy kiểm tra món hàng", Toast.LENGTH_SHORT).show()
             }
         }
         btnMuaHang!!.setOnClickListener {
             val a = Tongtiensanpham!!.text.toString()
             val tongtien = a.toInt()
             if (cartArrayListFiler!!.size == 0) {
-                Toast.makeText(this@CartActicity, "giỏ hàng của bạn rỗng ", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@CartActicity, "Giỏ hàng của bạn rỗng ", Toast.LENGTH_SHORT).show()
             } else if (tongtien == 0) {
-                Toast.makeText(this@CartActicity, "Bạn chưa có mặt hàng nào", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@CartActicity, "Bạn hãy kiểm tra món hàng", Toast.LENGTH_SHORT).show()
             } else {
                 muaHang()
             }
@@ -167,15 +167,15 @@ class CartActicity : AppCompatActivity() {
         val stringRequest: StringRequest = object : StringRequest(Method.POST, "http://192.168.1.6:8080/genX/deleteDonHang.php",
                 Response.Listener { response ->
                     if (response.trim { it <= ' ' } == "success") {
-                        Toast.makeText(this@CartActicity, "Xoa thanh cong", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@CartActicity, "Xóa thành công", Toast.LENGTH_SHORT).show()
                         GetDataCart()
                     } else {
-                        Toast.makeText(this@CartActicity, "Loi Xoa", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@CartActicity, "Lỗi xóa", Toast.LENGTH_SHORT).show()
                     }
                 },
                 Response.ErrorListener { error ->
-                    Toast.makeText(this@CartActicity, "Da xay ra loi", Toast.LENGTH_SHORT).show()
-                    Log.d("vpq", "Loi!\n$error")
+                    Toast.makeText(this@CartActicity, "Đã xảy ra lỗi", Toast.LENGTH_SHORT).show()
+                    Log.d("vpq", "Lỗi!\n$error")
                 }
         ) {
             @Throws(AuthFailureError::class)
@@ -193,13 +193,13 @@ class CartActicity : AppCompatActivity() {
         val stringRequest: StringRequest = object : StringRequest(Method.POST, "http://192.168.1.6:8080/genX/updateDonHang.php",
                 Response.Listener { response ->
                     if (response.trim { it <= ' ' } == "success") {
-                        Toast.makeText(this@CartActicity, "Cap nhat thanh cong", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@CartActicity, "Cập nhật thành công", Toast.LENGTH_SHORT).show()
                     } else {
-                        Toast.makeText(this@CartActicity, "Loi cap nhat", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@CartActicity, "Lỗi cập nhật", Toast.LENGTH_SHORT).show()
                     }
                 },
                 Response.ErrorListener { error ->
-                    Toast.makeText(this@CartActicity, "Da xay ra loi", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@CartActicity, "Đã xảy ra lỗi", Toast.LENGTH_SHORT).show()
                     Log.d("vpq", "Loi!\n$error")
                 }
         ) {

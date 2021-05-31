@@ -14,15 +14,15 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import com.example.projectandroid.R
 import com.example.projectandroid.activity.ProductDetailActivity
-import com.example.projectandroid.activity.TrousersActivity
+import com.example.projectandroid.activity.PantsActivity
 import com.example.projectandroid.model.Product
 import com.squareup.picasso.Picasso
 import java.text.DecimalFormat
 
-class TrousersAdapter(context: TrousersActivity, layout: Int, subjectsList: List<Product>) :
+class PantsAdapter(context: PantsActivity, layout: Int, subjectsList: List<Product>) :
     BaseAdapter() {
     var x = 0
-    private val context: TrousersActivity
+    private val context: PantsActivity
     private val layout: Int
     private val arraListProduct: List<Product>
     override fun getCount(): Int {
@@ -62,7 +62,7 @@ class TrousersAdapter(context: TrousersActivity, layout: Int, subjectsList: List
         } else {
             viewHolder = view.tag as ViewHolder
         }
-        val product: Product = arraListProduct[i] as Product
+        val product: Product = arraListProduct[i]
         viewHolder!!.textViewNamePhone?.setText(product.nameProduct)
         viewHolder.textViewNamePhone!!.isSelected = true
         val decimalFormat = DecimalFormat("###,###,###")

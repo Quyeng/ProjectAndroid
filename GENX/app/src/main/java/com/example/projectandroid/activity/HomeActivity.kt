@@ -131,7 +131,7 @@ class HomeActivity : AppCompatActivity() {
                     }
                     4 -> {
                         if (CheckConnection.haveNetworkConnection(application)) {
-                            val intent = Intent(this@HomeActivity, TrousersActivity::class.java)
+                            val intent = Intent(this@HomeActivity, PantsActivity::class.java)
                             intent.putExtra("idProductType", 4)
                             startActivity(intent)
                         } else {
@@ -314,7 +314,7 @@ class HomeActivity : AppCompatActivity() {
             imageView.scaleType = ImageView.ScaleType.FIT_XY
             viewFlipper!!.addView(imageView)
         }
-        viewFlipper!!.flipInterval = 5000
+        viewFlipper!!.flipInterval = 4000
         viewFlipper!!.isAutoStart = true
         val animation_slide_in = AnimationUtils.loadAnimation(
             applicationContext, R.anim.slide_in_right
@@ -347,7 +347,7 @@ class HomeActivity : AppCompatActivity() {
             ProductType(
                 0,
                 "Trang Chủ",
-                "https://tse4.mm.bing.net/th?id=OIP.JCCq1sFqS_2xfar05oek_gHaHa&pid=Api&P=0&w=300&h=300"
+                "https://bizweb.dktcdn.net/100/293/434/themes/650184/assets/cate1_icon.png?1615185763755"
             )
         )
         productTypeAdapter = ProductTypeAdapter(arrayListProductType!!, applicationContext)

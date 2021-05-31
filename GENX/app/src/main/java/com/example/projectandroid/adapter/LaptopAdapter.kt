@@ -62,7 +62,7 @@ class LaptopAdapter(context: LaptopActivity, layout: Int, subjectsList: List<Pro
         } else {
             viewHolder = view.tag as ViewHolder
         }
-        val product: Product = arraListProduct[i] as Product
+        val product: Product = arraListProduct[i]
         viewHolder!!.textViewNamePhone?.setText(product.nameProduct)
         viewHolder.textViewNamePhone!!.isSelected = true
         val decimalFormat = DecimalFormat("###,###,###")

@@ -27,14 +27,14 @@ class WatchActivity : AppCompatActivity() {
     var WatchAdapter: WatchAdapter? = null
     var arrayListWatch: ArrayList<Product>? = null
     var arrayListWatchFilter: ArrayList<Product>? = null
-    var idShirt = 0
+    var idWatch = 0
     var page = 1
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_watch)
         listViewWatch = findViewById(R.id.listViewWatch)
-        arrayListWatch = ArrayList<Product>()
-        arrayListWatchFilter = ArrayList<Product>()
+        arrayListWatch = ArrayList()
+        arrayListWatchFilter = ArrayList()
         GetIdProductType()
         //            ActionToolBar();
         GetDataPhone()
@@ -49,9 +49,9 @@ class WatchActivity : AppCompatActivity() {
 
     private fun GetDataPhone() {
         val requestQueue = Volley.newRequestQueue(this)
-        val pathPhone: String = "http://192.168.1.6:8080/genX/getsanpham.php"
+        val pathWatch = "http://192.168.1.6:8080/genX/getsanpham.php"
         val stringRequest = StringRequest(
-            Request.Method.GET, pathPhone,
+            Request.Method.GET, pathWatch,
             { response ->
                 var idPhone = 0
                 var namePhone = ""
@@ -97,7 +97,7 @@ class WatchActivity : AppCompatActivity() {
                     e.printStackTrace()
                 }
                 for (i in arrayListWatch!!.indices) {
-                    if (arrayListWatch!![i].idProduct == idShirt) {
+                    if (arrayListWatch!![i].idProduct == idWatch) {
                         arrayListWatchFilter!!.add(
                             Product(
                                 arrayListWatch!![i].id,
@@ -120,8 +120,8 @@ class WatchActivity : AppCompatActivity() {
         requestQueue.add(stringRequest)
     }
     private fun GetIdProductType() {
-        idShirt = intent.getIntExtra("idProductType", -1)
-        Log.d("giatrsp", idShirt.toString() + "")
+        idWatch = intent.getIntExtra("idProductType", -1)
+        Log.d("giatrsp", idWatch.toString() + "")
     }
 
     private fun anhxa() {}

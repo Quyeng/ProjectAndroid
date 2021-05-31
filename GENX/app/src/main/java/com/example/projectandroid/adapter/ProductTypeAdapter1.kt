@@ -8,7 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.projectandroid.R
 import com.example.projectandroid.activity.*
@@ -48,7 +47,7 @@ class ProductTypeAdapter1(datashops: ArrayList<ProductType>, context: HomeActivi
                     context.startActivity(intent)
                 }
                 3 -> {
-                    val intent = Intent(context, TrousersActivity::class.java)
+                    val intent = Intent(context, PantsActivity::class.java)
                     intent.putExtra("idProductType", 4)
                     context.startActivity(intent)
                 }

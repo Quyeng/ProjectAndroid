@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.TrousersActivity"
+    tools:context=".activity.PantsActivity"
     android:orientation="horizontal">
 
     <androidx.drawerlayout.widget.DrawerLayout

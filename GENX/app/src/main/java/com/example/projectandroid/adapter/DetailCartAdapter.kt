@@ -61,7 +61,7 @@ class DetailCartAdapter(context: HistoryActivity, layout: Int, subjectsList: Lis
         } else {
             viewHolder = view.tag as ViewHolder
         }
-        val cart: DetailCart = arraListProduct[i] as DetailCart
+        val cart: DetailCart = arraListProduct[i]
         viewHolder!!.textViewNameSanPham!!.text = "Sản phẩm : " + cart.tensanpham
         viewHolder.textViewngaymuahang!!.text = "Ngày mua hàng : " + cart.ngaymuahang
         val decimalFormat = DecimalFormat("###,###,###")

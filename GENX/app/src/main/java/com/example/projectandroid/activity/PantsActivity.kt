@@ -14,34 +14,34 @@ import com.android.volley.Request
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.projectandroid.R
-import com.example.projectandroid.adapter.TrousersAdapter
+import com.example.projectandroid.adapter.PantsAdapter
 import com.example.projectandroid.model.Product
 import com.example.projectandroid.ultil.CheckConnection
 import org.json.JSONArray
 import org.json.JSONException
 import java.util.*
 
-class TrousersActivity : AppCompatActivity() {
+class PantsActivity : AppCompatActivity() {
     var toolbarPhone: Toolbar? = null
     lateinit var listViewTrousers: ListView
-    var trousersAdapter: TrousersAdapter? = null
+    var pantsAdapter: PantsAdapter? = null
     var arrayListTrousers: ArrayList<Product>? = null
     var getArrayListTrousersFilter: ArrayList<Product>? = null
-    var idShirt = 0
+    var idPants = 0
     var page = 1
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_trousers)
+        setContentView(R.layout.activity_pants)
         listViewTrousers = findViewById(R.id.listViewTrousers)
-        arrayListTrousers = ArrayList<Product>()
-        getArrayListTrousersFilter = ArrayList<Product>()
+        arrayListTrousers = ArrayList()
+        getArrayListTrousersFilter = ArrayList()
         GetIdProductType()
         //            ActionToolBar();
         GetDataPhone()
-        trousersAdapter = TrousersAdapter(this, R.layout.item_phone, getArrayListTrousersFilter!!)
-        listViewTrousers.setAdapter(trousersAdapter)
+        pantsAdapter = PantsAdapter(this, R.layout.item_phone, getArrayListTrousersFilter!!)
+        listViewTrousers.setAdapter(pantsAdapter)
         listViewTrousers.setOnItemClickListener(OnItemClickListener { parent, view, position, id ->
-            val intent = Intent(this@TrousersActivity, ProductDetailActivity::class.java)
+            val intent = Intent(this@PantsActivity, ProductDetailActivity::class.java)
             intent.putExtra("information", arrayListTrousers!![position])
             startActivity(intent)
         })
@@ -49,9 +49,9 @@ class TrousersActivity : AppCompatActivity() {
 
     private fun GetDataPhone() {
         val requestQueue = Volley.newRequestQueue(this)
-        val pathPhone: String = "http://192.168.1.6:8080/genX/getsanpham.php"
+        val pathPants = "http://192.168.1.6:8080/genX/getsanpham.php"
         val stringRequest = StringRequest(
-            Request.Method.GET, pathPhone,
+            Request.Method.GET, pathPants,
             { response ->
                 var idPhone = 0
                 var namePhone = ""
@@ -97,7 +97,7 @@ class TrousersActivity : AppCompatActivity() {
                     e.printStackTrace()
                 }
                 for (i in arrayListTrousers!!.indices) {
-                    if (arrayListTrousers!![i].idProduct == idShirt) {
+                    if (arrayListTrousers!![i].idProduct == idPants) {
                         getArrayListTrousersFilter!!.add(
                             Product(
                                 arrayListTrousers!![i].id,
@@ -111,7 +111,7 @@ class TrousersActivity : AppCompatActivity() {
                     }
                 }
                 Toast.makeText(
-                    this@TrousersActivity,
+                    this@PantsActivity,
                     getArrayListTrousersFilter!!.size.toString() + "",
                     Toast.LENGTH_SHORT
                 ).show()
@@ -121,8 +121,8 @@ class TrousersActivity : AppCompatActivity() {
     }
 
     private fun GetIdProductType() {
-        idShirt = intent.getIntExtra("idProductType", -1)
-        Log.d("giatrsp", idShirt.toString() + "")
+        idPants = intent.getIntExtra("idProductType", -1)
+        Log.d("giatrsp", idPants.toString() + "")
     }
 
     private fun anhxa() {}

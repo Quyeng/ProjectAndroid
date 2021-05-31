@@ -33,8 +33,8 @@ class ShirtActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_shirt)
         listViewShirt = findViewById(R.id.listViewShirt)
-        arrayListShirt = ArrayList<Product>()
-        arrayListShirtFilter = ArrayList<Product>()
+        arrayListShirt = ArrayList()
+        arrayListShirtFilter = ArrayList()
         GetIdProductType()
         //            ActionToolBar();
         GetDataPhone()
@@ -49,9 +49,9 @@ class ShirtActivity : AppCompatActivity() {
 
     private fun GetDataPhone() {
         val requestQueue = Volley.newRequestQueue(this)
-        val pathPhone: String = "http://192.168.1.6:8080/genX/getsanpham.php"
+        val pathShirt = "http://192.168.1.6:8080/genX/getsanpham.php"
         val stringRequest = StringRequest(
-            Request.Method.GET, pathPhone,
+            Request.Method.GET, pathShirt,
             { response ->
                 var idPhone = 0
                 var namePhone = ""
@@ -97,7 +97,7 @@ class ShirtActivity : AppCompatActivity() {
                     e.printStackTrace()
                 }
                 for (i in arrayListShirt!!.indices) {
-                    if (arrayListShirt!![i].idProduct === idShirt) {
+                    if (arrayListShirt!![i].idProduct == idShirt) {
                         arrayListShirtFilter!!.add(
                             Product(
                                 arrayListShirt!![i].id,

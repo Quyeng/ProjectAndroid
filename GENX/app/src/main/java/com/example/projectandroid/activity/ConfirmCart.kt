@@ -38,8 +38,8 @@ class ConfirmCart : AppCompatActivity() {
         btnConfirm = findViewById(R.id.btnConfirm)
         btnHuy = findViewById(R.id.btnHuy)
         edtDiaChi = findViewById(R.id.textDiachi)
-        cartArrayList = ArrayList<Cart>()
-        cartArrayListFilter = ArrayList<Cart>()
+        cartArrayList = ArrayList()
+        cartArrayListFilter = ArrayList()
         val intent = intent
         idUser = intent.getIntExtra("idUser", 123)
         tongtien = intent.getIntExtra("tongtienphaitra", 123)
@@ -64,7 +64,7 @@ class ConfirmCart : AppCompatActivity() {
                 if (response.trim { it <= ' ' } == "success") {
                     Toast.makeText(
                         this@ConfirmCart,
-                        "Them vào đơn hàng chi tiết thành công",
+                        "Thêm vào đơn hàng chi tiết thành công",
                         Toast.LENGTH_SHORT
                     ).show()
                     deleteDonHang(cart.id)
@@ -73,8 +73,8 @@ class ConfirmCart : AppCompatActivity() {
                 }
             },
             Response.ErrorListener { error ->
-                Toast.makeText(this@ConfirmCart, "Da xay ra loi", Toast.LENGTH_SHORT).show()
-                Log.d("vpq", "Loi!\n$error")
+                Toast.makeText(this@ConfirmCart, "Đã xảy ra lỗi", Toast.LENGTH_SHORT).show()
+                Log.d("vpq", "Lỗi!\n$error")
             }
         ) {
             @Throws(AuthFailureError::class)
@@ -175,15 +175,15 @@ class ConfirmCart : AppCompatActivity() {
             Method.POST, "http://192.168.1.6:8080/genX/deleteDonHang.php",
             Response.Listener { response ->
                 if (response.trim { it <= ' ' } == "success") {
-                    Toast.makeText(this@ConfirmCart, "Xoa thanh cong", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@ConfirmCart, "Xóa thành công", Toast.LENGTH_SHORT).show()
                     finish()
                 } else {
-                    Toast.makeText(this@ConfirmCart, "Loi Xoa", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@ConfirmCart, "Lỗi xóa", Toast.LENGTH_SHORT).show()
                 }
             },
             Response.ErrorListener { error ->
-                Toast.makeText(this@ConfirmCart, "Da xay ra loi", Toast.LENGTH_SHORT).show()
-                Log.d("vpq", "Loi!\n$error")
+                Toast.makeText(this@ConfirmCart, "Đã xảy ra lỗi", Toast.LENGTH_SHORT).show()
+                Log.d("vpq", "Lỗi!\n$error")
             }
         ) {
             @Throws(AuthFailureError::class)

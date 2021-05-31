@@ -67,7 +67,7 @@ class CartApdapter(context: CartActicity, layout: Int, subjectsList: List<Cart>)
         } else {
             viewHolder = view.tag as ViewHolder
         }
-        val cart: Cart = arraListProduct[i] as Cart
+        val cart: Cart = arraListProduct[i]
         viewHolder!!.textViewNameSanPham?.setText(cart.tensanpham)
         viewHolder.textViewThuongHieu?.setText(cart.tenhuonghieu)
         val decimalFormat = DecimalFormat("###,###,###")
@@ -77,11 +77,6 @@ class CartApdapter(context: CartActicity, layout: Int, subjectsList: List<Cart>)
         viewHolder.txtsoluongdamua?.setText(cart.soluong.toString() + "")
         Picasso.get().load(cart.imageSanPham).into(viewHolder.imageViewSanPham)
 
-
-//        if(context.checkCheckBoxTatCa(1))
-//        {
-//            viewHolder.checkBox.setChecked(false);
-//        }
         if (context.checkCheckBoxTatCaIsTrue()) {
             viewHolder.checkBox!!.isChecked = true
         }
@@ -116,12 +111,12 @@ class CartApdapter(context: CartActicity, layout: Int, subjectsList: List<Cart>)
                     context.CapNhatDonHang(cart.id, soluongdadoi)
                 } else {
                     val dialogXoa = AlertDialog.Builder(context)
-                    dialogXoa.setMessage("Ban co muon xoa san phẩm  " + cart.tensanpham.toString() + " này ra khỏi đơn hàng khong?")
+                    dialogXoa.setMessage("Bạn có muốn xóa sản phẩm  " + cart.tensanpham.toString() + " này ra khỏi đơn hàng khong?")
                     dialogXoa.setPositiveButton("Co") { dialog, which ->
                         context.deleteMonHang(cart.id, cart.giasanpham)
                         context.TongTien(null, 0, cart.giasanpham)
                     }
-                    dialogXoa.setNegativeButton("khong") { dialog, which -> }
+                    dialogXoa.setNegativeButton("Không") { dialog, which -> }
                     dialogXoa.show()
                 }
             }
