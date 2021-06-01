@@ -22,13 +22,11 @@ import org.json.JSONException
 import java.util.*
 
 class ShirtActivity : AppCompatActivity() {
-    var toolbarPhone: Toolbar? = null
     lateinit var listViewShirt: ListView
     var shirtAdapter: ShirtAdapter? = null
     var arrayListShirt: ArrayList<Product>? = null
     var arrayListShirtFilter: ArrayList<Product>? = null
     var idShirt = 0
-    var page = 1
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_shirt)
@@ -36,7 +34,6 @@ class ShirtActivity : AppCompatActivity() {
         arrayListShirt = ArrayList()
         arrayListShirtFilter = ArrayList()
         GetIdProductType()
-        //            ActionToolBar();
         GetDataPhone()
         shirtAdapter = ShirtAdapter(this, R.layout.item_phone, arrayListShirtFilter!!)
         listViewShirt.setAdapter(shirtAdapter)
@@ -59,7 +56,6 @@ class ShirtActivity : AppCompatActivity() {
                 var imagePhone = ""
                 var descriptionPhone = ""
                 var idProductPhone = 0
-                val IdProduct = 0
                 var idthuonghieu = 0
                 var sosanphamdaban = 0
                 var sosanphamtonkho = 0
@@ -97,7 +93,7 @@ class ShirtActivity : AppCompatActivity() {
                     e.printStackTrace()
                 }
                 for (i in arrayListShirt!!.indices) {
-                    if (arrayListShirt!![i].idProduct == idShirt) {
+                    if (arrayListShirt!![i].idProduct == 3) {
                         arrayListShirtFilter!!.add(
                             Product(
                                 arrayListShirt!![i].id,
@@ -105,7 +101,11 @@ class ShirtActivity : AppCompatActivity() {
                                 arrayListShirt!![i].priceProduct,
                                 arrayListShirt!![i].imageProduct,
                                 arrayListShirt!![i].descriptionProduct,
-                                arrayListShirt!![i].idProduct
+                                arrayListShirt!![i].idProduct,
+                                    arrayListShirt!![i].id_thuonghieu,
+                                    arrayListShirt!![i].sosanphamdaban,
+                                    arrayListShirt!![i].sosanphamcontonkho,
+                                    arrayListShirt!![i].diemdanhgia
                             )
                         )
                     }
@@ -125,5 +125,4 @@ class ShirtActivity : AppCompatActivity() {
         Log.d("giatrsp", idShirt.toString() + "")
     }
 
-    private fun anhxa() {}
 }

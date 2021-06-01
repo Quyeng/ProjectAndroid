@@ -22,13 +22,11 @@ import org.json.JSONException
 import java.util.*
 
 class ShoesActivity : AppCompatActivity() {
-    var toolbarPhone: Toolbar? = null
     lateinit var listViewShoes: ListView
     var shoesAdapter: ShoesAdapter? = null
     var arrayShoesShirt: ArrayList<Product>? = null
     var arrayListShoesFilter: ArrayList<Product>? = null
     var idShoes = 0
-    var page = 1
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_shoes)
@@ -36,7 +34,6 @@ class ShoesActivity : AppCompatActivity() {
         arrayShoesShirt = ArrayList()
         arrayListShoesFilter = ArrayList()
         GetIdProductType()
-        //            ActionToolBar();
         GetDataPhone()
         shoesAdapter = ShoesAdapter(this, R.layout.item_phone, arrayListShoesFilter!!)
         listViewShoes.setAdapter(shoesAdapter)
@@ -49,7 +46,7 @@ class ShoesActivity : AppCompatActivity() {
 
     private fun GetDataPhone() {
         val requestQueue = Volley.newRequestQueue(this)
-        val pathShoes: String = "http://192.168.1.6:8080/genX/getsanpham.php"
+        val pathShoes = "http://192.168.1.6:8080/genX/getsanpham.php"
         val stringRequest = StringRequest(
             Request.Method.GET, pathShoes,
             { response ->
@@ -97,7 +94,7 @@ class ShoesActivity : AppCompatActivity() {
                     e.printStackTrace()
                 }
                 for (i in arrayShoesShirt!!.indices) {
-                    if (arrayShoesShirt!![i].idProduct == idShoes) {
+                    if (arrayShoesShirt!![i].idProduct == 5) {
                         arrayListShoesFilter!!.add(
                             Product(
                                 arrayShoesShirt!![i].id,
@@ -105,7 +102,11 @@ class ShoesActivity : AppCompatActivity() {
                                 arrayShoesShirt!![i].priceProduct,
                                 arrayShoesShirt!![i].imageProduct,
                                 arrayShoesShirt!![i].descriptionProduct,
-                                arrayShoesShirt!![i].idProduct
+                                arrayShoesShirt!![i].idProduct,
+                                    arrayShoesShirt!![i].id_thuonghieu,
+                                    arrayShoesShirt!![i].sosanphamdaban,
+                                    arrayShoesShirt!![i].sosanphamcontonkho,
+                                    arrayShoesShirt!![i].diemdanhgia
                             )
                         )
                     }
@@ -125,5 +126,4 @@ class ShoesActivity : AppCompatActivity() {
         Log.d("giatrsp", idShoes.toString() + "")
     }
 
-    private fun anhxa() {}
 }

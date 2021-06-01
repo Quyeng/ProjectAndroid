@@ -29,8 +29,6 @@ class SmartPhoneActivity : AppCompatActivity() {
     var arrayListPhone: ArrayList<Product>? = null
     var arrayListPhoneFilter: ArrayList<Product>? = null
     var idPhone = 0
-    var page = 1
-    var drawerLayout: DrawerLayout? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,7 +37,6 @@ class SmartPhoneActivity : AppCompatActivity() {
         arrayListPhone = ArrayList()
         arrayListPhoneFilter = ArrayList()
         GetIdProductType()
-        //            ActionToolBar();
         GetDataPhone()
         phoneAdapter = PhoneAdapter(this, com.example.projectandroid.R.layout.item_phone, arrayListPhoneFilter!!)
         listViewPhone.setAdapter(phoneAdapter)
@@ -49,14 +46,6 @@ class SmartPhoneActivity : AppCompatActivity() {
             startActivity(intent)
         })
     }
-
-    private fun ActionBart() {
-        setSupportActionBar(toolbar)
-        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
-        toolbar!!.setNavigationIcon(R.drawable.ic_menu_sort_by_size)
-        toolbar!!.setNavigationOnClickListener { drawerLayout!!.openDrawer(GravityCompat.START) }
-    }
-
     private fun GetDataPhone() {
         val requestQueue = Volley.newRequestQueue(this)
         val pathPhone = "http://192.168.1.6:8080/genX/getsanpham.php"
@@ -134,5 +123,4 @@ class SmartPhoneActivity : AppCompatActivity() {
         Log.d("giatrsp", idPhone.toString() + "")
     }
 
-    private fun anhxa() {}
 }

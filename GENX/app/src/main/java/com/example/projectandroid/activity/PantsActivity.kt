@@ -22,13 +22,11 @@ import org.json.JSONException
 import java.util.*
 
 class PantsActivity : AppCompatActivity() {
-    var toolbarPhone: Toolbar? = null
     lateinit var listViewTrousers: ListView
     var pantsAdapter: PantsAdapter? = null
     var arrayListTrousers: ArrayList<Product>? = null
     var getArrayListTrousersFilter: ArrayList<Product>? = null
     var idPants = 0
-    var page = 1
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pants)
@@ -36,7 +34,6 @@ class PantsActivity : AppCompatActivity() {
         arrayListTrousers = ArrayList()
         getArrayListTrousersFilter = ArrayList()
         GetIdProductType()
-        //            ActionToolBar();
         GetDataPhone()
         pantsAdapter = PantsAdapter(this, R.layout.item_phone, getArrayListTrousersFilter!!)
         listViewTrousers.setAdapter(pantsAdapter)
@@ -97,7 +94,7 @@ class PantsActivity : AppCompatActivity() {
                     e.printStackTrace()
                 }
                 for (i in arrayListTrousers!!.indices) {
-                    if (arrayListTrousers!![i].idProduct == idPants) {
+                    if (arrayListTrousers!![i].idProduct == 4) {
                         getArrayListTrousersFilter!!.add(
                             Product(
                                 arrayListTrousers!![i].id,
@@ -105,7 +102,11 @@ class PantsActivity : AppCompatActivity() {
                                 arrayListTrousers!![i].priceProduct,
                                 arrayListTrousers!![i].imageProduct,
                                 arrayListTrousers!![i].descriptionProduct,
-                                arrayListTrousers!![i].idProduct
+                                arrayListTrousers!![i].idProduct,
+                                    arrayListTrousers!![i].id_thuonghieu,
+                                    arrayListTrousers!![i].sosanphamdaban,
+                                    arrayListTrousers!![i].sosanphamcontonkho,
+                                    arrayListTrousers!![i].diemdanhgia
                             )
                         )
                     }
@@ -124,6 +125,4 @@ class PantsActivity : AppCompatActivity() {
         idPants = intent.getIntExtra("idProductType", -1)
         Log.d("giatrsp", idPants.toString() + "")
     }
-
-    private fun anhxa() {}
 }

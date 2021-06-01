@@ -25,7 +25,6 @@ class LaptopActivity : AppCompatActivity() {
     var arrayListPhone: ArrayList<Product>? = null
     var arrayListPhoneFilter: ArrayList<Product>? = null
     var idLaptop = 0
-    var page = 1
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_laptop)
@@ -33,7 +32,6 @@ class LaptopActivity : AppCompatActivity() {
         arrayListPhone = ArrayList()
         arrayListPhoneFilter = ArrayList()
         GetIdProductType()
-        //            ActionToolBar();
         GetDataPhone()
         phoneAdapter = LaptopAdapter(this, R.layout.item_phone, arrayListPhoneFilter!!)
         with(listViewPhone) { this?.setAdapter(phoneAdapter) }
@@ -91,12 +89,16 @@ class LaptopActivity : AppCompatActivity() {
                     if (arrayListPhone!![i].idProduct == 2) {
                         arrayListPhoneFilter!!.add(
                             Product(
-                                arrayListPhone!![i].id,
-                                arrayListPhone!![i].nameProduct,
-                                arrayListPhone!![i].priceProduct,
-                                arrayListPhone!![i].imageProduct,
-                                arrayListPhone!![i].descriptionProduct,
-                                arrayListPhone!![i].idProduct
+                                    arrayListPhone!![i].id,
+                                    arrayListPhone!![i].nameProduct,
+                                    arrayListPhone!![i].priceProduct,
+                                    arrayListPhone!![i].imageProduct,
+                                    arrayListPhone!![i].descriptionProduct,
+                                    arrayListPhone!![i].idProduct,
+                                    arrayListPhone!![i].id_thuonghieu,
+                                    arrayListPhone!![i].sosanphamdaban,
+                                    arrayListPhone!![i].sosanphamcontonkho,
+                                    arrayListPhone!![i].diemdanhgia
                             )
                         )
                     }
@@ -110,6 +112,4 @@ class LaptopActivity : AppCompatActivity() {
         idLaptop = intent.getIntExtra("idProductType", -1)
         Log.d("giatrsp", idLaptop.toString() + "")
     }
-
-    private fun anhxa() {}
 }

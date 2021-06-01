@@ -326,6 +326,7 @@ class HomeActivity : AppCompatActivity() {
         viewFlipper!!.inAnimation = animation_slide_out
     }
 
+
     private fun ActionBart() {
         setSupportActionBar(toolbar)
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)

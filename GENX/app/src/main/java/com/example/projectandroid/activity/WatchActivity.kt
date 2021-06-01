@@ -22,13 +22,11 @@ import org.json.JSONException
 import java.util.*
 
 class WatchActivity : AppCompatActivity() {
-    var toolbarPhone: Toolbar? = null
     lateinit var listViewWatch: ListView
     var WatchAdapter: WatchAdapter? = null
     var arrayListWatch: ArrayList<Product>? = null
     var arrayListWatchFilter: ArrayList<Product>? = null
     var idWatch = 0
-    var page = 1
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_watch)
@@ -36,7 +34,6 @@ class WatchActivity : AppCompatActivity() {
         arrayListWatch = ArrayList()
         arrayListWatchFilter = ArrayList()
         GetIdProductType()
-        //            ActionToolBar();
         GetDataPhone()
         WatchAdapter = WatchAdapter(this, R.layout.item_phone, arrayListWatchFilter!!)
         listViewWatch.setAdapter(WatchAdapter)
@@ -97,7 +94,7 @@ class WatchActivity : AppCompatActivity() {
                     e.printStackTrace()
                 }
                 for (i in arrayListWatch!!.indices) {
-                    if (arrayListWatch!![i].idProduct == idWatch) {
+                    if (arrayListWatch!![i].idProduct == 6) {
                         arrayListWatchFilter!!.add(
                             Product(
                                 arrayListWatch!![i].id,
@@ -105,7 +102,11 @@ class WatchActivity : AppCompatActivity() {
                                 arrayListWatch!![i].priceProduct,
                                 arrayListWatch!![i].imageProduct,
                                 arrayListWatch!![i].descriptionProduct,
-                                arrayListWatch!![i].idProduct
+                                arrayListWatch!![i].idProduct,
+                                    arrayListWatch!![i].id_thuonghieu,
+                                    arrayListWatch!![i].sosanphamdaban,
+                                    arrayListWatch!![i].sosanphamcontonkho,
+                                    arrayListWatch!![i].diemdanhgia
                             )
                         )
                     }
@@ -123,6 +124,4 @@ class WatchActivity : AppCompatActivity() {
         idWatch = intent.getIntExtra("idProductType", -1)
         Log.d("giatrsp", idWatch.toString() + "")
     }
-
-    private fun anhxa() {}
 }
