@@ -7,7 +7,6 @@ import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -22,29 +21,36 @@ private val retrofit = Retrofit.Builder().addConverterFactory(MoshiConverterFact
 
 
 interface APIService {
-    @GET("/product?item=shoes")
-    fun getAllData(): Call<List<Product>>
+//    @GET("/product?item=shoes")
+//    fun getAllData(): Call<List<Product>>
 
     @GET("/product")
     fun getProduct(@Query("item") item: String?): Call<List<Product>>
 
     @POST("/signup")
-    suspend fun signUpUser(@Body requestBody: RequestBody): Response<SimpleJSONModel>
+    suspend fun signUpUser(@Body requestBody: RequestBody): Response<User>
 
     @POST("/signin")
-    suspend fun signInUser(@Body requestBody: RequestBody): Response<SimpleJSONModel>
+    suspend fun signInUser(@Body requestBody: RequestBody): Response<User>
+
+    @POST("/cart")
+    suspend fun postCart(@Body requestBody: RequestBody): Response<User>
 
     @GET("/showdb")
-    suspend fun getEmployees(): Response<ResponseBody>
+    suspend fun getUsers(): Response<ResponseBody>
 
-    @GET("/product")
-    suspend fun getProducts(@Query("item") item: String?): Response<ResponseBody>
+//    @GET("/product")
+//    suspend fun product(
+//            @Query("item") item: String
+//    ): MovieResp
+
+//    @GET("/product")
+//    suspend fun getProducts(@Query("item") item: String?): Response<ResponseBody>
 
 //    @GET("/product")
 //    suspend fun  listProduct(
 //            @Query("item") item: String
 //    ): NowPlayingMoviesResp
-
 
 }
 

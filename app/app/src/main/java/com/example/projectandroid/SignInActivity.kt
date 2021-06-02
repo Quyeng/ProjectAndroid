@@ -32,8 +32,6 @@ class SignInActivity : AppCompatActivity() {
             startActivity(intent)
         }
         btnSignIn.setOnClickListener{
-//            val intent = Intent(this, HomeActivity::class.java)
-//            startActivity(intent)
             signIn()
         }
     }
@@ -55,10 +53,9 @@ class SignInActivity : AppCompatActivity() {
         // Create Service
         val service = retrofit.create(APIService::class.java)
 
-        ///them vao
         val username = edtUsername?.text.toString().trim()
         val password = edtPassword?.text.toString().trim()
-        ///
+
         // Create JSON using JSONObject
         val jsonObject = JSONObject()
         jsonObject.put("username", username)
@@ -73,18 +70,9 @@ class SignInActivity : AppCompatActivity() {
         CoroutineScope(Dispatchers.IO).launch {
             // Do the POST request and get response
             val response = service.signInUser(requestBody)
-
             withContext(Dispatchers.Main) {
                 if (response.isSuccessful) {
                     val item = response.body()
-                    // Convert raw JSON to pretty JSON using GSON library
-//                    val gson = GsonBuilder().setPrettyPrinting().create()
-//                    val prettyJson = gson.toJson(
-//                            JsonParser.parseString(
-//                                    response.body()
-//                                            ?.string() // About this thread blocking annotation : https://github.com/square/retrofit/issues/3255
-//                            )
-//                    )
                     val status = item?.status ?: "N/A"
                     val id = item?.id ?: "N/A"
                     val user = item?.username ?: "N/A"
@@ -95,17 +83,13 @@ class SignInActivity : AppCompatActivity() {
                     if(status == "success"){
                         val intent = Intent(this@SignInActivity, HomeActivity::class.java)
                         intent.putExtra("user_name", user)
+                        intent.putExtra("_id", id)
                         startActivity(intent)
                     } else{
                         Toast.makeText(this@SignInActivity, error, Toast.LENGTH_SHORT).show()
                     }
-//                    val intent = Intent(this@MainActivity, DetailsActivity::class.java)
-//                    intent.putExtra("json_results", prettyJson)
-//                    this@MainActivity.startActivity(intent)
                 } else {
-
                     Log.e("RETROFIT_ERROR", response.code().toString())
-
                 }
             }
         }

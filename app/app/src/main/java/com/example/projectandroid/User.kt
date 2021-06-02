@@ -2,7 +2,7 @@ package com.example.projectandroid
 
 import com.google.gson.annotations.SerializedName
 
-data class SimpleJSONModel(
+data class User(
     @SerializedName("status")
     var status: String?,
 

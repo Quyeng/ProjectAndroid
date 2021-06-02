@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 
-class MainActivity : AppCompatActivity() {
+class WelcomeActivity : AppCompatActivity() {
     private lateinit var btnSignUp : Button
     private lateinit var btnSignIn : Button
     override fun onCreate(savedInstanceState: Bundle?) {

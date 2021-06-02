@@ -47,11 +47,10 @@ class SignUpActivity : AppCompatActivity() {
         // Create Service
         val service = retrofit.create(APIService::class.java)
 
-        ///them vao
         val username = edtUsername?.text.toString().trim()
         val email = edtEmail?.text.toString().trim()
         val password = edtPassword?.text.toString().trim()
-        ///
+
         // Create JSON using JSONObject
         val jsonObject = JSONObject()
         jsonObject.put("username", username)
@@ -61,7 +60,6 @@ class SignUpActivity : AppCompatActivity() {
         // Convert JSONObject to String
         val jsonObjectString = jsonObject.toString()
 
-        // Create RequestBody ( We're not using any converter, like GsonConverter, MoshiConverter e.t.c, that's why we use RequestBody )
         val requestBody = jsonObjectString.toRequestBody("application/json".toMediaTypeOrNull())
 
         CoroutineScope(Dispatchers.IO).launch {
@@ -71,16 +69,8 @@ class SignUpActivity : AppCompatActivity() {
             withContext(Dispatchers.Main) {
                 if (response.isSuccessful) {
                     val item = response.body()
-                    // Convert raw JSON to pretty JSON using GSON library
-//                    val gson = GsonBuilder().setPrettyPrinting().create()
-//                    val prettyJson = gson.toJson(
-//                            JsonParser.parseString(
-//                                    response.body()
-//                                            ?.string() // About this thread blocking annotation : https://github.com/square/retrofit/issues/3255
-//                            )
-//                    )
                     val status = item?.status ?: "success"
-                    Log.d("-----Pretty Printed JSON------ :", status)
+                    Log.d("-----Status------ :", status)
                     if(status == "success"){
                         val intent = Intent(this@SignUpActivity, SignInActivity::class.java)
                         startActivity(intent)

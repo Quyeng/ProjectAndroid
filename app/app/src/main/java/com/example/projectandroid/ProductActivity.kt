@@ -1,84 +1,66 @@
 package com.example.projectandroid
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.gson.GsonBuilder
-import com.google.gson.JsonParser
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.Retrofit
 
 class ProductActivity : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var manager: RecyclerView.LayoutManager
     private lateinit var myAdapter: RecyclerView.Adapter<*>
+    private lateinit var tvType: TextView
+    private lateinit var imgBack: ImageView
+    private lateinit var btnCart: Button
+    private lateinit var btnMenu: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.list_product)
+        findViewById()
         manager = GridLayoutManager(this,2)
-        val results = intent.getStringExtra("type")
-        if (results != null) {
-            Log.d("-----Pretty Printed JSON------ :",results)
+        val typeProduct = intent.getStringExtra("type")
+        if (typeProduct != null) {
+            getAllProduct(typeProduct)
+            tvType.text = typeProduct.toUpperCase()
         }
-        if (results != null) {
-            getAllData(results)
+        imgBack.setOnClickListener{
+            val intent = Intent(this@ProductActivity, HomeActivity::class.java)
+            startActivity(intent)
         }
+
     }
 
-    private fun getMethod(type: String) {
-        val retrofit = Retrofit.Builder()
-                .baseUrl("http://genxshopping.herokuapp.com")
-                .build()
-
-        val service = retrofit.create(APIService::class.java)
-
-        CoroutineScope(Dispatchers.IO).launch {
-            val response = service.getProducts(type)
-            withContext(Dispatchers.Main) {
-                if (response.isSuccessful) {
-                    val gson = GsonBuilder().setPrettyPrinting().create()
-                    val prettyJson = gson.toJson(
-                            JsonParser.parseString(
-                                    response.body()
-                                            ?.string() // About this thread blocking annotation : https://github.com/square/retrofit/issues/3255
-                            )
-                    )
-                    Log.d("Pretty Printed JSON :", prettyJson)
-                } else {
-                    Log.e("RETROFIT_ERROR", response.code().toString())
-                }
-            }
-        }
+    private fun findViewById(){
+        tvType = findViewById(R.id.tv_type)
+        btnCart = findViewById(R.id.btn_cart)
+        btnMenu = findViewById(R.id.btn_menu)
+        imgBack = findViewById(R.id.img_back)
     }
 
-    fun getAllData(type: String){
-        Log.d("-----Pretty Printed JSON------ :","abc")
+    fun getAllProduct(type: String){
         Api.retrofitService.getProduct(type).enqueue(object: Callback<List<Product>> {
             override fun onResponse(
                     call: Call<List<Product>>,
                     response: Response<List<Product>>
             ) {
-                Log.d("-----Pretty Printed JSON------ :", response.toString())
                 if(response.isSuccessful){
                     recyclerView = findViewById<RecyclerView>(R.id.recycle_view).apply{
-                        myAdapter = ProductAdapter(response.body()!!)
+                        myAdapter = ProductAdapter(response.body()!!, this@ProductActivity)
                         layoutManager = manager
                         adapter = myAdapter
                     }
                     Log.d("-----Pretty Printed JSON------ :", response.toString())
                 }
             }
-
             override fun onFailure(call: Call<List<Product>>, t: Throwable) {
                 t.printStackTrace()
             }

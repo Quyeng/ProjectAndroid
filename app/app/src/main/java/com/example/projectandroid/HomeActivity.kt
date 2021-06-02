@@ -28,32 +28,40 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         findViewById()
-        val results = intent.getStringExtra("user_name")
-        tvUsername.text = results
+        val username = intent.getStringExtra("user_name")
+        val id = intent.getStringExtra("_id")
+        tvUsername.text = username
         btnMenu.setOnClickListener{
             showPopupMenu()
         }
         imgShirt.setOnClickListener {
             val intent = Intent(this@HomeActivity, ProductActivity::class.java)
             intent.putExtra("type", "shirts")
+            intent.putExtra("user_name", username)
+            intent.putExtra("_id", id)
             startActivity(intent)
         }
         imgPant.setOnClickListener {
             val intent = Intent(this@HomeActivity, ProductActivity::class.java)
             intent.putExtra("type", "pants")
+            intent.putExtra("user_name", username)
+            intent.putExtra("_id", id)
             startActivity(intent)
         }
         imgShoes.setOnClickListener {
             val intent = Intent(this@HomeActivity, ProductActivity::class.java)
             intent.putExtra("type", "shoes")
+            intent.putExtra("user_name", username)
+            intent.putExtra("_id", id)
             startActivity(intent)
         }
         imgWatch.setOnClickListener {
             val intent = Intent(this@HomeActivity, ProductActivity::class.java)
             intent.putExtra("type", "accessories")
+            intent.putExtra("user_name", username)
+            intent.putExtra("_id", id)
             startActivity(intent)
         }
-
     }
 
     private fun findViewById(){
@@ -74,7 +82,9 @@ class HomeActivity : AppCompatActivity() {
         popupMenu.setOnMenuItemClickListener(PopupMenu.OnMenuItemClickListener { item: MenuItem ->
 
             when (item.itemId) {
-
+                R.id.profile -> {
+                    Toast.makeText(this,"Profile", Toast.LENGTH_SHORT).show()
+                }
                 R.id.shirt -> {
                     Toast.makeText(this, "Shirt", Toast.LENGTH_SHORT).show()
                 }
@@ -88,85 +98,9 @@ class HomeActivity : AppCompatActivity() {
                     Toast.makeText(this, "Watch", Toast.LENGTH_SHORT).show()
                 }
             }
-
             true
         })
 
     }
-
-
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        val inflater: MenuInflater = menuInflater
-        inflater.inflate(R.menu.menu, menu)
-        return true
-    }
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        // Handle item selection
-        return when (item.itemId) {
-            R.id.profile -> {
-//                newGame()
-                true
-            }
-            R.id.shirt -> {
-
-                true
-            }
-            R.id.pant -> {
-
-                true
-            }
-            R.id.shoes -> {
-
-                true
-            }
-            R.id.watch -> {
-
-                true
-            }
-            else -> super.onOptionsItemSelected(item)
-        }
-    }
-
-    private fun getMethod(typeProduct: String) {
-
-        // Create Retrofit
-        val retrofit = Retrofit.Builder()
-                .baseUrl("http://genxshopping.herokuapp.com")
-                .build()
-
-        // Create Service
-        val service = retrofit.create(APIService::class.java)
-
-        CoroutineScope(Dispatchers.IO).launch {
-
-            // Do the GET request and get response
-            val response = service.getProducts(typeProduct)
-
-            withContext(Dispatchers.Main) {
-                if (response.isSuccessful) {
-
-                    // Convert raw JSON to pretty JSON using GSON library
-                    val gson = GsonBuilder().setPrettyPrinting().create()
-                    val prettyJson = gson.toJson(
-                            JsonParser.parseString(
-                                    response.body()
-                                            ?.string() // About this thread blocking annotation : https://github.com/square/retrofit/issues/3255
-                            )
-                    )
-                    Log.d("Pretty Printed JSON :", prettyJson)
-
-//                    val intent = Intent(this@MainActivity, DetailsActivity::class.java)
-//                    intent.putExtra("json_results", prettyJson)
-//                    this@MainActivity.startActivity(intent)
-
-                } else {
-
-                    Log.e("RETROFIT_ERROR", response.code().toString())
-
-                }
-            }
-        }
-    }
-
 
 }
