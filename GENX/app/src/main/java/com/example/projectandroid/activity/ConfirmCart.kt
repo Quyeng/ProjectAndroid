@@ -17,6 +17,7 @@ import com.android.volley.toolbox.Volley
 import com.example.projectandroid.R
 import com.example.projectandroid.model.Cart
 import com.example.projectandroid.ultil.CheckConnection
+import com.example.projectandroid.ultil.GenX
 import org.json.JSONException
 import java.util.*
 /*
@@ -59,7 +60,7 @@ class ConfirmCart : AppCompatActivity() {
     fun themdonhangchitiet(cart: Cart) {
         val requestQueue = Volley.newRequestQueue(this)
         val stringRequest: StringRequest = object : StringRequest(
-            Method.POST, "http://192.168.1.6:8080/genX/insertDonHangChiTiet.php",
+            Method.POST, GenX.insertDonHangChiTiet,
             Response.Listener { response ->
                 if (response.trim { it <= ' ' } == "success") {
                     Toast.makeText(
@@ -95,7 +96,7 @@ class ConfirmCart : AppCompatActivity() {
 
     fun GetDataCart() {
         val requestQueue = Volley.newRequestQueue(applicationContext)
-        val jsonArrayRequest = JsonArrayRequest("http://192.168.1.6:8080/genX/getDonHang.php",
+        val jsonArrayRequest = JsonArrayRequest(GenX.pathDonHang,
             { response ->
                 cartArrayList!!.clear()
                 cartArrayListFilter!!.clear()
@@ -172,7 +173,7 @@ class ConfirmCart : AppCompatActivity() {
     private fun deleteDonHang(idDonhangne: Int) {
         val requestQueue = Volley.newRequestQueue(this)
         val stringRequest: StringRequest = object : StringRequest(
-            Method.POST, "http://192.168.1.6:8080/genX/deleteDonHang.php",
+            Method.POST, GenX.pathXoaDonHang,
             Response.Listener { response ->
                 if (response.trim { it <= ' ' } == "success") {
                     Toast.makeText(this@ConfirmCart, "Xóa thành công", Toast.LENGTH_SHORT).show()

@@ -18,6 +18,7 @@ import com.android.volley.toolbox.Volley
 import com.example.projectandroid.adapter.PhoneAdapter
 import com.example.projectandroid.model.Product
 import com.example.projectandroid.ultil.CheckConnection
+import com.example.projectandroid.ultil.GenX
 import org.json.JSONArray
 import org.json.JSONException
 import java.util.*
@@ -48,7 +49,7 @@ class SmartPhoneActivity : AppCompatActivity() {
     }
     private fun GetDataPhone() {
         val requestQueue = Volley.newRequestQueue(this)
-        val pathPhone = "http://192.168.1.6:8080/genX/getsanpham.php"
+        val pathPhone = GenX.pathPhone
         val stringRequest = StringRequest(
             Request.Method.GET, pathPhone,
             { response ->

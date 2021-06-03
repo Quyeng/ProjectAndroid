@@ -19,6 +19,7 @@ import com.example.projectandroid.adapter.DetailCartAdapter
 import com.example.projectandroid.model.DetailCart
 import com.example.projectandroid.model.User
 import com.example.projectandroid.ultil.CheckConnection
+import com.example.projectandroid.ultil.GenX
 import org.json.JSONException
 import java.util.*
 
@@ -79,7 +80,7 @@ class HistoryActivity : AppCompatActivity() {
     fun GetDataUsers() {
         val requestQueue = Volley.newRequestQueue(applicationContext)
         val jsonArrayRequest = JsonArrayRequest(
-            "http://192.168.1.6:8080/genX/getUser.php",
+            GenX.pathUser,
             { response ->
                 userArrayList!!.clear()
                 if (response != null) {
@@ -103,7 +104,7 @@ class HistoryActivity : AppCompatActivity() {
 
     fun GetDataCart() {
         val requestQueue = Volley.newRequestQueue(applicationContext)
-        val jsonArrayRequest = JsonArrayRequest("http://192.168.1.6:8080/genX/getDonHangChiTiet.php",
+        val jsonArrayRequest = JsonArrayRequest(GenX.pathDonHangChiTiet,
             { response ->
                 cartArrayList!!.clear()
                 cartArrayListFiler!!.clear()

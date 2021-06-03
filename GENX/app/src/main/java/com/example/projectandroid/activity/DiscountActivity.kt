@@ -12,6 +12,7 @@ import com.example.projectandroid.R
 import com.example.projectandroid.adapter.DiscountAdapter
 import com.example.projectandroid.model.Discount
 import com.example.projectandroid.ultil.CheckConnection
+import com.example.projectandroid.ultil.GenX
 import org.json.JSONException
 import java.util.*
 /*
@@ -45,7 +46,7 @@ class DiscountActivity : AppCompatActivity() {
     fun GetDataDiscount() {
         val requestQueue = Volley.newRequestQueue(applicationContext)
         val jsonArrayRequest = JsonArrayRequest(
-            "http://192.168.1.6:8080/genX/getDiscount.php",
+            GenX.getDiscount,
             { response ->
                 if (response != null) {
                     for (i in 0 until response.length()) {

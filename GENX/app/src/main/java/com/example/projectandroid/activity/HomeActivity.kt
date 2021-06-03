@@ -31,6 +31,7 @@ import com.example.projectandroid.adapter.ProductTypeAdapter1
 import com.example.projectandroid.model.Product
 import com.example.projectandroid.model.ProductType
 import com.example.projectandroid.ultil.CheckConnection
+import com.example.projectandroid.ultil.GenX
 import com.google.android.material.navigation.NavigationView
 import com.squareup.picasso.Picasso
 import org.json.JSONArray
@@ -199,7 +200,7 @@ class HomeActivity : AppCompatActivity() {
 
     private fun GetDataProductNew() {
         val requestQueue: RequestQueue = Volley.newRequestQueue(applicationContext)
-        val jsonArrayRequest = JsonArrayRequest("http://192.168.1.6:8080/genX/getsanphammoinhat.php", object :
+        val jsonArrayRequest = JsonArrayRequest(GenX.pathNew, object :
             Response.Listener<JSONArray?> {
             override fun onResponse(response: JSONArray?) {
                 if (response != null) {
@@ -257,7 +258,7 @@ class HomeActivity : AppCompatActivity() {
 
     private fun GetDataProductType() {
         val requestQueue: RequestQueue = Volley.newRequestQueue(applicationContext)
-        val jsonArrayRequest = JsonArrayRequest("http://192.168.1.6:8080/genX/getloaisp.php", object :
+        val jsonArrayRequest = JsonArrayRequest(GenX.path, object :
             Response.Listener<JSONArray?> {
             override fun onResponse(response: JSONArray?) {
                 if (response != null) {

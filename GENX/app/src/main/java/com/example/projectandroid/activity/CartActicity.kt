@@ -16,6 +16,7 @@ import com.example.projectandroid.R
 import com.example.projectandroid.adapter.CartApdapter
 import com.example.projectandroid.model.Cart
 import com.example.projectandroid.ultil.CheckConnection
+import com.example.projectandroid.ultil.GenX
 import org.json.JSONException
 import java.util.*
 
@@ -78,7 +79,6 @@ class CartActicity : AppCompatActivity() {
         }
     }
 
-    private fun Dialog_chinhsua() {}
     private fun muaHang() {
         val tien = Tongtiensanpham!!.text.toString()
         val tongtien = tien.toInt()
@@ -164,7 +164,7 @@ class CartActicity : AppCompatActivity() {
 
     fun deleteMonHang(idDonhang: Int, giasanpham: Int) {
         val requestQueue = Volley.newRequestQueue(this)
-        val stringRequest: StringRequest = object : StringRequest(Method.POST, "http://192.168.1.6:8080/genX/deleteDonHang.php",
+        val stringRequest: StringRequest = object : StringRequest(Method.POST, GenX.pathXoaDonHang,
                 Response.Listener { response ->
                     if (response.trim { it <= ' ' } == "success") {
                         Toast.makeText(this@CartActicity, "Xóa thành công", Toast.LENGTH_SHORT).show()
@@ -190,7 +190,7 @@ class CartActicity : AppCompatActivity() {
 
     fun CapNhatDonHang(iddonhang: Int, soluongitem: Int) {
         val requestQueue = Volley.newRequestQueue(this)
-        val stringRequest: StringRequest = object : StringRequest(Method.POST, "http://192.168.1.6:8080/genX/updateDonHang.php",
+        val stringRequest: StringRequest = object : StringRequest(Method.POST, GenX.pathCapNhatDonHang,
                 Response.Listener { response ->
                     if (response.trim { it <= ' ' } == "success") {
                         Toast.makeText(this@CartActicity, "Cập nhật thành công", Toast.LENGTH_SHORT).show()
@@ -218,7 +218,7 @@ class CartActicity : AppCompatActivity() {
 
     fun GetDataCart() {
         val requestQueue = Volley.newRequestQueue(applicationContext)
-        val jsonArrayRequest = JsonArrayRequest("http://192.168.1.6:8080/genX/getDonHang.php", { response ->
+        val jsonArrayRequest = JsonArrayRequest(GenX.pathDonHang, { response ->
             cartArrayList!!.clear()
             cartArrayListFiler!!.clear()
             if (response != null) {

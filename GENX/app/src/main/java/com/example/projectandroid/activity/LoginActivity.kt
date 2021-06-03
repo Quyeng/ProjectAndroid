@@ -12,6 +12,7 @@ import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.projectandroid.R
+import com.example.projectandroid.ultil.GenX
 import com.google.firebase.auth.FirebaseAuth
 import java.util.*
 
@@ -69,12 +70,12 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun DangKi() {
-//        val dialog = Dialog(this)
+        val dialog = Dialog(this)
         val email = edtEmail!!.text.toString()
         val password = edtPassword!!.text.toString()
-//        dialog.setTitle("Vui lòng đợi giây lát");
-//        dialog.setCanceledOnTouchOutside(true);
-//        dialog.show();
+        dialog.setTitle("Vui lòng đợi giây lát");
+        dialog.setCanceledOnTouchOutside(true);
+        dialog.show();
         auth!!.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener(
                 this
@@ -82,6 +83,7 @@ class LoginActivity : AppCompatActivity() {
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
                     Toast.makeText(this@LoginActivity, "Đăng kí thành công", Toast.LENGTH_SHORT).show()
+                    dialog.dismiss()
                     dangkiBangUser()
                 } else {
                     Toast.makeText(this@LoginActivity, "Lõi Đăng kí", Toast.LENGTH_SHORT).show()
@@ -94,14 +96,14 @@ class LoginActivity : AppCompatActivity() {
     private fun dangkiBangUser() {
         val requestQueue = Volley.newRequestQueue(this)
         val stringRequest: StringRequest = object : StringRequest(
-            Method.POST, "http://192.168.1.6:8080/genX/insertUser.php",
+            Method.POST, GenX.insertUser,
             Response.Listener { response ->
-                if (response.trim { it <= ' ' } == "success") {
-                    Toast.makeText(this@LoginActivity, "Thêm User thành công", Toast.LENGTH_SHORT)
-                        .show()
-                } else {
-                    Toast.makeText(this@LoginActivity, "Add User", Toast.LENGTH_SHORT).show()
-                }
+//                if (response.trim { it <= ' ' } == "success") {
+//                    Toast.makeText(this@LoginActivity, "Thêm User thành công", Toast.LENGTH_SHORT)
+//                        .show()
+//                } else {
+//                    Toast.makeText(this@LoginActivity, "Add User", Toast.LENGTH_SHORT).show()
+//                }
             },
             Response.ErrorListener { error ->
                 Toast.makeText(this@LoginActivity, "Da xay ra loi", Toast.LENGTH_SHORT).show()

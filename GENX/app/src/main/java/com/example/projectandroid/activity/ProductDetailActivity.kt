@@ -20,6 +20,7 @@ import com.example.projectandroid.model.Comment
 import com.example.projectandroid.model.Product
 import com.example.projectandroid.model.User
 import com.example.projectandroid.ultil.CheckConnection
+import com.example.projectandroid.ultil.GenX
 import com.squareup.picasso.Picasso
 import org.json.JSONException
 import java.text.DecimalFormat
@@ -149,7 +150,7 @@ class ProductDetailActivity : AppCompatActivity() {
 
     private fun commentUser() {
         val requestQueue = Volley.newRequestQueue(this)
-        val stringRequest: StringRequest = object : StringRequest(Method.POST, "http://192.168.1.6:8080/genX/insertComment.php",
+        val stringRequest: StringRequest = object : StringRequest(Method.POST, GenX.commentUser,
                 Response.Listener { response ->
                     if (response.trim { it <= ' ' } == "success") {
                         Toast.makeText(this@ProductDetailActivity, "Comment thành công", Toast.LENGTH_SHORT).show()
@@ -180,7 +181,7 @@ class ProductDetailActivity : AppCompatActivity() {
 
     private fun themGioHang() {
         val requestQueue = Volley.newRequestQueue(this)
-        val stringRequest: StringRequest = object : StringRequest(Method.POST, "http://192.168.1.6:8080/genX/insertSanPham.php",
+        val stringRequest: StringRequest = object : StringRequest(Method.POST, GenX.pathInsertSanPham,
                 Response.Listener { response ->
                     if (response.trim { it <= ' ' } == "success") {
                         Toast.makeText(this@ProductDetailActivity, "Them vào giỏ hang thành công", Toast.LENGTH_SHORT).show()
@@ -211,7 +212,7 @@ class ProductDetailActivity : AppCompatActivity() {
 
     fun GetDataComment(tensanphamcobinhluan: String) {
         val requestQueue = Volley.newRequestQueue(applicationContext)
-        val jsonArrayRequest = JsonArrayRequest("http://192.168.1.6:8080/genX/getcomment.php", { response ->
+        val jsonArrayRequest = JsonArrayRequest(GenX.pathComment, { response ->
             commentArrayList!!.clear()
             commentArrayListFilter!!.clear()
             if (response != null) {
@@ -244,7 +245,7 @@ class ProductDetailActivity : AppCompatActivity() {
 
     fun GetDataUsers() {
         val requestQueue = Volley.newRequestQueue(applicationContext)
-        val jsonArrayRequest = JsonArrayRequest("http://192.168.1.6:8080/genX/getUser.php", { response ->
+        val jsonArrayRequest = JsonArrayRequest(GenX.pathUser, { response ->
             if (response != null) {
                 for (i in 0 until response.length()) {
                     try {

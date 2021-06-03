@@ -15,6 +15,7 @@ import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.projectandroid.R
 import com.example.projectandroid.model.User
+import com.example.projectandroid.ultil.GenX
 import java.util.*
 
 class InformationUserActivity : AppCompatActivity() {
@@ -61,7 +62,7 @@ class InformationUserActivity : AppCompatActivity() {
     private fun capNhatUser() {
         val requestQueue = Volley.newRequestQueue(this)
         val stringRequest: StringRequest = object : StringRequest(
-            Method.POST, "http://192.168.1.6:8080/genX/updateUser.php",
+            Method.POST, GenX.updateUser,
             Response.Listener { response ->
                 if (response.trim { it <= ' ' } == "success") {
                     Toast.makeText(

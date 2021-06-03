@@ -17,6 +17,7 @@ import com.example.projectandroid.R
 import com.example.projectandroid.adapter.ShoesAdapter
 import com.example.projectandroid.model.Product
 import com.example.projectandroid.ultil.CheckConnection
+import com.example.projectandroid.ultil.GenX
 import org.json.JSONArray
 import org.json.JSONException
 import java.util.*
@@ -46,7 +47,7 @@ class ShoesActivity : AppCompatActivity() {
 
     private fun GetDataPhone() {
         val requestQueue = Volley.newRequestQueue(this)
-        val pathShoes = "http://192.168.1.6:8080/genX/getsanpham.php"
+        val pathShoes = GenX.pathPhone
         val stringRequest = StringRequest(
             Request.Method.GET, pathShoes,
             { response ->
