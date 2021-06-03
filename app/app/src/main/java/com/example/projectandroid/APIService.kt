@@ -27,6 +27,9 @@ interface APIService {
     @GET("/product")
     fun getProduct(@Query("item") item: String?): Call<List<Product>>
 
+    @GET("/cart")
+    fun getCart(@Query("username") username: String?): Call<List<Cart>>
+
     @POST("/signup")
     suspend fun signUpUser(@Body requestBody: RequestBody): Response<User>
 

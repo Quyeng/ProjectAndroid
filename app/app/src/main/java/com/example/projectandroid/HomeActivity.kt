@@ -34,6 +34,11 @@ class HomeActivity : AppCompatActivity() {
         btnMenu.setOnClickListener{
             showPopupMenu()
         }
+        btnCart.setOnClickListener{
+            val intent = Intent(this@HomeActivity, CartActivity::class.java)
+            intent.putExtra("user_name", username)
+            startActivity(intent)
+        }
         imgShirt.setOnClickListener {
             val intent = Intent(this@HomeActivity, ProductActivity::class.java)
             intent.putExtra("type", "shirts")

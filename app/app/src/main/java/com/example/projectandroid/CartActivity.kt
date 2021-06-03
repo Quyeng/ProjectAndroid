@@ -13,7 +13,8 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class ProductActivity : AppCompatActivity() {
+class CartActivity : AppCompatActivity() {
+
     private lateinit var recyclerView: RecyclerView
     private lateinit var manager: RecyclerView.LayoutManager
     private lateinit var myAdapter: RecyclerView.Adapter<*>
@@ -26,17 +27,16 @@ class ProductActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.list_product)
         findViewById()
+        tvType.text = "Your Cart"
         manager = GridLayoutManager(this,2)
-        val typeProduct = intent.getStringExtra("type")
-        if (typeProduct != null) {
-            getAllProduct(typeProduct)
-            tvType.text = typeProduct.toUpperCase()
+        val username = intent.getStringExtra("user_name")
+        if (username != null) {
+            getAllCart(username)
         }
         imgBack.setOnClickListener{
-            val intent = Intent(this@ProductActivity, HomeActivity::class.java)
+            val intent = Intent(this@CartActivity, HomeActivity::class.java)
             startActivity(intent)
         }
-
     }
 
     private fun findViewById(){
@@ -46,24 +46,25 @@ class ProductActivity : AppCompatActivity() {
         imgBack = findViewById(R.id.img_back)
     }
 
-    private fun getAllProduct(type: String){
-        Api.retrofitService.getProduct(type).enqueue(object: Callback<List<Product>> {
+    private fun getAllCart(username: String){
+        Api.retrofitService.getCart(username).enqueue(object: Callback<List<Cart>> {
             override fun onResponse(
-                    call: Call<List<Product>>,
-                    response: Response<List<Product>>
+                call: Call<List<Cart>>,
+                response: Response<List<Cart>>
             ) {
                 if(response.isSuccessful){
                     recyclerView = findViewById<RecyclerView>(R.id.recycle_view).apply{
-                        myAdapter = ProductAdapter(response.body()!!, this@ProductActivity)
+                        myAdapter = CartAdapter(response.body()!!)
                         layoutManager = manager
                         adapter = myAdapter
                     }
                     Log.d("-----Pretty Printed JSON------ :", response.toString())
                 }
             }
-            override fun onFailure(call: Call<List<Product>>, t: Throwable) {
+            override fun onFailure(call: Call<List<Cart>>, t: Throwable) {
                 t.printStackTrace()
             }
         })
     }
+
 }
