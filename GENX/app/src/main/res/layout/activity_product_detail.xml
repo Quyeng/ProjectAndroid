@@ -275,7 +275,7 @@
                         android:layout_height="match_parent"/>
 
                     <EditText
-                        android:text="hello"
+                        android:text="GenX"
                         android:layout_marginRight="10dp"
                         android:id="@+id/binhluanUser"
                         android:layout_width="250dp"

@@ -102,7 +102,7 @@ class LoginActivity : AppCompatActivity() {
 //                    Toast.makeText(this@LoginActivity, "Thêm User thành công", Toast.LENGTH_SHORT)
 //                        .show()
 //                } else {
-//                    Toast.makeText(this@LoginActivity, "Add User", Toast.LENGTH_SHORT).show()
+//                    Toast.makeText(this@LoginActivity, "Error Add User", Toast.LENGTH_SHORT).show()
 //                }
             },
             Response.ErrorListener { error ->

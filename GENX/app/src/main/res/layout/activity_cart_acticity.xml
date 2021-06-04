@@ -46,7 +46,7 @@
             android:textStyle="bold"
             android:paddingLeft="5dp"
             android:textSize="14sp"
-            android:text="Vui lòng kiểm tra kỹ giỏ hàng trước khi thanh toán "
+            android:text="Nhấn vào mục Mã giảm giá trong mục Shop Voucher để được hưởng miễn phí vận chuyển nhé "
             android:id="@+id/textviewgiamgia"
             android:layout_width="match_parent"
             android:layout_height="40dp"/>
@@ -64,19 +64,12 @@
                 android:orientation="horizontal"
                 android:layout_height="70dp">
 
-                <ImageView
-                    android:src="@drawable/vanchuyen"
-                    android:id="@+id/imageIconxetaine"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"/>
-                <TextView
-                    android:textStyle="bold"
-                    android:paddingLeft="5dp"
-                    android:textSize="14sp"
-                    android:text="Nhấn vào mục Mã giảm giá trong mục Shop Voucher để được hưởng miễn phí vận chuyển nhé "
-                    android:id="@+id/textviewgiamgiane"
+                <Button
+                    android:background="@drawable/circle_button"
+                    android:id="@+id/btnCont"
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"/>
+                    android:layout_height="match_parent"
+                    android:text="Tiếp tục mua hàng" />
 
             </LinearLayout>
             <LinearLayout

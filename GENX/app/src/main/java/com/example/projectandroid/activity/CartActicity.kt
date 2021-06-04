@@ -21,6 +21,7 @@ import org.json.JSONException
 import java.util.*
 
 class CartActicity : AppCompatActivity() {
+    var btnContShop: Button? = null
     var checkBoxTatCa: CheckBox? = null
     var btnDiscount: Button? = null
     var btnMuaHang: Button? = null
@@ -52,6 +53,10 @@ class CartActicity : AppCompatActivity() {
                 checkCheckBoxTatCaIsFalse()
                 GetDataCart()
             }
+        }
+        btnContShop!!.setOnClickListener {
+            val intent = Intent(this@CartActicity, HomeActivity::class.java)
+            startActivity(intent)
         }
         btnDiscount!!.setOnClickListener {
             val tongtien = Tongtiensanpham!!.text.toString().trim { it <= ' ' }
@@ -105,7 +110,7 @@ class CartActicity : AppCompatActivity() {
     private fun AnhXa() {
         imgLogo = findViewById(R.id.imageLogo)
         iconvanchuyen = findViewById(R.id.imageIconxetai)
-        imageIconxetaine = findViewById(R.id.imageIconxetaine)
+//        imageIconxetaine = findViewById(R.id.imageIconxetaine)
         listViewCart = findViewById(R.id.listviewCart)
         Tongtiensanpham = findViewById(R.id.Tongtiensanpham)
         checkBoxTatCa = findViewById(R.id.checkboxTatCa)
@@ -116,6 +121,7 @@ class CartActicity : AppCompatActivity() {
         listViewCart.setAdapter(cartApdapter)
         btnDiscount = findViewById(R.id.btnDiscount)
         btnMuaHang = findViewById(R.id.btnMuaHang)
+        btnContShop= findViewById(R.id.btnCont)
     }
 
     fun checkCheckBoxTatCaIsTrue(): Boolean {
@@ -279,6 +285,7 @@ class CartActicity : AppCompatActivity() {
             val tongtien = Tongtiensanpham!!.text.toString()
             var tongtienphaitra = Integer.valueOf(tongtien)
             tongtienphaitra = tongtienphaitra - discount
+            if(tongtienphaitra<=0) tongtienphaitra=15000
             Tongtiensanpham!!.text = tongtienphaitra.toString() + ""
         }
     }

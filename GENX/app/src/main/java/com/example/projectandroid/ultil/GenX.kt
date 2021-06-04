@@ -1,7 +1,7 @@
 package com.example.projectandroid.ultil
 
 object GenX {
-    var localhost = "192.168.1.6:8080"
+    var localhost = "genxbyvpq.000webhostapp.com"
     var path = "http://" + localhost + "/genX/getloaisp.php"
     var pathNew = "http://" + localhost + "/genX/getsanphammoinhat.php"
     var pathPhone = "http://" + localhost + "/genX/getsanpham.php"
