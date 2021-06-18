@@ -22,6 +22,7 @@ class ProfileActivity : AppCompatActivity() {
     private lateinit var btnBack : ImageView
     private lateinit var edtEmail : EditText
     private lateinit var edtPassword : EditText
+    private lateinit var edtNewPassword : EditText
     private lateinit var btnUpdate : Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,7 +36,6 @@ class ProfileActivity : AppCompatActivity() {
         tvUsername.text = username
         tvNameUser.text = username
         edtEmail.setText(email)
-        edtPassword.setText(password)
 
         btnBack.setOnClickListener{
             val intent = Intent(this@ProfileActivity, HomeActivity::class.java)
@@ -46,10 +46,14 @@ class ProfileActivity : AppCompatActivity() {
             startActivity(intent)
         }
         btnUpdate.setOnClickListener{
-            var newEmail = edtEmail.text.toString()
-            var newPassword = edtPassword.text.toString()
-            if (username != null) {
-                updateAccount(username, newEmail, newPassword)
+            if(edtPassword.text.toString() == password) {
+                var newEmail = edtEmail.text.toString()
+                var newPassword = edtNewPassword.text.toString()
+                if (username != null) {
+                    updateAccount(username, newEmail, newPassword)
+                }
+            } else{
+                Toast.makeText(this, "Password incorrect, please check again!", Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -60,6 +64,7 @@ class ProfileActivity : AppCompatActivity() {
         tvNameUser = findViewById(R.id.tv_user_name)
         btnBack = findViewById(R.id.img_back)
         edtPassword = findViewById(R.id.edt_password)
+        edtNewPassword = findViewById(R.id.edt_new_password)
         btnUpdate = findViewById(R.id.btn_update)
     }
 
